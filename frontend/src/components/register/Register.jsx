@@ -31,13 +31,17 @@ const Register = () => {
                 } catch (error) {
                     console.error('Error al procesar la respuesta como JSON:', error);
                 }
-            } else  {
+            } else {
                 const errorData = await response.text();
                 console.error('Error al registrar usuario:', errorData);
-            } 
+            }
         } catch (error) {
             console.error("error al procesar solicitud: ", error)
         }
+    }
+
+    const redirectLogin = () => {
+        navigate('/login');
     }
 
     return (
@@ -62,6 +66,7 @@ const Register = () => {
                 <input type="password" id="password" name="password" required />
 
                 <button type="submit" id="buttonRegister">REGISTER</button>
+                <button id="buttonLogin" onClick={redirectLogin}>Si ya tienes cuenta, logueate</button>
                 <button type="button" id="gitHubButton">Ingresar con github</button>
             </form>
             <div id="userContainer">
