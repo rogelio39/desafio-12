@@ -28,28 +28,6 @@ let PORT = 3000;
 
 const app = express();
 
-app.use('*', (req, res) => {
-    const context = {};
-    const appHtml = ReactDOMServer.renderToString(
-        <StaticRouter location={req.url} context={context}>
-            <App />
-        </StaticRouter>
-    );
-
-    res.send(
-        `<!DOCTYPE html>
-       <html lang="en">
-         <head>
-           <!-- head content -->
-         </head>
-         <body>
-           <div id="root">${appHtml}</div>
-           <script src="/path/to/your/bundle.js"></script>
-         </body>
-       </html>`
-    );
-});
-
 const specs = swaggerJSDoc(swaggerOptions);
 
 const whiteList = ['https://proyecto-frontend-udcd.onrender.com'];
