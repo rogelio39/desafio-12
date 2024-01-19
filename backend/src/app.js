@@ -24,7 +24,7 @@ const app = express();
 
 const specs = swaggerJSDoc(swaggerOptions);
 
-const whiteList = ['https://proyecto-frontend-udcd.onrender.com'];
+const whiteList = ['https://frontend1-1i7e.onrender.com'];
 
 const numeroDeProcesadores = cpus().length;
 
