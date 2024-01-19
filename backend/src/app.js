@@ -17,12 +17,6 @@ import { swaggerOptions } from './config/swagger.js';
 import cluster from 'cluster';
 import { cpus } from 'os';
 
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom';
-import App from '../../frontend/src/App.jsx';
-
-
 
 let PORT = 3000;
 
