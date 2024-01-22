@@ -16,7 +16,7 @@ import swaggerUiExpress from 'swagger-ui-express';
 import { swaggerOptions } from './config/swagger.js';
 import cluster from 'cluster';
 import { cpus } from 'os';
-import multer from "multer";
+// import multer from "multer";
 
 
 
@@ -41,16 +41,16 @@ const corsOptions = {
     credentials: true
 }
 //config multer 
-const storage = multer.diskStorage({
-    destination: (req, file, callback) => {
-        callback(null, 'src/public/img');
-    },
-    filename: (req, file, callback) => {
-        callback(null, `${Date.now()} ${file.originalname}`)
-    }
-});
+// const storage = multer.diskStorage({
+//     destination: (req, file, callback) => {
+//         callback(null, 'src/public/img');
+//     },
+//     filename: (req, file, callback) => {
+//         callback(null, `${Date.now()} ${file.originalname}`)
+//     }
+// });
 
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
 
 
 app.use(express.json());
