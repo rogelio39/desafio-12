@@ -1,11 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { BACKEND_URL } from '../../../config.js';
+
+
+// Uso de la función para importar de forma síncrona
+const URL = BACKEND_URL;
+
 export default function Logout({onLogout}) {
     const navigate = useNavigate();
     const logout = async () => {
         try {
-            const response = await fetch(`${import.meta.BACKEND_URL}api/session/logout`, {
+            const response = await fetch(`${URL}api/session/logout`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

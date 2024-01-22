@@ -3,7 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { getCookiesByName } from "../../utils/formsUtils.js";
 
 import './NewProducts.css';
+import { BACKEND_URL } from '../../../config.js';
 
+
+// Uso de la función para importar de forma síncrona
+const URL = BACKEND_URL;
 
 export const NewProducts = () => {
 
@@ -15,7 +19,7 @@ export const NewProducts = () => {
             const formData = new FormData(formRef.current);
             const data = Object.fromEntries(formData);
             const token = getCookiesByName('jwtCookie');
-            const response = await fetch('https://proyecto-backend1.onrender.com/api/products', {
+            const response = await fetch(`${URL}/api/products`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
