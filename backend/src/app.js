@@ -16,7 +16,6 @@ import swaggerUiExpress from 'swagger-ui-express';
 import { swaggerOptions } from './config/swagger.js';
 import cluster from 'cluster';
 import { cpus } from 'os';
-// import multer from "multer";
 
 
 
@@ -26,7 +25,8 @@ let PORT = process.env.PORT;
 
 const specs = swaggerJSDoc(swaggerOptions);
 
-const whiteList = [process.env.FRONTEND_PORT, 'http://localhost:5173'];
+console.log(process.env.FRONTEND_PORT)
+const whiteList = [process.env.FRONTEND_PORT];
 
 const numeroDeProcesadores = cpus().length;
 
@@ -40,17 +40,8 @@ const corsOptions = {
     },
     credentials: true
 }
-//config multer 
-// const storage = multer.diskStorage({
-//     destination: (req, file, callback) => {
-//         callback(null, 'src/public/img');
-//     },
-//     filename: (req, file, callback) => {
-//         callback(null, `${Date.now()} ${file.originalname}`)
-//     }
-// });
 
-// const upload = multer({ storage: storage });
+
 
 
 app.use(express.json());

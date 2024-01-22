@@ -8,7 +8,7 @@ import nodemailerRouter from "./nodemailer.routes.js";
 import errorRouter from "./error.routes.js";
 import passwordRecoveryRouter from "./passwordRecovery.routes.js";
 import operacionesRouter from "./operaciones.routes.js";
-
+import uploadRouter from "./upload.routes.js";
 
 
 const router = Router();
@@ -21,6 +21,7 @@ router.use('/api/carts/checkout', checkoutRouter);
 router.use('/api/mail', nodemailerRouter);
 router.use('/api/errors', errorRouter);
 router.use('/api/password', passwordRecoveryRouter);
+router.use('/api', uploadRouter);
 router.use('/api', operacionesRouter);
 
 
