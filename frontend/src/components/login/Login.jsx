@@ -3,7 +3,7 @@ import { useRef } from "react"
 import { useNavigate } from "react-router-dom"
 
 
-const URL = import.meta.env.BACKEND_URL ? import.meta.env.BACKEND_URL : 'http://localhost:3000';
+const URL = import.meta.env.BACKEND_URL;
 
 const Login = () => {
 
