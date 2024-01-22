@@ -1,0 +1,1 @@
+export const BACKEND_URL = "https://proyecto-backend1.onrender.com"

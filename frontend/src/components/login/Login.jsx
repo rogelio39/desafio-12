@@ -1,9 +1,11 @@
 import './Login.css';
 import { useRef } from "react"
 import { useNavigate } from "react-router-dom"
+import { BACKEND_URL } from '../../../config.js';
 
 
-const URL = import.meta.env.BACKEND_URL;
+// Uso de la función para importar de forma síncrona
+const URL = BACKEND_URL;
 
 const Login = () => {
 
@@ -12,6 +14,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log(URL)
         const datForm = new FormData(formRef.current) //Tranformo un HTML en un objet iterator
         const data = Object.fromEntries(datForm)
         const response = await fetch(`${URL}/api/session/login`, {
@@ -27,13 +30,12 @@ const Login = () => {
         try {
             if (response.ok) {
                 document.cookie = `jwtCookie=${datos.token}; expires=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()}; path=/;`;
-                console.log(datos.cid);
                 localStorage.setItem('cid', datos.cid);
                 navigate('/products')
-            } else{
+            } else {
                 console.log(datos);
                 console.error('Credenciales incorrectas. Por favor, verifica tu email y contraseña.', datos);
-            } 
+            }
         } catch (error) {
             console.error('error al procesar respuesta del servidor: ', datos)
         }
