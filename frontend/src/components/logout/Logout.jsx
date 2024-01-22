@@ -5,7 +5,7 @@ export default function Logout({onLogout}) {
     const navigate = useNavigate();
     const logout = async () => {
         try {
-            const response = await fetch('https://proyecto-backend1.onrender.com/api/session/logout', {
+            const response = await fetch(`${import.meta.BACKEND_URL}api/session/logout`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

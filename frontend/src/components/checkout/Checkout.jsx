@@ -1,52 +1,39 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Ticket from "../ticket/Ticket";
-import { useParams } from "react-router-dom";
+import './checkout.css'
+import { CarritoContext } from "../../context/CarritoContext"
 
 
 const Checkout = () => {
-
-    const [ticket, setTicket] = useState({});
+    const [ticket, setTicket] = useState([])
     const [viewButtonOrder, setViewButtonOrder] = useState(false);
     const [showOrderDetails, setShowOrderDetails] = useState(false);
-    const {cartId} = useParams('');
+    const {finishCart, carrito, getTicket} = useContext(CarritoContext);
+    const cid = localStorage.getItem('cid');
 
-    const getTicket = async () => {
-        try {
-            const response = await fetch(`https://proyecto-backend1.onrender.com/api/carts/checkout/${cartId}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
 
-            if (response.ok) {
-                const data = await response.json();
-                console.log("compra realizada")
-                console.log(data.ticket)
-                setTicket(data.ticket);
-            } else if (response.status === 404) {
-                console.error('Errores 404', response);
-            } else {
-                console.log("error 500", response)
-            }
-        } catch (error) {
-            console.log('error', error);
-        }
+    
 
+    const finishBuy = async () => {
+        const cart = await finishCart(carrito, cid);
+        console.log(cart)
         setViewButtonOrder(true);
     }
 
     const getCheckout = async () => {
+        const finalTicket = await getTicket(cid);
+        setTicket(finalTicket);
         setShowOrderDetails(true);
     }
 
 
 
+
     return (
-        <div>
-            <button onClick={getTicket}>REALIZAR COMPRA</button>
+        <div className="checkout">
+            <button className="getTicket" onClick={finishBuy}>REALIZAR COMPRA</button>
             {
-                viewButtonOrder && <button onClick={getCheckout}>VER DETALLES DE COMPRA</button>
+                viewButtonOrder && <button className="getCheckout" onClick={getCheckout}>VER DETALLES DE COMPRA</button>
             }
             {
                 showOrderDetails && <Ticket ticket={ticket} />

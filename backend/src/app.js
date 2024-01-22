@@ -18,13 +18,16 @@ import cluster from 'cluster';
 import { cpus } from 'os';
 
 
-let PORT = 3000;
 
 const app = express();
 
+let PORT = process.env.PORT;
+
+
 const specs = swaggerJSDoc(swaggerOptions);
 
-const whiteList = ['https://frontend1-1i7e.onrender.com'];
+const whiteList = [process.env.FRONTEND_PORT, 'http://localhost:5173'];
+
 
 const numeroDeProcesadores = cpus().length;
 
@@ -81,7 +84,6 @@ mongoose.connect(process.env.MONGO_URL, mongooseOptions)
         console.log('Error en conexión a DB', error);
         process.exit(1);
     });
-
 
 app.use(compression());
 //generacion de loggers

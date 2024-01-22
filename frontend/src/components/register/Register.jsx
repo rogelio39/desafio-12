@@ -2,6 +2,8 @@ import './Register.css';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const URL = import.meta.env.BACKEND_URL || 'http://localhost:3000';
+
 const Register = () => {
 
     const formRef = useRef(null);
@@ -13,7 +15,7 @@ const Register = () => {
             const data = Object.fromEntries(formData)
             console.log(data);
 
-            const response = await fetch('https://proyecto-backend1.onrender.com/api/session/register', {
+            const response = await fetch(`${URL}/api/session/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

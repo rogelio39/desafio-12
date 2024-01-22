@@ -1,3 +1,4 @@
+import './ticket.css'
 
 const Ticket = (ticket) => {
     const ticketDetails = ticket.ticket;

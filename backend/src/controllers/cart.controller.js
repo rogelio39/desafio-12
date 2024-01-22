@@ -40,7 +40,6 @@ export const postCart = async (req, res) => {
             res.status(404).send({ respuesta: 'error al agregar producto al carrito', mensaje: 'Carrito no existe' });
         }
     } catch (error) {
-        console.log(error);
         res.status(500).send({ respuesta: 'error al agregar producto al carrito', mensaje: error })
     }
 }
@@ -85,26 +84,28 @@ export const putProductToCart = async (req, res) => {
             res.status(404).send({ respuesta: 'error al agregar producto al carrito', mensaje: 'Carrito no existe' });
         }
 
-        console.log("product que llega por body en update product", products)
         const productPromises = products.map(async (prod) => {
             const product = await productModel.findById(prod._id);
             if (!product) {
                 throw new Error(`Producto no encontrado: ${prod._id}`);
             }
             const index = cart.products.findIndex(cartProd => cartProd._id.toString() === product._id);
+            console.log("cart products", cart.products)
             if (index != -1) {
                 throw new Error(`Producto ya existente: ${product._id.toString()}`);
             }
             return { id_prod: prod._id, quantity: prod.quantity };
         });
 
+
         try {
             // Esperamos a que se completen todas las promesas
             const productResults = await Promise.all(productPromises);
             // Si todos los productos se encontraron, actualizamos el carrito
+            console.log("cart luego de agregar mas productos", cart.products)
             cart.products = productResults;
             const respuesta = await cartModel.findByIdAndUpdate(cid, { products: cart.products });
-            res.status(200).send({ respuesta: 'ok', mensaje: respuesta });
+            res.status(200).send({ respuesta: 'ok', mensaje: respuesta, products: cart.products });
         } catch (error) {
             res.status(404).send({ respuesta: 'error', mensaje: 'error al cargar array de productos' });
         }

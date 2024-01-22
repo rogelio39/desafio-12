@@ -1,0 +1,15 @@
+.checkout {
+    font-size: x-large;
+    border: black 3px solid;
+    border-radius: 10px;
+    background: linear-gradient(to right, #6d69d9, #8c36b7, #051c55d8);
+    margin-bottom: 1rem;
+}
+
+.getTicket, .getCheckout {
+    font-size: x-large;
+    border: black 3px solid;
+    border-radius: 10px;
+    background: linear-gradient(to right, #b2b0e5, #d5bbe2, #b8c2dbd8);
+    margin: 1rem;
+}

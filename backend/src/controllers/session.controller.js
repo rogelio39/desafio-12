@@ -1,6 +1,27 @@
 import { generateToken } from "../utils/jwt.js";
 
 
+// Función para calcular el tiempo transcurrido desde la última conexión
+function calcularTiempoDesconectado(ultimaConexion) {
+    // Verifica si la última conexión es válida
+    if (!ultimaConexion) {
+        return null; // o un valor por defecto, según tus necesidades
+    }
+
+    // Obtiene la fecha actual
+    const ahora = new Date();
+
+    // Calcula la diferencia en milisegundos
+    const tiempoTranscurrido = ahora - new Date(ultimaConexion);
+
+    // Convierte la diferencia a segundos
+    const segundosTranscurridos = tiempoTranscurrido / 1000;
+
+    // Puedes ajustar la lógica según tus necesidades para devolver el tiempo en el formato deseado
+    return segundosTranscurridos;
+}
+
+
 export const login = async (req, res) => {
     try {
         if (!req.user) {
@@ -17,6 +38,17 @@ export const login = async (req, res) => {
         // };
         // res.status(200).send({usuario: 'usuario logueado'})
 
+
+        const ultimaConexion = req.user.last_connection;
+
+        const tiempoDesconectado = calcularTiempoDesconectado(ultimaConexion);
+
+        if (tiempoDesconectado !== null) {
+            console.log(`El usuario ha estado desconectado durante ${tiempoDesconectado} segundos.`);
+        } else {
+            console.log("La última conexión no es válida.");
+        }
+
         // Actualizar last_connection al iniciar sesión
         req.user.last_connection = Date.now();
 
@@ -27,7 +59,7 @@ export const login = async (req, res) => {
             maxAge: 4320000 //12 hs en mili segundos
         });
         // res.status(200).send({ payload: req.user });
-        res.status(200).send({ token });
+        res.status(200).send({ token: token, cid: req.user.cart });
     } catch (error) {
         res.status(500).send({ message: `error al iniciar  sesion ${error}` });
     }

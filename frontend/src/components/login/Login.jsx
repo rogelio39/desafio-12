@@ -2,6 +2,9 @@ import './Login.css';
 import { useRef } from "react"
 import { useNavigate } from "react-router-dom"
 
+
+const URL = import.meta.env.BACKEND_URL || 'http://localhost:3000';
+
 const Login = () => {
 
     const formRef = useRef(null);
@@ -11,7 +14,7 @@ const Login = () => {
         e.preventDefault()
         const datForm = new FormData(formRef.current) //Tranformo un HTML en un objet iterator
         const data = Object.fromEntries(datForm)
-        const response = await fetch('https://proyecto-backend1.onrender.com/api/session/login', {
+        const response = await fetch(`${URL}/api/session/login`, {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -24,6 +27,8 @@ const Login = () => {
         try {
             if (response.ok) {
                 document.cookie = `jwtCookie=${datos.token}; expires=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()}; path=/;`;
+                console.log(datos.cid);
+                localStorage.setItem('cid', datos.cid);
                 navigate('/products')
             } else{
                 console.log(datos);
