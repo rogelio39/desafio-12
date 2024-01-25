@@ -22,7 +22,7 @@ function calcularTiempoDesconectado(ultimaConexion) {
 }
 
 
-function esMayorDe72Horas(lastConnection) {
+function esMayorDe144Horas(lastConnection) {
     if (!lastConnection) {
         return false; // O según tus necesidades
     }
@@ -31,7 +31,7 @@ function esMayorDe72Horas(lastConnection) {
     const tiempoTranscurrido = ahora - new Date(lastConnection);
     const horasTranscurridas = tiempoTranscurrido / (1000 * 60 * 60); // Convertir a horas
 
-    return horasTranscurridas > 72;
+    return horasTranscurridas > 144;
 }
 
 // Función para eliminar la cuenta (ajusta esta lógica según tus necesidades)

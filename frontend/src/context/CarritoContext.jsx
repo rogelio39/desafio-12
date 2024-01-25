@@ -101,11 +101,11 @@ export const CarritoProvider = ({ children }) => {
 
     //agregar productos
     const addProduct = (item, cantidad) => {
-        if (!isInCart(item.id)) {
+        if (!isInCart(item._id)) {
             setCarrito(prev => [...prev, { item, cantidad }])
         } else {
             const updatedCart = carrito.map(prod => {
-                if (prod.item.id === item.id) {
+                if (prod.item._id === item._id) {
                     return { ...prod, cantidad: prod.cantidad + cantidad }
                 }
                 return prod;
