@@ -1,7 +1,7 @@
 import { Router } from "express";
 import passport from "passport";
 import { passportError, authorization } from '../utils/messagesError.js';
-import { login, register, github, githubCallback, current, logout } from "../controllers/session.controller.js";
+import { login, register, github, githubCallback, current, logout, deleteUser } from "../controllers/session.controller.js";
 
 
 
@@ -14,6 +14,7 @@ sessionRouter.get('/github', passport.authenticate('github', { scope: ['user: em
 sessionRouter.get('/githubCallback', passport.authenticate('github'), githubCallback )
 sessionRouter.get('/current', passportError('jwt'), authorization('user'),  current)
 sessionRouter.get('/logout', logout);
+sessionRouter.post('delete', deleteUser);
 
 
 

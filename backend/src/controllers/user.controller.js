@@ -3,7 +3,7 @@ import { userModel } from "../models/users.models.js";
 
 export const getUsers = async (req, res) => {
     try {
-        const users = await userModel.find();
+        const users = await userModel.find({}, 'first_name, email');
         res.status(200).send({ respuesta: 'ok', mensaje: users });
 
     } catch (error) {
@@ -56,8 +56,6 @@ export const deleteUser = async (req, res) => {
         res.status(400).send({ respuesta: "error", mensaje: error });
     }
 }
-
-
 
 
 
