@@ -1,0 +1,37 @@
+/*navbar*/
+.navBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to left, #5c69c1, #875be0);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 0.3rem;
+}
+
+.navBar button {
+    padding: 0.4rem;
+}
+
+.navBar button:hover{
+    background-color: rgba(212, 197, 197, 0.845);
+}
+
+/*BUTTONS*/
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.buttons button{
+    padding: 0.4rem;
+    border-radius: 8px;
+
+}
+
+.buttons button:hover{
+    background-color: rgba(214, 194, 194, 0.749);
+
+}
