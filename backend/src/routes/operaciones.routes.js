@@ -8,6 +8,7 @@ operacionesRouter.get('/operacionSencilla', (req, res) => {
         sum += i;
     }
     res.send({ status: 'success', message: `El worker ${process.pid} ha atendido esta peticion, el resultado es ${sum}` });
+
 });
 
 operacionesRouter.get('/operacionCompleja', (req, res) => {

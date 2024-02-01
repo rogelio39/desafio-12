@@ -65,7 +65,7 @@ export const login = async (req, res) => {
 
         // Actualizar last_connection al iniciar sesión
         req.user.last_connection = Date.now();
-
+        await req.user.save();
         //generamos el token
         const token = generateToken(req.user);
         // //enviamos el token por cookie
@@ -78,31 +78,6 @@ export const login = async (req, res) => {
         res.status(500).send({ message: `error al iniciar  sesion ${error}` });
     }
 }
-
-// export const login =  async (req, res, next) => {
-//     try {
-//         // Lógica de inicio de sesión
-//         // Si hay un error, lánzalo para que sea manejado por el middleware de manejo de errores
-//         if (!req.user) {
-//             throw new Error('Invalid user');
-//         }
-
-//         // Generamos el token
-//         const token = generateToken(req.user);
-
-//         // Enviamos el token por cookie
-//         res.cookie('jwtCookie', token, {
-//             maxAge: 4320000 // 12 hs en milisegundos
-//         });
-
-//         res.status(200).send({ token });
-//     } catch (error) {
-//         // Si hay un error en la lógica de inicio de sesión, lógica personalizada aquí
-//         req.logger.error(`Error en la lógica de inicio de sesión: ${error.message}`);
-//         next(error); // Pasa el error al siguiente middleware de manejo de errores
-//     }
-// };
-
 
 export const register = async (req, res) => {
     try {
@@ -138,6 +113,7 @@ export const logout = async (req, res) => {
         else if (req.user) {
             // Actualizar last_connection al cerrar sesión
             req.user.last_connection = Date.now();
+            await req.user.save();
         }
         // sino, va esto:
         res.clearCookie('jwtCookie');
@@ -149,7 +125,7 @@ export const logout = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
 
-    if (req.session && req.session.user && esMayorDe72Horas(req.session.user.last_connection)) {
+    if (req.session && req.session.user && esMayorDe144Horas(req.session.user.last_connection)) {
         // Eliminar la cuenta (ajusta esta lógica según tus necesidades)
         await eliminarCuenta(req.session.user);
         req.session.destroy();

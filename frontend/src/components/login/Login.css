@@ -1,4 +1,4 @@
-.login{
+.login {
     margin: auto;
     font-size: 1.5rem;
     font-weight: 800;
@@ -11,7 +11,7 @@
     background-color: #b46cd8a2;
 }
 
-#idForm{
+#idForm {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -24,12 +24,15 @@
     border-radius: 10px;
 }
 
-#email,#first_name, #password, #last_name{
+#email,
+#first_name,
+#password,
+#last_name {
     width: 40vw;
     margin: auto;
 }
 
-#buttonLog{
+#buttonLog {
     width: 20vw;
     margin: auto;
     padding: 0.4rem;
@@ -38,11 +41,11 @@
     cursor: pointer;
 }
 
-#buttonLog:hover{
+#buttonLog:hover {
     background-color: #6d69d9;
 }
 
-#buttonRegister{
+#buttonRegister {
     width: 20vw;
     margin: auto;
     padding: 0.4rem;
@@ -51,19 +54,28 @@
     cursor: pointer;
 }
 
-#buttonRegister:hover{
+#buttonRegister:hover {
     background-color: #6d69d9;
 }
 
 
-#userContainer{
+#userContainer {
     border: 1.5px black solid;
     background-color: #98a3bf;
 }
 
 
 
-.error{
+.error {
     background-color: #e37e57;
     padding: 1rem;
+}
+
+
+.loginOff {
+    display: none;
+}
+
+.loginOn {
+    display: block;
 }

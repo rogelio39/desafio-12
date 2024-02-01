@@ -6,6 +6,8 @@ import NewProducts from './components/newProducts/NewProducts';
 import './App.css'
 import Checkout from './components/checkout/Checkout';
 import { CarritoProvider } from './context/CarritoContext';
+import NavBar from './components/Navbar/NavBar';
+import { AuthProvider } from './context/AuthContext';
 
 
 const App = () => {
@@ -13,14 +15,17 @@ const App = () => {
     <>
       <CarritoProvider>
         <BrowserRouter>
-          <Routes>
-            <Route path='/*' element={<Register />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/products' element={<Products />} />
-            <Route path='/new-products' element={<NewProducts />} />
-            <Route path='/checkout/:cartId' element={<Checkout />} />
-            <Route path="/*" element={<h2>Seccion en construccion</h2>} />
-          </Routes>
+          <AuthProvider>
+            <NavBar />
+            <Routes>
+              <Route path='/*' element={<Register />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/products' element={<Products />} />
+              <Route path='/new-products' element={<NewProducts />} />
+              <Route path='/checkout/:cartId' element={<Checkout />} />
+              <Route path="/*" element={<h2>Seccion en construccion</h2>} />
+            </Routes>
+          </AuthProvider>
         </BrowserRouter>
       </CarritoProvider>
     </>

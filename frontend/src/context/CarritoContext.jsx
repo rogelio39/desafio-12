@@ -3,9 +3,11 @@
 import { useState, createContext } from "react";
 import PropTypes from 'prop-types';
 import { getCookiesByName } from "../utils/formsUtils";
-import { BACKEND_URL } from "../../config";
+import { BACKEND_URL, LOCAL_URL } from "../../config";
 
 const URL = BACKEND_URL;
+console.log(URL)
+const URL1 = LOCAL_URL;
 
 //Creamos contexto con un valor inicial por default sera un objeto con la propiedad "carrito" con un array vacio.
 export const CarritoContext = createContext({
@@ -28,7 +30,7 @@ export const CarritoProvider = ({ children }) => {
     const fetchProducts = async () => {
         try {
             const token = getCookiesByName('jwtCookie');
-            const response = await fetch(`${URL}/api/products`, {
+            const response = await fetch(`${URL1}/api/products`, {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
@@ -51,53 +53,6 @@ export const CarritoProvider = ({ children }) => {
             console.log('Error al intentar acceder a esta URL', error);
         }
     };
-
-
-
-    //agregamos metodos a carritoprovider que me permitiran manipular el carrito.
-
-
-    //agregar productos
-    // const addProduct = async ({ products, cid }) => {
-    //     console.log("product en addProduct en carrito context", products)
-    //     console.log("cid en addProduct en carrito context", cid)
-    //     try {
-    //         const token = getCookiesByName('jwtCookie');
-    //         const response = await fetch(`${URL}/api/carts/${cid}`, {
-    //             method: 'PUT',
-    //             credentials: 'include',
-    //             headers: {
-    //                 'Authorization': `${token}`,
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(products)
-    //         })
-    //         if (response.status == 200) {
-    //             const data = await response.json();
-    //             setCarrito(data.docs);
-    //         } else if (response.status === 401) {
-    //             const datos = await response.json()
-    //             console.error('Error acceder a productos, debes tener iniciada session', datos);
-    //         } else {
-    //             const data = await response.json();
-    //             console.log("error", data)
-    //         }
-    //     } catch (error) {
-    //         console.log('error al intentar acceder a esta url', error);
-    //     }
-
-
-    //     // if (!isInCart(product._id)) {
-    //     //     setCarrito(prev => [...prev, { product, quantity }])
-    //     // } else {
-    //     //     const updatedCart = carrito.map(prod => {
-    //     //         if (prod.item.id === product._id) {
-    //     //             return {...prod, quantity: prod.quantity + quantity }
-    //     //         }
-    //     //         return prod;
-    //     //     }
-    //     //     )
-    // }
 
     //agregar productos
     const addProduct = (item, cantidad) => {
@@ -130,7 +85,7 @@ export const CarritoProvider = ({ children }) => {
     
         try {
             const token = getCookiesByName('jwtCookie');
-            const response = await fetch(`${URL}/api/carts/${cid}`, {
+            const response = await fetch(`${URL1}/api/carts/${cid}`, {
                 method: 'PUT',
                 credentials: 'include',
                 headers: {
@@ -159,7 +114,7 @@ export const CarritoProvider = ({ children }) => {
     const getTicket = async (cid)=> {
         try {
             const token = getCookiesByName('jwtCookie');
-            const response = await fetch(`${URL}/api/carts/checkout/${cid}`, {
+            const response = await fetch(`${URL1}/api/carts/checkout/${cid}`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
