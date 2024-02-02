@@ -1,10 +1,10 @@
 import { useState, useContext, createContext } from "react";
-import { BACKEND_URL, LOCAL_URL } from "../../config";
+import { BACKEND_URL } from "../../config";
 import PropTypes from 'prop-types';
 
 const URL = BACKEND_URL;
 console.log(URL)
-const URL1 = LOCAL_URL;
+const URL1 = BACKEND_URL;
 
 const AuthContext = createContext();
 

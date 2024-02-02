@@ -1,8 +1,9 @@
 import './Register.css';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BACKEND_URL } from '../../../config';
 
-const URL = import.meta.env.BACKEND_URL || 'http://localhost:3000';
+const URL = BACKEND_URL;
 
 const Register = () => {
 

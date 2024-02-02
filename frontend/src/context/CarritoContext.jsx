@@ -3,11 +3,10 @@
 import { useState, createContext } from "react";
 import PropTypes from 'prop-types';
 import { getCookiesByName } from "../utils/formsUtils";
-import { BACKEND_URL, LOCAL_URL } from "../../config";
+import { BACKEND_URL} from "../../config";
 
-const URL = BACKEND_URL;
-console.log(URL)
-const URL1 = LOCAL_URL;
+
+const URL1 = BACKEND_URL;
 
 //Creamos contexto con un valor inicial por default sera un objeto con la propiedad "carrito" con un array vacio.
 export const CarritoContext = createContext({

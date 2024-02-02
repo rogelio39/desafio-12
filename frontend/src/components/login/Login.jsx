@@ -2,9 +2,9 @@ import './Login.css';
 import { useRef, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from '../../context/AuthContext';
-import { LOCAL_URL } from '../../../config';
+import { BACKEND_URL } from '../../../config';
 
-const URL1 = LOCAL_URL;
+const URL1 = BACKEND_URL;
 
 const Login = () => {
     console.log("renderizando login")
