@@ -11,8 +11,6 @@ dist
 dist-ssr
 *.local
 
-# Ignorar el archivo config.js
-config.js
 
 # Editor directories and files
 .vscode/*
