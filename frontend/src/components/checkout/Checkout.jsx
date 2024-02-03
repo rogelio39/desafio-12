@@ -16,7 +16,7 @@ const Checkout = () => {
 
     const finishBuy = async () => {
         const cart = await finishCart(carrito, cid);
-        console.log(cart)
+        console.log("carrito en checkout",cart)
         setViewButtonOrder(true);
     }
 

@@ -1,11 +1,11 @@
 import './Register.css';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BACKEND_URL } from '../../../config';
+import { useAuth } from '../../context/AuthContext';
 
-const URL = BACKEND_URL;
 
 const Register = () => {
+    const {register} = useAuth();
 
     const formRef = useRef(null);
     const navigate = useNavigate();
@@ -14,32 +14,12 @@ const Register = () => {
         try {
             const formData = new FormData(formRef.current);
             const data = Object.fromEntries(formData)
-            console.log(data);
-
-            const response = await fetch(`${URL}/api/session/register`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-                // body: JSON.stringify({ first_name, last_name, age, email, password })
-            })
-
-
-            if (response.ok) {
-                try {
-                    const datos = await response.json();
-                    console.log('Usuario registrado con éxito:', datos);
-                    navigate('/login');
-                } catch (error) {
-                    console.error('Error al procesar la respuesta como JSON:', error);
-                }
-            } else {
-                const errorData = await response.text();
-                console.error('Error al registrar usuario:', errorData);
+            const respuesta = register(data)
+            if(respuesta.ok === 'Ok'){
+                navigate('/login')
             }
         } catch (error) {
-            console.error("error al procesar solicitud: ", error)
+            console.log(error);
         }
     }
 

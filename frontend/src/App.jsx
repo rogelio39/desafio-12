@@ -10,6 +10,10 @@ import NavBar from './components/Navbar/NavBar';
 import { AuthProvider } from './context/AuthContext';
 
 
+// Resto del código de tu aplicación React
+
+
+
 const App = () => {
   return (
     <>

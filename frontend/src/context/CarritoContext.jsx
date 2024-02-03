@@ -3,10 +3,9 @@
 import { useState, createContext } from "react";
 import PropTypes from 'prop-types';
 import { getCookiesByName } from "../utils/formsUtils";
-import { BACKEND_URL} from "../../config";
+import { REACT_API_BACKEND_URL, REACT_API_LOCAL_URL, MODE } from "../../config";
 
-
-const URL1 = BACKEND_URL;
+const URL1 = MODE === 'DEVELOPMENT' ? REACT_API_LOCAL_URL :REACT_API_BACKEND_URL;
 
 //Creamos contexto con un valor inicial por default sera un objeto con la propiedad "carrito" con un array vacio.
 export const CarritoContext = createContext({
@@ -23,8 +22,6 @@ export const CarritoProvider = ({ children }) => {
     const [carrito, setCarrito] = useState([]);
     const [products, setProducts] = useState([]);
 
-    console.log(products);
-    console.log(carrito);
 
     const fetchProducts = async () => {
         try {
@@ -54,7 +51,7 @@ export const CarritoProvider = ({ children }) => {
     };
 
     //agregar productos
-    const addProduct = (item, cantidad) => {
+    const addProduct = async (item, cantidad) => {
         if (!isInCart(item._id)) {
             setCarrito(prev => [...prev, { item, cantidad }])
         } else {
@@ -72,6 +69,30 @@ export const CarritoProvider = ({ children }) => {
         // se utiliza para crear un nuevo array a partir del estado anterior del carrito y agregar un nuevo objeto que representa el nuevo producto (con el item que se agrega y la cantidad)
     }
 
+    const createProduct = async (data, token) => {
+        try {
+            const response = await fetch(`${URL}/api/products`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Authorization' : `${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+
+            if (response.status == 201) {
+                console.log("producto creado con exito");
+            } else if (response.status === 401) {
+                const datos = await response.json()
+                console.error('Error al intentar crear producto', datos);
+            } else {
+                console.log(response)
+            }
+        } catch (error) {
+            console.log('error al crear producto', error);
+        }
+    }
     const finishCart = async (carrito, cid) => {
         const products = carrito.map(prod => ({
             _id: prod.item._id,
@@ -96,7 +117,7 @@ export const CarritoProvider = ({ children }) => {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log("carrito", data.products);
+                return data.products;
             }
         } catch (error) {
             console.error("error", error)
@@ -121,10 +142,8 @@ export const CarritoProvider = ({ children }) => {
                     'Content-Type': 'application/json'
                 }
             })
-
             if (response.ok) {
                 const data = await response.json();
-                console.log("TICKET", data.ticket);
                 return data.ticket;
             }
         } catch (error) {
@@ -141,7 +160,7 @@ export const CarritoProvider = ({ children }) => {
 
 
     return (
-        <CarritoContext.Provider value={{ carrito, products, addProduct, finishCart, fetchProducts, getTicket }}>
+        <CarritoContext.Provider value={{ carrito, products, addProduct, createProduct ,finishCart, fetchProducts, getTicket }}>
             {children}
         </CarritoContext.Provider>
     );

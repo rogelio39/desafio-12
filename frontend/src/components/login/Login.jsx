@@ -2,53 +2,28 @@ import './Login.css';
 import { useRef, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from '../../context/AuthContext';
-import { BACKEND_URL } from '../../../config';
 
-const URL1 = BACKEND_URL;
+
+
 
 const Login = () => {
-    console.log("renderizando login")
     const navigate = useNavigate();
     const formRef = useRef(null);
-    const { isAuthenticated, login, setIsAuthenticated } = useAuth();
+    const { isAuthenticated, login, current} = useAuth();
     const [loading, setLoading] = useState(true);
-    console.log("isAuth", isAuthenticated)
-    console.log("loading", loading)
+
 
     useEffect(() => {
         const checkAuthentication = async () => {
-            try {
-                // Realiza una solicitud al servidor para verificar la autenticación
-                const response = await fetch(`${URL1}/api/session/current`, {
-                    method: 'GET',
-                    credentials: 'include',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    // Incluir cualquier token o información de autenticación necesario
-                });
-    
-                const datos = await response.json();
-                console.log("Datos", datos.user.user)
-                if (response.ok && datos.user.user._id) {
-                    // Si el usuario está autenticado, establece el estado y redirige
-                    setIsAuthenticated(true);
-                } else {
-                    // Si no está autenticado, establece el estado
-                    setIsAuthenticated(false);
-                }
-            } catch (error) {
-                console.error('Error al verificar autenticación:', error);
-                setIsAuthenticated(false);
-            } finally {
-                // Independientemente del resultado, marca como no cargando
-                setLoading(false);
-            }
+            current()
+            // Independientemente del resultado, marca como no cargando
+            setLoading(false);
+
         };
-    
+
         checkAuthentication();
-    }, [isAuthenticated, navigate]);
-    
+    }, [isAuthenticated, navigate, current]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
