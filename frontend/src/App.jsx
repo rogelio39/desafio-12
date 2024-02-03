@@ -8,6 +8,7 @@ import Checkout from './components/checkout/Checkout';
 import { CarritoProvider } from './context/CarritoContext';
 import NavBar from './components/Navbar/NavBar';
 import { AuthProvider } from './context/AuthContext';
+import AccessDenied from './components/accessDenied/AccessDenied';
 
 
 // Resto del código de tu aplicación React
@@ -27,7 +28,7 @@ const App = () => {
               <Route path='/products' element={<Products />} />
               <Route path='/new-products' element={<NewProducts />} />
               <Route path='/checkout/:cartId' element={<Checkout />} />
-              <Route path="/*" element={<h2>Seccion en construccion</h2>} />
+              <Route path="/*" element={<AccessDenied/>} />
             </Routes>
           </AuthProvider>
         </BrowserRouter>

@@ -11,7 +11,7 @@ dist
 dist-ssr
 *.local
 
-#arhivo config
+# Ignorar el archivo config.js
 config.js
 
 # Editor directories and files

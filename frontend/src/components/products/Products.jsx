@@ -7,8 +7,7 @@ const Products = () => {
     const { products, fetchProducts } = useContext(CarritoContext);
 
     useEffect(() => {
-        // Llama a fetchProducts solo si la lista de productos está vacía
-        if (products.length === 0) {
+        if (!products || products.length === 0) {
             fetchProducts();
         }
     }, [fetchProducts, products]);

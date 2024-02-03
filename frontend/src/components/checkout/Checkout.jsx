@@ -10,9 +10,7 @@ const Checkout = () => {
     const [showOrderDetails, setShowOrderDetails] = useState(false);
     const {finishCart, carrito, getTicket} = useContext(CarritoContext);
     const cid = localStorage.getItem('cid');
-
-
-    
+    const {fetchProducts} = useContext(CarritoContext);
 
     const finishBuy = async () => {
         const cart = await finishCart(carrito, cid);
@@ -23,10 +21,9 @@ const Checkout = () => {
     const getCheckout = async () => {
         const finalTicket = await getTicket(cid);
         setTicket(finalTicket);
+        fetchProducts();
         setShowOrderDetails(true);
     }
-
-
 
 
     return (
