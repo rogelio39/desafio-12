@@ -1,9 +1,8 @@
 import { useState, useContext, createContext } from "react";
-import { REACT_API_BACKEND_URL, REACT_API_LOCAL_URL, MODE } from "../../config";
 import PropTypes from 'prop-types';
 
 
-const URL1 = MODE === 'DEVELOPMENT' ? REACT_API_LOCAL_URL :REACT_API_BACKEND_URL;
+const URL1 = import.meta.env.VITE_REACT_APP_MODE === 'DEVELOPMENT' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_BACKEND_URL;
 
 
 
@@ -14,6 +13,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+    
     const register = async(data) => {
         try {
             const response = await fetch(`${URL1}/api/session/register`, {
@@ -113,8 +113,6 @@ export const AuthProvider = ({ children }) => {
             setIsAuthenticated(false);
         }
     }
-
-
 
 
     return (

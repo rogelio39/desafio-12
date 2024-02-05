@@ -11,7 +11,6 @@ import { AuthProvider } from './context/AuthContext';
 import AccessDenied from './components/accessDenied/AccessDenied';
 
 
-// Resto del código de tu aplicación React
 
 
 
