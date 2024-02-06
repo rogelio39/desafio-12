@@ -48,14 +48,18 @@ const userSchema = new Schema({
 userSchema.plugin(paginate); //implementar el metodo paginate en el schema
 
 userSchema.pre('save', async function(next) {
-    try{
-        const newCart = await cartModel.create({});
-        this.cart = newCart._id;
-    }catch(error){
-        //pateo lo que seria el error a la ruta, y que lo maneje la ruta. 
-            next(error); 
+    if (!this.cart) {
+        try {
+            const newCart = await cartModel.create({});
+            this.cart = newCart._id;
+        } catch(error) {
+            // Manejar el error adecuadamente, posiblemente lanzando una excepción
+            next(error);
+        }
     }
-})
+    next();
+});
+
 
 userSchema.pre(['save', 'findOneAndUpdate'], function(next) {
     this.last_connection = Date.now();

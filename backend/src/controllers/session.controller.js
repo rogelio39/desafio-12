@@ -1,9 +1,5 @@
 import { generateToken } from "../utils/jwt.js";
 
-
-
-
-
 // Función para calcular el tiempo transcurrido desde la última conexión
 function calcularTiempoDesconectado(ultimaConexion) {
     // Verifica si la última conexión es válida
@@ -46,7 +42,6 @@ async function eliminarCuenta(user) {
 export const login = async (req, res) => {
     try {
         if (!req.user) {
-            fatal()
             res.status(401).send({ message: 'invalid user' })
         }
         // //esto es por si seguimos con sessiones en db. Si usamos JWT se borra
@@ -65,9 +60,11 @@ export const login = async (req, res) => {
             console.log("La última conexión no es válida.");
         }
 
+        console.log("cart1",req.user.cart._id)
         // Actualizar last_connection al iniciar sesión
         req.user.last_connection = Date.now();
         await req.user.save();
+        console.log("cart2",req.user.cart._id)
         //generamos el token
         const token = generateToken(req.user);
         // //enviamos el token por cookie
