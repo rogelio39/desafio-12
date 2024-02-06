@@ -18,15 +18,13 @@ import cluster from 'cluster';
 import { cpus } from 'os';
 
 
-
 const app = express();
 
 let PORT = process.env.PORT;
 
 const specs = swaggerJSDoc(swaggerOptions);
 
-console.log(process.env.LOCAL_PORT)
-const whiteList = [process.env.LOCAL_PORT];
+const whiteList = [process.env.FRONTEND_PORT];
 
 const numeroDeProcesadores = cpus().length;
 
@@ -40,8 +38,6 @@ const corsOptions = {
     },
     credentials: true
 }
-
-
 
 
 app.use(express.json());
@@ -85,9 +81,9 @@ mongoose.connect(process.env.MONGO_URL, mongooseOptions)
         process.exit(1);
     });
 
+
+
 app.use(compression());
-//generacion de loggers
-app.use(addLogger);
 
 //swagger
 app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
@@ -105,7 +101,8 @@ app.use((err, req, res, next) => {
     }
 });
 
-
+//generacion de loggers
+app.use(addLogger);
 
 
 if (cluster.isPrimary) {
@@ -144,3 +141,4 @@ if (cluster.isPrimary) {
     })
 
 }
+

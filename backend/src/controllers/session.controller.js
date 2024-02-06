@@ -1,6 +1,9 @@
 import { generateToken } from "../utils/jwt.js";
 
 
+
+
+
 // Función para calcular el tiempo transcurrido desde la última conexión
 function calcularTiempoDesconectado(ultimaConexion) {
     // Verifica si la última conexión es válida
@@ -43,10 +46,9 @@ async function eliminarCuenta(user) {
 export const login = async (req, res) => {
     try {
         if (!req.user) {
-            req.logger.error('<span style="color: orange">Esto es un fatal</span><br/>');
+            fatal()
             res.status(401).send({ message: 'invalid user' })
         }
-
         // //esto es por si seguimos con sessiones en db. Si usamos JWT se borra
         // req.session.user = {
         //     first_name: req.user.first_name,
@@ -131,7 +133,7 @@ export const deleteUser = async (req, res) => {
         req.session.destroy();
         res.status(200).send({ resultado: 'sesión y cuenta eliminadas debido a inactividad' });
     } else {
-        res.status(400).send({message: "error al eliminar usuario"})
+        res.status(400).send({ message: "error al eliminar usuario" })
     }
 }
 

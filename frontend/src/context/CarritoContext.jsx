@@ -3,9 +3,9 @@
 import { useState, createContext } from "react";
 import PropTypes from 'prop-types';
 import { getCookiesByName } from "../utils/formsUtils";
-import { REACT_API_BACKEND_URL, REACT_API_LOCAL_URL, MODE } from "../../config";
 
-const URL1 = MODE === 'DEVELOPMENT' ? REACT_API_LOCAL_URL :REACT_API_BACKEND_URL;
+
+const URL1 =  import.meta.env.VITE_REACT_APP_BACKEND_URL;
 
 //Creamos contexto con un valor inicial por default sera un objeto con la propiedad "carrito" con un array vacio.
 export const CarritoContext = createContext({

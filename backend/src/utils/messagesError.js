@@ -12,7 +12,7 @@ export const passportError = (strategy) => {
                 return next(error)
             }
             if (!user) {
-                res.status(401).send({ error: info.messages ? info.messages : info.toString() }) //aqui me aseguro que no me tire errores, ya que dependera de la estrategia si envia un string u objeto simple, o un objeto.
+                res.status(401).send({ error: info.messages ? info.messages : info.toString() })  //aqui me aseguro que no me tire errores, ya que dependera de la estrategia si envia un string u objeto simple, o un objeto.
             } else {
                 req.user = user
                 next()
@@ -30,7 +30,7 @@ export const authorization = (rol) => {
         }
 
         if (req.user.user.rol != rol) {
-            return res.status(401).send({ error: 'do not have permissions', user : req.user })
+            return res.status(401).send({ error: 'do not have permissions', user: req.user })
         }
 
         next()

@@ -80,7 +80,6 @@ const initializePassport = () => {
                 } else {
                     return done(null, false);
                 }
-
             } catch (error) {
                 return done(error)
             }
