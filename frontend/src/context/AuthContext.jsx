@@ -2,7 +2,7 @@ import { useState, useContext, createContext } from "react";
 import PropTypes from 'prop-types';
 
 
-const URL1 = import.meta.env.VITE_REACT_APP_BACKEND_UR;
+const URL1 = import.meta.env.VITE_REACT_APP_BACKEND_URL;
 
 const AuthContext = createContext();
 
