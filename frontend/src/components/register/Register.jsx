@@ -30,7 +30,7 @@ const Register = () => {
     return (
         <div>
             <h1 className="login">REGISTER</h1>
-            <form id="idForm" onSubmit={handleSubmit} ref={formRef}>
+            <form id="idFormRegister" onSubmit={handleSubmit} ref={formRef}>
 
                 <label htmlFor="first_name">Enter your name</label>
                 <input type="text" id="first_name" name="first_name" required />
@@ -50,14 +50,8 @@ const Register = () => {
 
                 <button type="submit" id="buttonRegister">REGISTER</button>
                 <button id="buttonLogin" onClick={redirectLogin}>Si ya tienes cuenta, logueate</button>
-                <button type="button" id="gitHubButton">Ingresar con github</button>
+                <button type="button" id="buttonGitHub">Ingresar con github</button>
             </form>
-            <div id="userContainer">
-                <h1></h1>
-            </div>
-            <div id="errorContainer">
-
-            </div>
         </div>
     )
 }

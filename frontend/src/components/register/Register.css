@@ -1,4 +1,4 @@
-.login{
+.login {
     margin: auto;
     font-size: 1.5rem;
     font-weight: 800;
@@ -11,45 +11,54 @@
     background-color: #b46cd8a2;
 }
 
-#idForm{
+#idFormRegister {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border: 1.5px black solid;
-    background: linear-gradient(to right, #6d69d9, #8c36b7, #051c55d8);
     padding: 1rem;
     margin: auto;
     text-align: center;
     gap: 0.6rem;
     border-radius: 10px;
+    background: linear-gradient(to right, #bb4ca5a5, #a94da998, #cb2ccb98);
+    width: 50vw;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
+    transition: box-shadow 0.7s ease;
 }
 
-#email,#first_name, #password, #last_name, #age{
+#idForm:hover{
+    background-color: rgba(211, 118, 214, 0.778);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
+}
+
+#email,
+#first_name,
+#password,
+#last_name {
     width: 40vw;
     margin: auto;
 }
 
-#buttonLog{
+#buttonLogin, #buttonRegister, #buttonGitHub {
     width: 20vw;
     margin: auto;
     padding: 0.4rem;
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
+    transition: box-shadow 0.7s ease;
 }
 
-#buttonLog:hover{
-    background-color: #6d69d9;
+#buttonLogin:hover, #buttonRegister:hover, #buttonGitHub:hover {
+    background-color: rgba(211, 118, 214, 0.778);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
 }
 
-#userContainer{
+
+
+#userContainer {
     border: 1.5px black solid;
     background-color: #98a3bf;
-}
-
-
-
-.error{
-    background-color: #e37e57;
-    padding: 1rem;
 }
