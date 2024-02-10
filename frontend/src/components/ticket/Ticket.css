@@ -1,6 +1,15 @@
-.ticket{
+.ticket {
+    margin: 1rem;
+    padding: 1rem;
     font-size: x-large;
     border: black 3px solid;
     border-radius: 10px;
-    background: linear-gradient(to right, #6d69d9, #8c36b7, #051c55d8);
+    background: linear-gradient(to right, #90399884, #a53ca49b, #e722d791);
+    box-shadow: 0 15px 22px rgba(0, 0, 0, 0.674);
+    transition: box-shadow 0.7s ease;
+}
+
+.ticket:hover {
+    background-color: rgba(237, 12, 245, 0.778);
+    box-shadow: 0 30px 40px rgba(0, 0, 0, 0.674);
 }

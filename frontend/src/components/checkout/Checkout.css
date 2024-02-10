@@ -1,15 +1,24 @@
 .checkout {
-    font-size: x-large;
+    width: 100vw;
+    height: 100vh;
     border: black 3px solid;
     border-radius: 10px;
-    background: linear-gradient(to right, #6d69d9, #8c36b7, #051c55d8);
+    background: linear-gradient(to right, #90399884, #a53ca49b, #e722d791);
     margin-bottom: 1rem;
 }
 
 .getTicket, .getCheckout {
-    font-size: x-large;
-    border: black 3px solid;
+    font-size: 1.8rem;
+    padding: 0.4rem;
+    border: black 2px solid;
     border-radius: 10px;
-    background: linear-gradient(to right, #b2b0e5, #d5bbe2, #b8c2dbd8);
+    background: linear-gradient(to right, #fa7fe1a5, #b45db498);
     margin: 1rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
+    transition: box-shadow 0.7s ease;
+}
+
+.getTicket:hover, .getCheckout:hover{
+    background-color: rgba(237, 12, 245, 0.778);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
 }

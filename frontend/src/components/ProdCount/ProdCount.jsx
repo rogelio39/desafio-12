@@ -1,6 +1,6 @@
-import { useState} from "react";
+import { useState } from "react";
 import PropTypes from 'prop-types';
-
+import './ProdCount.css'
 
 const ProdCount = ({ inicial, stock, addFunction }) => {
     //primero desestructuramos
@@ -18,9 +18,11 @@ const ProdCount = ({ inicial, stock, addFunction }) => {
 
     return (
         <div className="addCartContainer">
-            <button onClick={decrement} className="botonMenos"> - </button>
-            <p> {contador} </p>
-            <button onClick={increment} className="botonMas"> + </button>
+            <div className="bottons">
+                <button onClick={decrement} className="botonMenos"> - </button>
+                <p> {contador} </p>
+                <button onClick={increment} className="botonMas"> + </button>
+            </div>
             <button className='addCart' id="boton" onClick={() => addFunction(contador)}> Agregar carrito </button>
         </div>
     )

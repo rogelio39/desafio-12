@@ -16,6 +16,7 @@ import swaggerUiExpress from 'swagger-ui-express';
 import { swaggerOptions } from './config/swagger.js';
 import cluster from 'cluster';
 import { cpus } from 'os';
+import { __dirname } from './path.js';
 
 
 const app = express();
@@ -24,7 +25,7 @@ let PORT = process.env.PORT;
 
 const specs = swaggerJSDoc(swaggerOptions);
 
-const whiteList = [process.env.FRONTEND_PORT];
+const whiteList = [process.env.LOCAL_PORT];
 
 const numeroDeProcesadores = cpus().length;
 
@@ -105,6 +106,7 @@ app.use((err, req, res, next) => {
 app.use(addLogger);
 
 
+
 if (cluster.isPrimary) {
     console.log('proceso primario, generando proceso trabajador');
 
@@ -135,6 +137,10 @@ if (cluster.isPrimary) {
 
     //db routes
     app.use('/', router);
+    //Middlewares de archivos estáticos para las rutas que utilizan Multer
+    app.use('/uploads/documents', express.static(`${__dirname}/uploads/documents`));
+    app.use('/uploads/products', express.static(`${__dirname}/uploads/products`));
+    app.use('/uploads/profiles', express.static(`${__dirname}/uploads/profiles`));
 
     app.listen(PORT, () => {
         console.log(`listening on port ${PORT}`)

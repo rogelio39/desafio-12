@@ -28,7 +28,7 @@ const Checkout = () => {
 
     return (
         <div className="checkout">
-            <button className="getTicket" onClick={finishBuy}>REALIZAR COMPRA</button>
+            <button className="getTicket" onClick={finishBuy}>FINALIZAR COMPRA</button>
             {
                 viewButtonOrder && <button className="getCheckout" onClick={getCheckout}>VER DETALLES DE COMPRA</button>
             }

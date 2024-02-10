@@ -63,7 +63,8 @@ export const putProduct = async (req, res) => {
     const { title, description, code, price, stock, category } = req.body;
 
     try {
-        const product = await productModel.findByIdAndUpdate(id, { title, description, code, price, stock, category });
+        //con new: true devuelvo el producto actualizado en vez del original
+        const product = await productModel.findByIdAndUpdate(id, { title, description, code, price, stock, category }, {new : true});
         if (product) {
             res.status(201).send(product);
         } else {
@@ -74,6 +75,46 @@ export const putProduct = async (req, res) => {
         res.status(500).send({ error: `error en actualizar producto ${error}` });
     }
 }
+
+
+
+
+export const uploadProductImages = async (req, res) => {
+    const id = req.params.id;
+    const files = req.files;
+
+    if (!files || files.length === 0) {
+        return res.status(400).send('No se subieron archivos.');
+    }
+
+    try {
+        const product = await productModel.findById(id);
+
+        if (!product) {
+            return res.status(404).send('Producto no encontrado.');
+        }
+
+        const updatedThumbnails = files.map(file => ({
+            name: file.filename,
+            reference: file.path
+        }));
+
+        // Asegúrate de que product.thumbnails esté inicializado como un array
+        if (!product.thumbnail) {
+            product.thumbnail = [];
+        }
+
+        // Utiliza un método seguro para añadir elementos al array
+        product.thumbnail.push(...updatedThumbnails);
+
+        await product.save();
+        res.status(200).send('Imágenes cargadas correctamente en los thumbnails');
+    } catch (error) {
+        console.error('Error al subir imágenes:', error);
+        res.status(500).send('Error al subir imágenes');
+    }
+};
+
 
 export const deleteProduct = async (req, res) => {
     const { id } = req.params;
