@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { getCookiesByName } from "../utils/formsUtils";
 
 
-const URL1 =  import.meta.env.VITE_REACT_APP_LOCAL_URL;
+const URL1 =  import.meta.env.VITE_REACT_APP_BACKEND_URL;
 
 //Creamos contexto con un valor inicial por default sera un objeto con la propiedad "carrito" con un array vacio.
 export const CarritoContext = createContext({
