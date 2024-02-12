@@ -40,7 +40,8 @@ const userSchema = new Schema({
     documents:[{
         name: String,
         reference: String
-    }]
+    }],
+    thumbnail: []
 
 })
 

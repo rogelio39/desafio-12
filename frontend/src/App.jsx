@@ -9,6 +9,7 @@ import { CarritoProvider } from './context/CarritoContext';
 import NavBar from './components/Navbar/NavBar';
 import { AuthProvider } from './context/AuthContext';
 import AccessDenied from './components/accessDenied/AccessDenied';
+import Profile from './components/Profile/Profile';
 
 
 
@@ -28,6 +29,7 @@ const App = () => {
               <Route path='/new-products' element={<NewProducts />} />
               <Route path='/checkout/:cartId' element={<Checkout />} />
               <Route path="/*" element={<AccessDenied/>} />
+              <Route path = "/profile" element ={<Profile/>}/>
             </Routes>
           </AuthProvider>
         </BrowserRouter>

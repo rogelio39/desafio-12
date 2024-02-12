@@ -25,7 +25,7 @@ let PORT = process.env.PORT;
 
 const specs = swaggerJSDoc(swaggerOptions);
 
-const whiteList = [process.env.FRONTEND_PORT];
+const whiteList = [process.env.LOCAL_PORT];
 
 const numeroDeProcesadores = cpus().length;
 

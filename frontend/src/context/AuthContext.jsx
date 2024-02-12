@@ -2,16 +2,18 @@ import { useState, useContext, createContext } from "react";
 import PropTypes from 'prop-types';
 
 
-const URL1 = import.meta.env.VITE_REACT_APP_BACKEND_URL;
+const URL1 = import.meta.env.VITE_REACT_APP_LOCAL_URL;
 
 const AuthContext = createContext();
 
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [userData, setUserData] = useState([]);
 
-    
-    const register = async(data) => {
+
+    //METODOS PARA LOGIN, REGISTRO, LOGOUT Y CURRENT PARA DATOS
+    const register = async (data) => {
         try {
             const response = await fetch(`${URL1}/api/session/register`, {
                 method: 'POST',
@@ -24,7 +26,7 @@ export const AuthProvider = ({ children }) => {
             if (response.ok) {
                 try {
                     const datos = await response.json();
-                    return {datos: datos, ok: 'ok'}
+                    return { datos: datos, ok: 'ok' }
                 } catch (error) {
                     console.error('Error al procesar la respuesta como JSON:', error);
                 }
@@ -101,6 +103,7 @@ export const AuthProvider = ({ children }) => {
             if (response.ok && datos.user.user._id) {
                 // Si el usuario está autenticado, establece el estado y redirige
                 setIsAuthenticated(true);
+                setUserData(datos.user.user);
             } else {
                 // Si no está autenticado, establece el estado
                 setIsAuthenticated(false);
@@ -112,8 +115,10 @@ export const AuthProvider = ({ children }) => {
     }
 
 
+
+
     return (
-        <AuthContext.Provider value={{ isAuthenticated, login, logout, setIsAuthenticated, current, register }}>
+        <AuthContext.Provider value={{ isAuthenticated, login, logout, setIsAuthenticated, current, register, userData }}>
             {children}
         </AuthContext.Provider>
     )

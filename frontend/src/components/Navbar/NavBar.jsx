@@ -16,6 +16,9 @@ const NavBar = () => {
     const goToRegister = () => {
         navigate('/register')
     }
+    const goToProfile = () => {
+        navigate('/profile')
+    }
     return (
         <div className="navBar">
             <h1>E-COMMERCE</h1>
@@ -26,6 +29,7 @@ const NavBar = () => {
                 <Logout />
                 <button onClick={login}>LOGIN</button>
                 <button onClick={goToRegister}>REGISTER</button>
+                <button onClick={goToProfile}>VER MI PERFIL</button>
             </div>
 
         </div>

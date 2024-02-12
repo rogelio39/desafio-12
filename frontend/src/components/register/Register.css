@@ -27,9 +27,9 @@
     transition: box-shadow 0.7s ease;
 }
 
-#idForm:hover{
+#idFormRegister:hover{
     background-color: rgba(211, 118, 214, 0.778);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
+    box-shadow: 0 30px 40px rgba(0, 0, 0, 0.674);
 }
 
 #email,
@@ -37,7 +37,7 @@
 #age,
 #password,
 #last_name {
-    width: 40vw;
+    width: 30vw;
     margin: auto;
 }
 
