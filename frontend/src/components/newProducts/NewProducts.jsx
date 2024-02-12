@@ -31,7 +31,7 @@ export const NewProducts = () => {
     return (
         <div>
             <h1 className="createProd">CREAR NUEVO PRODUCTO</h1>
-            <form id="idForm" onSubmit={handleSubmit} ref={formRef}>
+            <form id="productForm" onSubmit={handleSubmit} ref={formRef}>
 
                 <label htmlFor="title">Nombre del producto</label>
                 <input type="text" id="title" name="title" required />
