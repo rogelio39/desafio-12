@@ -11,7 +11,7 @@
     background-color: #b46cd8a2;
 }
 
-#idForm{
+#productForm{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
