@@ -1,8 +1,7 @@
-import './Register.css';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-
+import './Register.css';
 
 const Register = () => {
     const {register} = useAuth();
