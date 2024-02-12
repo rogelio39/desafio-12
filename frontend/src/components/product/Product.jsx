@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import './Product.css'
 
 
+
 const Product = ({ prod }) => {
     const [quantity, setQuantity] = useState(0)
     // const cid = localStorage.getItem('cid');
@@ -17,7 +18,7 @@ const Product = ({ prod }) => {
 
 
     const thumbnailUrl = prod.thumbnail && prod.thumbnail.length > 0
-        ? `http://localhost:3000/uploads/products/${prod.thumbnail[0].name}`
+        ? `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/uploads/products/${prod.thumbnail[0].name}`
         : '';
 
 
