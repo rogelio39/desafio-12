@@ -3,31 +3,38 @@ import './Profile.css'
 import { useEffect } from 'react';
 
 const Profile = () => {
-    const { userData, current } = useAuth();
+    const { userData, current, isAuthenticated } = useAuth();
 
     useEffect(() => {
         const getUserData = async () => {
-            current()
+            await current()
         };
 
         getUserData();
-    }, [])
+    }, [isAuthenticated])
 
 
-    const thumbnailProfile =  userData.thumbnail ? `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/uploads/profiles/${userData.thumbnail[0].name}`
+    const thumbnailProfile = userData.thumbnail ? `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/uploads/profiles/${userData.thumbnail[0].name}`
         : '';
-    
+
     return (
-        <div className='profileData' key= {userData._id}>
-            <div>
-                <img src={thumbnailProfile} alt={userData.first_name} />
-            </div>
+
+        isAuthenticated ? (
+
+            <div className='profileData' key={userData._id} >
+                <div>
+                    <img src={thumbnailProfile} alt={userData.first_name} />
+                </div>
                 <h1>Datos de usuario</h1>
                 <p>Nombre: {userData.first_name}</p>
                 <p>Apellido: {userData.last_name}</p>
                 <p>Email: {userData.email}</p>
                 <p>ID: {userData._id}</p>
-            </div>
+            </div >
+        ) : (<div>
+            <p>NO EXISTE UNA SESSION ACTIVA, VUELVE AL LOGIN E INICIA SESSION</p>
+        </div>)
+
     )
 }
 

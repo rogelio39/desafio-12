@@ -104,6 +104,7 @@ export const AuthProvider = ({ children }) => {
                 // Si el usuario está autenticado, establece el estado y redirige
                 setIsAuthenticated(true);
                 setUserData(datos.user.user);
+                return datos.user.user
             } else {
                 // Si no está autenticado, establece el estado
                 setIsAuthenticated(false);

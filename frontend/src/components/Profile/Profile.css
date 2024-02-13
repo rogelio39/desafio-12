@@ -14,7 +14,21 @@
     font-weight: 800;
 }
 
+.profileData img{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.7s ease;
+    object-fit: cover;
+    margin: 1rem;
+    border-radius: 15px;
+    max-width: 25vw;
+    max-height: 30vh;
+    width: auto;
+    height: auto;
+}
+
 .profileData:hover {
     box-shadow: 0px 0px 50px 5px rgb(210, 20, 244);
 }
+
+
 
