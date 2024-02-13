@@ -10,7 +10,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userData, setUserData] = useState([]);
-    // const  {token, setToken} = useState(null)
+    const  {token, setToken} = useState(null)
 
 
     //METODOS PARA LOGIN, REGISTRO, LOGOUT Y CURRENT PARA DATOS
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
 
         try {
             if (response.ok) {
-                console.log("token", datos.token)
+                setToken(datos.token)
                 document.cookie = `jwtCookie=${datos.token}; expires=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()}; path=/;`;
                 localStorage.setItem('cid', datos.cid);
                 setIsAuthenticated(true);
@@ -97,7 +97,8 @@ export const AuthProvider = ({ children }) => {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization' : ${token}
                 },
                 // Incluir cualquier token o información de autenticación necesario
             });
