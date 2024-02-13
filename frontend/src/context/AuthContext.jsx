@@ -98,7 +98,7 @@ export const AuthProvider = ({ children }) => {
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization' : ${token}
+                    'Authorization' : `${token}`
                 },
                 // Incluir cualquier token o información de autenticación necesario
             });
