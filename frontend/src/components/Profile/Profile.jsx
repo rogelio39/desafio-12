@@ -15,7 +15,7 @@ const Profile = () => {
     }, [])
 
 
-
+    console.log("userdata", userData)
     thumbnailProfile = userData.thumbnail ? `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/uploads/profiles/${userData.thumbnail[0].name}`
         : '';
 
