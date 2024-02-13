@@ -16,35 +16,18 @@ const ExtractJWT = jwt.ExtractJwt //Extraer de las cookies el token
 
 const initializePassport = () => {
 
-    // const cookieExtractor = req => {
-    //     // console.log("cookie: ", req.cookies)
-    //     if (req.cookies.jwtCookie) {
-    //         console.log("cookie", req.cookies)
-    //         const token = req.cookies.jwtCookie ? req.cookies.jwtCookie : {};
-    //         return token;
-    //     }
-    //     const token = req.headers.authorization ? req.headers.authorization : {};
-    //     return token;
-    // }
-
-
     const cookieExtractor = req => {
         // console.log("cookie: ", req.cookies)
-        // Verifica si existe la cookie jwtCookie
         if (req.cookies.jwtCookie) {
-            // Obtiene el valor de la cookie dividiendo la cadena en ';'
-            const cookieParts = req.cookies.jwtCookie.split(';');
-            // Busca la parte que contiene el valor del token
-            const tokenPart = cookieParts.find(part => part.trim().startsWith('jwtCookie='));
-            // Si se encuentra el tokenPart, se devuelve solo el valor del token
-            if (tokenPart) {
-                const token = tokenPart.split('=')[1].trim();
-                return token;
-            }
+            console.log("cookie", req.cookies)
+            const token = req.cookies.jwtCookie ? req.cookies.jwtCookie : {};
+            return token;
         }
         const token = req.headers.authorization ? req.headers.authorization : {};
         return token;
     }
+
+
 
 passport.use('jwt', new JWTStrategy({
     jwtFromRequest: ExtractJWT.fromExtractors([cookieExtractor]), //el token vendra desde cookieExtractor.
