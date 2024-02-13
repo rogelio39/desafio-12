@@ -4,18 +4,23 @@ import { useEffect } from 'react';
 
 const Profile = () => {
     const { userData, current, isAuthenticated } = useAuth();
+    let thumbnailProfile = '';
 
     useEffect(() => {
         const getUserData = async () => {
-            await current()
+            current()
+            console.log("datos current en profile", await current());
         };
 
         getUserData();
-    }, [isAuthenticated])
+    }, [])
 
 
-    const thumbnailProfile = userData.thumbnail ? `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/uploads/profiles/${userData.thumbnail[0].name}`
+
+    thumbnailProfile = userData.thumbnail ? `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/uploads/profiles/${userData.thumbnail[0].name}`
         : '';
+
+
 
     return (
 

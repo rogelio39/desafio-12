@@ -12,15 +12,15 @@ const Login = () => {
 
     useEffect(() => {
         const checkAuthentication = async () => {
-            await current()
-            console.log("datos usuario en login", await current());
+            current()
+            console.log("datos current en profile", await current());
             // Independientemente del resultado, marca como no cargando
             setLoading(false);
 
         };
 
         checkAuthentication();
-    }, [isAuthenticated, navigate]);
+    }, []);
 
 
     const handleSubmit = async (e) => {

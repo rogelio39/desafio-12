@@ -100,6 +100,7 @@ export const AuthProvider = ({ children }) => {
                 // Incluir cualquier token o información de autenticación necesario
             });
             const datos = await response.json();
+            console.log("datos en current antes de saber si fue response.ok", datos)
             if (response.ok && datos.user.user._id) {
                 console.log("datos en current", datos)
                 // Si el usuario está autenticado, establece el estado y redirige
