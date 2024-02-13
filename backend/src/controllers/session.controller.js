@@ -60,11 +60,10 @@ export const login = async (req, res) => {
             console.log("La última conexión no es válida.");
         }
 
-        console.log("cart1",req.user.cart._id)
+
         // Actualizar last_connection al iniciar sesión
         req.user.last_connection = Date.now();
         await req.user.save();
-        console.log("cart2",req.user.cart._id)
         //generamos el token
         const token = generateToken(req.user);
         // //enviamos el token por cookie

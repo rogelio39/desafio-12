@@ -9,14 +9,11 @@ const Login = () => {
     const { isAuthenticated, login, current } = useAuth();
     const [loading, setLoading] = useState(true);
 
-
     useEffect(() => {
         const checkAuthentication = async () => {
-            current()
-            console.log("datos current en profile", await current());
+            await current()
             // Independientemente del resultado, marca como no cargando
             setLoading(false);
-
         };
 
         checkAuthentication();

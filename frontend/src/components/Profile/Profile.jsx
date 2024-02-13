@@ -8,8 +8,7 @@ const Profile = () => {
 
     useEffect(() => {
         const getUserData = async () => {
-            current()
-            console.log("datos current en profile", await current());
+            await current()
         };
 
         getUserData();
