@@ -95,6 +95,7 @@ export const AuthProvider = ({ children }) => {
             // Realiza una solicitud al servidor para verificar la autenticación
             const response = await fetch(`${URL1}/api/session/current`, {
                 method: 'GET',
+                credentials: 'include',
                 headers: {
                      'Authorization' : `${token}`,
                     'Content-Type': 'application/json'
