@@ -10,7 +10,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userData, setUserData] = useState([]);
-    const  {token, setToken} = useState(null)
+    const  [token, setToken] = useState(null)
 
 
     //METODOS PARA LOGIN, REGISTRO, LOGOUT Y CURRENT PARA DATOS
