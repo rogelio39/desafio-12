@@ -52,9 +52,9 @@ export const AuthProvider = ({ children }) => {
 
         try {
             if (response.ok) {
-                setToken(datos.token)
                 document.cookie = `jwtCookie=${datos.token}; expires=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()}; path=/;`;
                 localStorage.setItem('cid', datos.cid);
+                setToken(datos.token)
                 setIsAuthenticated(true);
             } else {
                 console.error('Credenciales incorrectas. Por favor, verifica tu email y contraseña.', datos);
