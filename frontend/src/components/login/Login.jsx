@@ -20,7 +20,7 @@ const Login = () => {
         };
 
         checkAuthentication();
-    }, [isAuthenticated]);
+    }, [isAuthenticated, current]);
 
 
     const handleSubmit = async (e) => {

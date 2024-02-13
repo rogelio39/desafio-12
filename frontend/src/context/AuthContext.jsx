@@ -2,7 +2,7 @@ import { useState, useContext, createContext } from "react";
 import PropTypes from 'prop-types';
 
 
-const URL1 = import.meta.env.VITE_REACT_APP_BACKEND_URL;
+const URL1 = import.meta.env.VITE_REACT_APP_LOCAL_URL;
 
 const AuthContext = createContext();
 
@@ -101,6 +101,7 @@ export const AuthProvider = ({ children }) => {
             });
             const datos = await response.json();
             if (response.ok && datos.user.user._id) {
+                console.log("datos en current", datos)
                 // Si el usuario está autenticado, establece el estado y redirige
                 setIsAuthenticated(true);
                 setUserData(datos.user.user);
