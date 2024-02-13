@@ -95,10 +95,9 @@ export const AuthProvider = ({ children }) => {
             // Realiza una solicitud al servidor para verificar la autenticación
             const response = await fetch(`${URL1}/api/session/current`, {
                 method: 'GET',
-                credentials: 'include',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization' : `Bearer ${token}`
+                     'Authorization' : `Bearer ${token}`,
+                    'Content-Type': 'application/json'
                 },
                 // Incluir cualquier token o información de autenticación necesario
             });
@@ -109,7 +108,6 @@ export const AuthProvider = ({ children }) => {
                 // Si el usuario está autenticado, establece el estado y redirige
                 setIsAuthenticated(true);
                 setUserData(datos.user.user);
-                return datos.user.user
             } else {
                 // Si no está autenticado, establece el estado
                 setIsAuthenticated(false);
