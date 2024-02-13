@@ -14,7 +14,7 @@ sessionRouter.get('/github', passport.authenticate('github', { scope: ['user: em
 sessionRouter.get('/githubCallback', passport.authenticate('github'), githubCallback )
 sessionRouter.get('/current', passportError('jwt'), authorization('user'),  current)
 sessionRouter.get('/logout', logout);
-sessionRouter.post('delete', deleteUser);
+sessionRouter.post('/delete', deleteUser);
 
 
 
