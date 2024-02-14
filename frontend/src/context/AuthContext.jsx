@@ -10,7 +10,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userData, setUserData] = useState([]);
-    const  [token, setToken] = useState(null)
+    let [token, setToken] = useState(null)
 
 
     //METODOS PARA LOGIN, REGISTRO, LOGOUT Y CURRENT PARA DATOS
@@ -81,6 +81,7 @@ export const AuthProvider = ({ children }) => {
                 localStorage.removeItem('jwtCookie');
                 // Elimina la cookie del lado del cliente
                 document.cookie = 'jwtCookie=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;';
+                token = null
                 setIsAuthenticated(false);
             } else {
                 console.error(`Error al desloguearse ${await response.text()}`);
@@ -97,7 +98,7 @@ export const AuthProvider = ({ children }) => {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
-                     'Authorization' : `${token}`,
+                    'Authorization': `${token}`,
                     'Content-Type': 'application/json'
                 },
                 // Incluir cualquier token o información de autenticación necesario
