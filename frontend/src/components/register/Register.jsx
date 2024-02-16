@@ -13,10 +13,8 @@ const Register = () => {
         try {
             const formData = new FormData(formRef.current);
             const data = Object.fromEntries(formData);
-            console.log("datos en registro", data)
             const respuesta = await register(data);
-            console.log("respuesta", respuesta)
-            if(respuesta.mensaje === 'User created'){
+            if(respuesta === 'User created'){
                 navigate('/login')
             }
         } catch (error) {

@@ -1,10 +1,26 @@
-import { productModel } from "../models/products.models.js";
 import { userModel } from "../models/users.models.js";
 
+function esMayorDe144Horas(lastConnection) {
+    if (!lastConnection) {
+        return false; // O según tus necesidades
+    }
+
+    const ahora = new Date();
+    const tiempoTranscurrido = ahora - new Date(lastConnection);
+    const horasTranscurridas = tiempoTranscurrido / (1000 * 60 * 60); // Convertir a horas
+
+    return horasTranscurridas > 144;
+}
+
+// Función para eliminar la cuenta (ajusta esta lógica según tus necesidades)
+async function eliminarCuenta(user) {
+    await userModel.findByIdAndDelete(user._id);
+    return console.log("usuario eliminado")
+}
 
 export const getUsers = async (req, res) => {
     try {
-        const users = await userModel.find({}, 'first_name, email');
+        const users = await userModel.find({}, 'first_name email last_connection');
         res.status(200).send({ respuesta: 'ok', mensaje: users });
 
     } catch (error) {
@@ -98,7 +114,25 @@ export const deleteUser = async (req, res) => {
 
 
 
+export const deleteAllInactiveUser = async (req, res) => {
+    try {
+        const checkDeleteUsers = [];
+        const users = await userModel.find({}, 'last_connection');
+        for (const user of users) {
+            if (esMayorDe144Horas(user.last_connection)) {
+                checkDeleteUsers.push(user);
+                await eliminarCuenta(user);
+            }
+        }
+        if (checkDeleteUsers.length < 0) {
+            res.status(400).send({ message: "error al eliminar usuario" })
+        } else {
+            res.status(200).send({ resultado: 'sesión y cuenta eliminadas debido a inactividad' });
+            console.log("usuarios eliminados");
+        }
 
-
-
+    } catch (error) {
+        res.status(400).send({ respuesta: "error", mensaje: error });
+    }
+}
 

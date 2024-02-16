@@ -21,23 +21,6 @@ function calcularTiempoDesconectado(ultimaConexion) {
 }
 
 
-function esMayorDe144Horas(lastConnection) {
-    if (!lastConnection) {
-        return false; // O según tus necesidades
-    }
-
-    const ahora = new Date();
-    const tiempoTranscurrido = ahora - new Date(lastConnection);
-    const horasTranscurridas = tiempoTranscurrido / (1000 * 60 * 60); // Convertir a horas
-
-    return horasTranscurridas > 144;
-}
-
-// Función para eliminar la cuenta (ajusta esta lógica según tus necesidades)
-async function eliminarCuenta(user) {
-    await userModel.findByIdAndDelete(user._id);
-    return console.log("usuario eliminado")
-}
 
 export const login = async (req, res) => {
     try {
@@ -120,20 +103,6 @@ export const logout = async (req, res) => {
         res.status(400).send({ error: `error en logout ${error}` });
     }
 }
-
-export const deleteUser = async (req, res) => {
-
-    if (req.session && req.session.user && esMayorDe144Horas(req.session.user.last_connection)) {
-        // Eliminar la cuenta (ajusta esta lógica según tus necesidades)
-        await eliminarCuenta(req.session.user);
-        req.session.destroy();
-        res.status(200).send({ resultado: 'sesión y cuenta eliminadas debido a inactividad' });
-    } else {
-        res.status(400).send({ message: "error al eliminar usuario" })
-    }
-}
-
-
 
 
 
