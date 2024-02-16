@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import Ticket from "../ticket/Ticket";
-import './Checkout.css'
+import styles from './Checkout.module.css'
 import { CarritoContext } from "../../context/CarritoContext"
 
 
@@ -27,10 +27,10 @@ const Checkout = () => {
 
 
     return (
-        <div className="checkout">
-            <button className="getTicket" onClick={finishBuy}>FINALIZAR COMPRA</button>
+        <div className={styles.checkout}>
+            <button className={styles.getTicket} onClick={finishBuy}>FINALIZAR COMPRA</button>
             {
-                viewButtonOrder && <button className="getCheckout" onClick={getCheckout}>VER DETALLES DE COMPRA</button>
+                viewButtonOrder && <button className={styles.getCheckout} onClick={getCheckout}>VER DETALLES DE COMPRA</button>
             }
             {
                 showOrderDetails && <Ticket ticket={ticket} />

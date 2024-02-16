@@ -1,10 +1,10 @@
-import './Ticket.css'
+import styles from './Ticket.module.css'
 
 const Ticket = (ticket) => {
     const ticketDetails = ticket.ticket;
 
     return (
-        <div className="ticket">
+        <div className={styles.ticket}>
             <h1>ORDEN DE COMPRA N°: {ticketDetails.code}</h1>
             <h2>Total: {ticketDetails.amount}</h2>
             <h2>Usuario: {ticketDetails.purchaser}</h2>

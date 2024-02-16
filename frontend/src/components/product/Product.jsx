@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { CarritoContext } from '../../context/CarritoContext';
 import { useNavigate } from 'react-router-dom';
-import './Product.css'
+import styles from './Product.module.css'
 
 
 
@@ -36,8 +36,8 @@ const Product = ({ prod }) => {
 
     return (
         <div>
-            <div className="products" key={prod._id}>
-                <div className='productImg'>
+            <div className={styles.products} key={prod._id}>
+                <div className={styles.productImg}>
                     <img src={thumbnailUrl} alt={prod.title} />
                 </div>
                 <p>Nombre: {prod.title}</p>
@@ -45,7 +45,7 @@ const Product = ({ prod }) => {
                 <p>Precio: {prod.price}</p>
                 <p>Stock disponible: {prod.stock}</p>
                 {
-                    quantity > 0 ? <div className='buttonsContainer'>
+                    quantity > 0 ? <div className={styles.buttonsContainer}>
                         <button onClick={goToCart}>IR A CHECKOUT</button>
                         <button >SEGUIR COMPRANDO</button>
                     </div> : <ProdCount inicial={1} stock={prod.stock} addFunction={handleQuantity} />

@@ -11,26 +11,27 @@
     background-color: #b46cd8a2;
 }
 
-#productForm{
+.form{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border: 1.5px black solid;
-    background: linear-gradient(to right, #6d69d9, #8c36b7, #051c55d8);
+    background: linear-gradient(to right, #67417a, #b157aa, #a85dc9d8);
     padding: 1rem;
     margin: auto;
     text-align: center;
     gap: 0.6rem;
     border-radius: 10px;
+    width: 50vw;
 }
 
-#title,#description, #price, #category, #code, #stock{
-    width: 40vw;
+.inputTitle, .inputDescription, .inputPrice, .inputCategory, .inputCode, .inputStock{
+    width: 50%;
     margin: auto;
 }
 
-#buttonCreate{
-    width: 20vw;
+.buttonCreate{
+    width: 20%;
     margin: auto;
     padding: 0.4rem;
     border: none;
@@ -38,11 +39,11 @@
     cursor: pointer;
 }
 
-#buttonCreate:hover{
+.buttonCreate:hover{
     background-color: #6d69d9;
 }
 
-#prodsContainer{
+.prodsContainer{
     border: 1.5px black solid;
     background-color: #98a3bf;
 }

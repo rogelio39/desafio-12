@@ -1,5 +1,5 @@
 import { useAuth } from '../../context/AuthContext';
-import './Profile.css'
+import styles from './Profile.module.css'
 import { useEffect } from 'react';
 
 const Profile = () => {
@@ -15,17 +15,21 @@ const Profile = () => {
     }, [])
 
 
+    try{
+        if(!userData.thumbnail){
+            thumbnailProfile = [];
+        }
+        thumbnailProfile = `${import.meta.env.VITE_REACT_APP_LOCAL_URL}/uploads/profiles/${userData.thumbnail[0].name}`;
+    }catch(error){
+        console.log("error al tratar de ver imagen")
+    }
     console.log("userdata", userData)
-    thumbnailProfile = userData.thumbnail ? `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/uploads/profiles/${userData.thumbnail[0].name}`
-        : '';
-
-
 
     return (
 
         isAuthenticated ? (
 
-            <div className='profileData' key={userData._id} >
+            <div className={styles.profileData} key={userData._id} >
                 <div>
                     <img src={thumbnailProfile} alt={userData.first_name} />
                 </div>

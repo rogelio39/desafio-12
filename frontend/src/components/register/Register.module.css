@@ -11,7 +11,7 @@
     background-color: #b46cd8a2;
 }
 
-#idForm {
+.form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -27,21 +27,22 @@
     transition: box-shadow 0.7s ease;
 }
 
-#idForm:hover{
+.form:hover{
     background-color: rgba(211, 118, 214, 0.778);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
+    box-shadow: 0 30px 40px rgba(0, 0, 0, 0.674);
 }
 
-#email,
-#first_name,
-#password,
-#last_name {
-    width: 30vw;
+.inputEmail,
+.inputName,
+.inputAge,
+.inputPassword,
+.inputLastName {
+    width: 50%;
     margin: auto;
 }
 
-#buttonLog, #buttonRegister, #gitHubButton {
-    width: 20vw;
+.buttonLogin, .buttonRegister, .buttonGitHub {
+    width: 30%;
     margin: auto;
     padding: 0.4rem;
     border: none;
@@ -51,30 +52,9 @@
     transition: box-shadow 0.7s ease;
 }
 
-#buttonLog:hover, #buttonRegister:hover, #gitHubButton:hover {
+.buttonLogin:hover, .buttonRegister:hover, .buttonGitHub:hover {
     background-color: rgba(211, 118, 214, 0.778);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
 }
 
 
-
-#userContainer {
-    border: 1.5px black solid;
-    background-color: #98a3bf;
-}
-
-
-
-.error {
-    background-color: #e37e57;
-    padding: 1rem;
-}
-
-
-.loginOff {
-    display: none;
-}
-
-.loginOn {
-    display: block;
-}

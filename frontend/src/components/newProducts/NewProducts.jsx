@@ -1,9 +1,10 @@
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import { getCookiesByName } from "../../utils/formsUtils.js";
 
-import './NewProducts.css';
+import styles from './NewProducts.module.css';
 import { CarritoContext } from "../../context/CarritoContext.jsx";
+import { useAuth } from '../../context/AuthContext.jsx';
 
 
 // Uso de la función para importar de forma síncrona
@@ -12,7 +13,19 @@ export const NewProducts = () => {
 
     const formRef = useRef(null);
     const navigate = useNavigate();
-    const { createProduct } = useContext(CarritoContext)
+    const { createProduct } = useContext(CarritoContext);
+    const { current, userData } = useAuth();
+
+
+    useEffect(() => {
+        const handleCurrent = async () => {
+            await current();
+        }
+        handleCurrent();
+    }, [])
+
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -30,36 +43,36 @@ export const NewProducts = () => {
 
     return (
         <div>
-            <h1 className="createProd">CREAR NUEVO PRODUCTO</h1>
-            <form id="productForm" onSubmit={handleSubmit} ref={formRef}>
+            { userData.rol === 'admin' ?
+                <div>
+                    <h1 className={styles.createProd}>CREAR NUEVO PRODUCTO</h1>
+                    <form id="productForm" className={styles.form} onSubmit={handleSubmit} ref={formRef}>
 
-                <label htmlFor="title">Nombre del producto</label>
-                <input type="text" id="title" name="title" required />
+                        <label htmlFor="title">Nombre del producto</label>
+                        <input type="text" id="title" className={styles.inputTitle} name="title" required />
 
-                <label htmlFor="description">Descripcion del producto</label>
-                <input type="text" id="description" name="description" required />
+                        <label htmlFor="description">Descripcion del producto</label>
+                        <input type="text" id="description" className={styles.inputDescription} name="description" required />
 
-                <label htmlFor="price">precio</label>
-                <input type="number" id="price" name="price" required />
+                        <label htmlFor="price">precio</label>
+                        <input type="number" id="price" className={styles.inputPrice} name="price" required />
 
-                <label htmlFor="category">ingresa la categoria del producto</label>
-                <input type="text" id="category" name="category" required />
+                        <label htmlFor="category">ingresa la categoria del producto</label>
+                        <input type="text" id="category" className={styles.inputCategory} name="category" required />
 
-                <label htmlFor="code">codigo del producto</label>
-                <input type="text" id="code" name="code" required />
+                        <label htmlFor="code">codigo del producto</label>
+                        <input type="text" id="code" className={styles.inputCode} name="code" required />
 
 
-                <label htmlFor="stock">stock del producto</label>
-                <input type="number" id="stock" name="stock" required />
+                        <label htmlFor="stock">stock del producto</label>
+                        <input type="number" id="stock" className={styles.inputStock} name="stock" required />
 
-                <button type="submit" id="buttonCreate">CREAR</button>
-            </form>
-            <div id="prodsContainer">
-                <h1></h1>
-            </div>
-            <div id="errorContainer">
-
-            </div>
+                        <button type="submit" className={styles.buttonCreate}>CREAR</button>
+                    </form>
+                </div> : (<div>
+                <h1>NO ERES USUARIO ADMIN, NO TIENES PERMITIDO ACCEDER A ESTA RUTA</h1>
+            </div>)
+            } 
         </div>
     )
 }

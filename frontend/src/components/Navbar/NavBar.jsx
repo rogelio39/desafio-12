@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import Logout from "../logout/Logout"
-import './NavBar.css'
+import styles from './NavBar.module.css'
 
 const NavBar = () => {
     const navigate = useNavigate();
@@ -20,12 +20,12 @@ const NavBar = () => {
         navigate('/profile')
     }
     return (
-        <div className="navBar">
+        <div className={styles.navBar}>
             <h1>E-COMMERCE</h1>
             <div>
                 <button onClick={goToProducts}>PRODUCTOS</button>
             </div>
-            <div className="buttons">
+            <div className={styles.buttons}>
                 <Logout />
                 <button onClick={login}>LOGIN</button>
                 <button onClick={goToRegister}>REGISTER</button>

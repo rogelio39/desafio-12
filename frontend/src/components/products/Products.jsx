@@ -1,4 +1,4 @@
-import './Products.css';
+import styles from './Products.module.css';
 import { useEffect, useContext } from 'react';
 import { CarritoContext } from '../../context/CarritoContext';
 import Product from '../product/Product';
@@ -14,7 +14,7 @@ const Products = () => {
 
     return (
         <div>
-            <div id="showProducts" className="on">
+            <div id="showProducts" className={styles.on}>
                 {products &&
                     Object.values(products).map((prod) => (
                         <div key={prod._id}>
