@@ -12,7 +12,7 @@ sessionRouter.post('/login', passport.authenticate('login'), login);
 sessionRouter.post('/register', passport.authenticate('register'), register);
 sessionRouter.get('/github', passport.authenticate('github', { scope: ['user: email'] }), github)
 sessionRouter.get('/githubCallback', passport.authenticate('github'), githubCallback )
-sessionRouter.get('/current', passportError('jwt'), authorization('user'),  current) //modificar aqui para que sea un array con los roles y los lea
+sessionRouter.get('/current', passportError('jwt'), authorization(['user', 'admin']),  current) //modificar aqui para que sea un array con los roles y los lea
 sessionRouter.get('/logout', logout);
 
 
