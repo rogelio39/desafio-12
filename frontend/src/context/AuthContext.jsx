@@ -2,7 +2,7 @@ import { useState, useContext, createContext } from "react";
 import PropTypes from 'prop-types';
 
 
-const URL1 = import.meta.env.VITE_REACT_APP_BACKEND_URL;
+const URL1 = import.meta.env.VITE_REACT_APP_LOCAL_URL;
 
 const AuthContext = createContext();
 
@@ -18,16 +18,18 @@ export const AuthProvider = ({ children }) => {
         try {
             const response = await fetch(`${URL1}/api/session/register`, {
                 method: 'POST',
+                credentials : 'include',   
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             })
+            const datos = await response.json();
 
             if (response.ok) {
                 try {
-                    const datos = await response.json();
-                    return { datos: datos, ok: 'ok' }
+                    console.log("datos en auth", datos)
+                    return datos;
                 } catch (error) {
                     console.error('Error al procesar la respuesta como JSON:', error);
                 }

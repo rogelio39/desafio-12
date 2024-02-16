@@ -12,9 +12,11 @@ const Register = () => {
         e.preventDefault();
         try {
             const formData = new FormData(formRef.current);
-            const data = Object.fromEntries(formData)
-            const respuesta = register(data)
-            if(respuesta.ok === 'Ok'){
+            const data = Object.fromEntries(formData);
+            console.log("datos en registro", data)
+            const respuesta = await register(data);
+            console.log("respuesta", respuesta)
+            if(respuesta.mensaje === 'User created'){
                 navigate('/login')
             }
         } catch (error) {
