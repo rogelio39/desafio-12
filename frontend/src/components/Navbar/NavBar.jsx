@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import Logout from "../logout/Logout"
+import Logout from "../Logout/Logout"
 import styles from './NavBar.module.css'
 
 const NavBar = () => {
@@ -23,13 +23,13 @@ const NavBar = () => {
         <div className={styles.navBar}>
             <h1>E-COMMERCE</h1>
             <div>
-                <button onClick={goToProducts}>PRODUCTOS</button>
+                <button onClick={goToProducts} className={styles.buttonProducts}>PRODUCTOS</button>
             </div>
             <div className={styles.buttons}>
                 <Logout />
-                <button onClick={login}>LOGIN</button>
-                <button onClick={goToRegister}>REGISTER</button>
-                <button onClick={goToProfile}>VER MI PERFIL</button>
+                <button onClick={login} className={styles.buttonLogin}>LOGIN</button>
+                <button onClick={goToRegister} className={styles.buttonRegister}>REGISTER</button>
+                <button onClick={goToProfile} className={styles.buttonViewProfile}>VER MI PERFIL</button>
             </div>
 
         </div>

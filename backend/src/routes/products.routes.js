@@ -10,8 +10,8 @@ const productRouter = Router();
 productRouter.get('/', getProducts)
 productRouter.get('/:id', getProductById);
 productRouter.post('/', passportError('jwt'), authorization('admin'), postProduct);
-productRouter.put('/:id', passportError('jwt'), authorization('user'), putProduct);
-productRouter.post('/:id/images', upload.array('productImage', 6), uploadProductImages);
+productRouter.put('/:id', passportError('jwt'), authorization('admin'), putProduct);
+productRouter.post('/:id/images', passportError('jwt'), authorization('admin'), upload.array('productImage', 6), uploadProductImages);
 productRouter.delete('/:id', passportError('jwt'), authorization('user'), deleteProduct);
 
 

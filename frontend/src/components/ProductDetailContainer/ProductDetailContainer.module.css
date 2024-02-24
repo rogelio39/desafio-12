@@ -1,7 +1,7 @@
-.product {
+.products {
     border: black 1px solid;
     border-radius: 10px;
-    margin: auto;
+    margin: 1rem;
     padding: 1rem;
     background: linear-gradient(to right, rgba(236, 122, 211, 0.3), rgba(237, 104, 232, 0.3), rgba(243, 104, 248, 0.3));
     font-weight: 800;
@@ -12,11 +12,11 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.674);
     transition: box-shadow 0.7s ease;
     text-align: center;
-    width: 50%;
+    width: 30vw;
 
 }
 
-.product:hover {
+.products:hover {
     background-color: rgba(240, 233, 233, 0.179);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -27,6 +27,10 @@
     object-fit: cover;
     margin: 1rem;
     border-radius: 15px;
+    max-width: 25vw;
+    max-height: 30vh;
+    width: auto;
+    height: auto;
 }
 
 .productImg img:hover {
@@ -34,12 +38,7 @@
 }
 
 
-.buttonsContainer {
-    display: flex;
-    gap: 0.7rem;
-}
-
-.buttonsContainer button {
+.button{
     border: black 1px solid;
     font-size: 1.5rem;
     padding: 0.6rem;
@@ -47,10 +46,9 @@
     background: linear-gradient(to right, #fa7fe1a5, #b45db498);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
     transition: box-shadow 0.7s ease;
-
 }
 
-.buttonsContainer button:hover {
+.button:hover{
     background-color: rgba(237, 12, 245, 0.778);
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.674);
 }

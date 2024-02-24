@@ -35,7 +35,16 @@ passport.use('jwt', new JWTStrategy({
 }, async (jwt_payload, done) => {//jwt_payload = info del token (en este caso datos del cliente)                            
     try {
         console.log("payload: ", jwt_payload);
-        return done(null, jwt_payload);
+        const user = {
+            _id : jwt_payload.user._id,
+            first_name : jwt_payload.user.first_name,
+            last_name : jwt_payload.user.last_name,
+            rol : jwt_payload.user.rol,
+            email : jwt_payload.user.email,
+            thumbnail : jwt_payload.user.thumbnail
+        }
+
+        return done(null, user);
     } catch (error) {
         return done(error);
     }

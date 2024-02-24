@@ -6,14 +6,15 @@ import styles from './Login.module.css';
 const Login = () => {
     const navigate = useNavigate();
     const formRef = useRef(null);
-    const { isAuthenticated, login, current } = useAuth();
+    const { isAuthenticated, login } = useAuth();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const checkAuthentication = async () => {
-            await current()
+            setTimeout(() => {
+                setLoading(false);
+            }, 2000)
             // Independientemente del resultado, marca como no cargando
-            setLoading(false);
         };
 
         checkAuthentication();
@@ -29,14 +30,14 @@ const Login = () => {
     }
 
     if (loading) {
-        return <div>Cargando...</div>;
+        return <div>Logueandose...</div>;
     }
 
     return (
         <div>
             {(!isAuthenticated && !loading) && (
                 <div className={isAuthenticated ? styles.loginOff : styles.loginOn}>
-                    <h1 className="login">LOGIN</h1>
+                    <h1 className={styles.login}>LOGIN</h1>
                     <form id="idForm" className={styles.form} onSubmit={handleSubmit} ref={formRef}>
                         <label htmlFor="email">Enter your email</label>
                         <input type="email" id="email" className={styles.inputEmail} name="email" autoComplete='userName' required />

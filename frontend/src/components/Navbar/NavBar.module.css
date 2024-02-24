@@ -9,20 +9,6 @@
     border-radius: 0.3rem;
 }
 
-.navBar button {
-    font-size: 1rem;
-    padding: 0.4rem;
-    border-radius: 8px;
-    background: linear-gradient(to right, #f7d3efa5, #eea6ee98);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
-    transition: box-shadow 0.7s ease;
-}
-
-.navBar button:hover {
-    background-color: rgba(214, 137, 216, 0.778);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
-
-}
 
 /*BUTTONS*/
 .buttons {
@@ -32,7 +18,7 @@
     gap: 1rem;
 }
 
-.buttons button {
+.buttonProducts, .buttonLogin, .buttonRegister, .buttonViewProfile {
     font-size: 1rem;
     padding: 0.4rem;
     border-radius: 8px;
@@ -42,7 +28,7 @@
 
 }
 
-.buttons button:hover {
+.buttonProducts:hover, .buttonLogin:hover, .buttonRegister:hover, .buttonViewProfile:hover {
     background-color: rgba(214, 128, 216, 0.778);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
 

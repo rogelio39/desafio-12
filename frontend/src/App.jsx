@@ -1,16 +1,16 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Register from './components/register/Register';
-import Login from './components/login/Login';
-import Products from './components/products/Products';
-import NewProducts from './components/newProducts/NewProducts';
-import './App.css'
-import Checkout from './components/checkout/Checkout';
+import Register from './components/Register/Register';
+import Login from './components/Login/Login';
+import ProductsContainer from './components/productsContainer/ProductsContainer';
+import NewProducts from './components/NewProducts/NewProducts';
+import Checkout from './components/Checkout/Checkout';
 import { CarritoProvider } from './context/CarritoContext';
 import NavBar from './components/Navbar/NavBar';
 import { AuthProvider } from './context/AuthContext';
-import AccessDenied from './components/accessDenied/AccessDenied';
+import AccessDenied from './components/AccessDenied/AccessDenied';
 import Profile from './components/Profile/Profile';
-
+import ProductDetail from './components/ProductDetail/ProductDetail'
+import './App.css'
 
 
 
@@ -25,8 +25,10 @@ const App = () => {
             <Routes>
               <Route path='/*' element={<Register />} />
               <Route path='/login' element={<Login />} />
-              <Route path='/products' element={<Products />} />
+              <Route path='/products' element={<ProductsContainer />} />
+              <Route path='/item/:id' element={<ProductDetail/>}/>
               <Route path='/new-products' element={<NewProducts />} />
+              <Route path='/edit-products' element={<ProductsContainer />} />
               <Route path='/checkout/:cartId' element={<Checkout />} />
               <Route path="/*" element={<AccessDenied/>} />
               <Route path = "/profile" element ={<Profile/>}/>

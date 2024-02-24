@@ -1,0 +1,28 @@
+.logoutButton {
+    font-size: 1rem;
+    padding: 0.4rem;
+    border-radius: 8px;
+    background: linear-gradient(to right, #f1b9e6a5, #f6b8f698);    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
+    transition: box-shadow 0.7s ease, background 0.5s ease;
+}
+
+.logoutButton:hover {
+    background-color: rgba(214, 128, 216, 0.778);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
+}
+
+
+.logoutButton.loading {
+    background: linear-gradient(to right, #8d4a92 50%, transparent 50%); /* Cambia el gradiente al 50% para simular la carga */
+    background-size: 200% 100%; /* Ajusta el tamaño del gradiente */
+    animation: loadingAnimation 1s infinite; /* Inicia la animación de carga */
+}
+
+@keyframes loadingAnimation {
+    0% {
+        background-position: 100% 0; /* Inicia desde la derecha */
+    }
+    100% {
+        background-position: -100% 0; /* Termina a la izquierda */
+    }
+}

@@ -2,7 +2,7 @@ import { useState, useContext, createContext } from "react";
 import PropTypes from 'prop-types';
 
 
-const URL1 = import.meta.env.VITE_REACT_APP_BACKEND_URL;
+const URL1 = import.meta.env.VITE_REACT_APP_LOCAL_URL;
 
 const AuthContext = createContext();
 
@@ -56,6 +56,8 @@ export const AuthProvider = ({ children }) => {
             if (response.ok) {
                 document.cookie = `jwtCookie=${datos.token}; expires=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()}; path=/;`;
                 localStorage.setItem('cid', datos.cid);
+                localStorage.setItem('userData', JSON.stringify(datos.user))
+                setUserData(datos.user);
                 setToken(datos.token)
                 setIsAuthenticated(true);
             } else {
@@ -76,14 +78,17 @@ export const AuthProvider = ({ children }) => {
                     'Content-Type': 'application/json',
                 },
             })
+
+            const data = await response.json();
             if (response.status === 200) {
                 // Limpia el token del almacenamiento local
-                const data = await response.json();
                 console.log("datos", data);
                 localStorage.removeItem('jwtCookie');
+                localStorage.removeItem('userData');
+                localStorage.removeItem('cid');
                 // Elimina la cookie del lado del cliente
                 document.cookie = 'jwtCookie=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;';
-                token = null
+                setToken(null)
                 setIsAuthenticated(false);
             } else {
                 console.error(`Error al desloguearse ${await response.text()}`);
@@ -106,12 +111,12 @@ export const AuthProvider = ({ children }) => {
                 // Incluir cualquier token o información de autenticación necesario
             });
             const datos = await response.json();
-            console.log("datos en current antes de saber si fue response.ok", datos)
-            if (response.ok && datos.user.user._id) {
-                console.log("datos en current", datos)
+            if (response.ok && datos.user._id) {
                 // Si el usuario está autenticado, establece el estado y redirige
+                console.log("usuario en current",datos.user)
                 setIsAuthenticated(true);
-                setUserData(datos.user.user);
+                setUserData(datos.user);
+                return datos.user
             } else {
                 // Si no está autenticado, establece el estado
                 setIsAuthenticated(false);
@@ -126,7 +131,7 @@ export const AuthProvider = ({ children }) => {
 
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, login, logout, setIsAuthenticated, current, register, userData }}>
+        <AuthContext.Provider value={{ isAuthenticated, login, logout, setIsAuthenticated, register, current, userData}}>
             {children}
         </AuthContext.Provider>
     )

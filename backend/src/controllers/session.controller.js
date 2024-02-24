@@ -54,7 +54,7 @@ export const login = async (req, res) => {
             maxAge: 4320000 //12 hs en mili segundos
         });
         // res.status(200).send({ payload: req.user });
-        res.status(200).send({ token: token, cid: req.user.cart });
+        res.status(200).send({ token: token, cid: req.user.cart, user : req.user });
     } catch (error) {
         res.status(500).send({ message: `error al iniciar  sesion ${error}` });
     }

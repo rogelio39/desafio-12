@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { getCookiesByName } from "../../utils/formsUtils.js";
 
@@ -14,16 +14,19 @@ export const NewProducts = () => {
     const formRef = useRef(null);
     const navigate = useNavigate();
     const { createProduct } = useContext(CarritoContext);
-    const { current, userData } = useAuth();
+    const { userData } = useAuth();
+    const [loading, setLoading] = useState(true);
 
 
     useEffect(() => {
-        const handleCurrent = async () => {
-            await current();
-        }
-        handleCurrent();
+        setTimeout(() => {
+            setLoading(false)
+        }, 2000)
     }, [])
 
+    if(loading){
+        return <div>Cargando...</div>
+    }
 
 
     const handleSubmit = async (e) => {
@@ -43,7 +46,7 @@ export const NewProducts = () => {
 
     return (
         <div>
-            { userData.rol === 'admin' ?
+            {userData.rol === 'admin' ?
                 <div>
                     <h1 className={styles.createProd}>CREAR NUEVO PRODUCTO</h1>
                     <form id="productForm" className={styles.form} onSubmit={handleSubmit} ref={formRef}>
@@ -70,9 +73,9 @@ export const NewProducts = () => {
                         <button type="submit" className={styles.buttonCreate}>CREAR</button>
                     </form>
                 </div> : (<div>
-                <h1>NO ERES USUARIO ADMIN, NO TIENES PERMITIDO ACCEDER A ESTA RUTA</h1>
-            </div>)
-            } 
+                    <h1>NO ERES USUARIO ADMIN, NO TIENES PERMITIDO ACCEDER A ESTA RUTA</h1>
+                </div>)
+            }
         </div>
     )
 }

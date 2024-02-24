@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { getCookiesByName } from "../utils/formsUtils";
 
 
-const URL1 =  import.meta.env.VITE_REACT_APP_BACKEND_URL;
+const URL1 = import.meta.env.VITE_REACT_APP_LOCAL_URL;
 
 //Creamos contexto con un valor inicial por default sera un objeto con la propiedad "carrito" con un array vacio.
 export const CarritoContext = createContext({
@@ -50,6 +50,34 @@ export const CarritoProvider = ({ children }) => {
         }
     };
 
+    const getProductById = async (id) => {
+        console.log("id en carrito", id);
+        try {
+            const token = getCookiesByName('jwtCookie');
+            const response = await fetch(`${URL1}/api/products/${id}`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Authorization': `${token}`,
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            if (response.status === 200) {
+                const data = await response.json();
+                return data;
+            } else if (response.status === 401) {
+                const datos = await response.json();
+                console.error('Error al acceder a productos, debes tener sesión iniciada', datos);
+            } else {
+                const data = await response.json();
+                console.log("Error", data);
+            }
+        } catch (error) {
+            console.log('Error al intentar acceder a esta URL', error);
+        }
+    };
+
     //agregar productos
     const addProduct = async (item, cantidad) => {
         if (!isInCart(item._id)) {
@@ -67,7 +95,7 @@ export const CarritoProvider = ({ children }) => {
 
         //la sintaxis: setCarrito(prod => [...prod, {item, cantidad}])
         // se utiliza para crear un nuevo array a partir del estado anterior del carrito y agregar un nuevo objeto que representa el nuevo producto (con el item que se agrega y la cantidad)
-    }
+    };
 
     const createProduct = async (data, token) => {
         try {
@@ -75,7 +103,7 @@ export const CarritoProvider = ({ children }) => {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
-                    'Authorization' : `${token}`,
+                    'Authorization': `${token}`,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
@@ -92,17 +120,17 @@ export const CarritoProvider = ({ children }) => {
         } catch (error) {
             console.log('error al crear producto', error);
         }
-    }
+    };
     const finishCart = async (carrito, cid) => {
         const products = carrito.map(prod => ({
             _id: prod.item._id,
             quantity: prod.cantidad
         }));
-        
+
         const requestBody = {
             products: products
         };
-    
+
         try {
             const token = getCookiesByName('jwtCookie');
             const response = await fetch(`${URL1}/api/carts/${cid}`, {
@@ -122,16 +150,16 @@ export const CarritoProvider = ({ children }) => {
         } catch (error) {
             console.error("error", error)
         }
-    }
+    };
 
     //funcion auxiliar 'isInCart'
 
     const isInCart = (id) => {
         return carrito.some(prod => prod.item.id === id);
-    }
+    };
 
 
-    const getTicket = async (cid)=> {
+    const getTicket = async (cid) => {
         try {
             const token = getCookiesByName('jwtCookie');
             const response = await fetch(`${URL1}/api/carts/checkout/${cid}`, {
@@ -149,7 +177,7 @@ export const CarritoProvider = ({ children }) => {
         } catch (error) {
             console.error("error", error)
         }
-    }
+    };
 
 
 
@@ -160,7 +188,7 @@ export const CarritoProvider = ({ children }) => {
 
 
     return (
-        <CarritoContext.Provider value={{ carrito, products, addProduct, createProduct ,finishCart, fetchProducts, getTicket }}>
+        <CarritoContext.Provider value={{ carrito, products, addProduct, createProduct, finishCart, fetchProducts, getTicket, getProductById }}>
             {children}
         </CarritoContext.Provider>
     );

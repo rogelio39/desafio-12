@@ -1,63 +1,81 @@
-
+import styles from './Product.module.css'
 import PropTypes from 'prop-types';
 import ProdCount from '../ProdCount/ProdCount';
-import { useState } from 'react';
 import { useContext } from 'react';
 import { CarritoContext } from '../../context/CarritoContext';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './Product.module.css'
 
 
+//debo agregar logica para que al presionar en seguir comprando me mande de nuevo a products :D
 
-const Product = ({ prod }) => {
-    const [quantity, setQuantity] = useState(0)
-    // const cid = localStorage.getItem('cid');
-    const { addProduct } = useContext(CarritoContext);
+const Product = ({prod}) => {
+    const { addProduct} = useContext(CarritoContext);
+    const [quantity, setQuantity] = useState(0);
+    const cid = localStorage.getItem('cid');
     const navigate = useNavigate();
-    const cid = localStorage.getItem('cid')
 
-
-    const thumbnailUrl = prod.thumbnail && prod.thumbnail.length > 0
-        ? `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/uploads/products/${prod.thumbnail[0].name}`
-        : '';
+    if (!prod && prod !== null) {
+        return <p>Cargando producto...</p>;
+    }
 
 
     const handleQuantity = (quantity) => {
         setQuantity(quantity)
-
         console.log('productos agregados ' + quantity);
-        addProduct(prod, quantity)
+        addProduct(prod , quantity)
     }
 
     const goToCart = () => {
         navigate(`/checkout/${cid}`)
     }
 
+    const keepBuying = () => {
+        navigate('/products')
+    }
 
-    return (
-        <div>
-            <div className={styles.products} key={prod._id}>
+    if (prod) {
+        console.log("datos de prod", prod)
+        const thumbnailUrl = prod.thumbnail && prod.thumbnail.length > 0
+            ? `${import.meta.env.VITE_REACT_APP_LOCAL_URL}/uploads/products/${prod.thumbnail[0].name}`
+            : '';
+        return (
+            <div className={styles.product}>
                 <div className={styles.productImg}>
                     <img src={thumbnailUrl} alt={prod.title} />
                 </div>
                 <p>Nombre: {prod.title}</p>
-                <p>Descripcion: {prod.description}</p>
                 <p>Precio: {prod.price}</p>
                 <p>Stock disponible: {prod.stock}</p>
-                {
-                    quantity > 0 ? <div className={styles.buttonsContainer}>
+                {quantity > 0 ? (
+                    <div className={styles.buttonsContainer}>
                         <button onClick={goToCart}>IR A CHECKOUT</button>
-                        <button >SEGUIR COMPRANDO</button>
-                    </div> : <ProdCount inicial={1} stock={prod.stock} addFunction={handleQuantity} />
-                }
+                        <button onClick={keepBuying}>SEGUIR COMPRANDO</button>
+                    </div>
+                ) : (
+                    <ProdCount inicial={1} stock={prod ? prod.stock : 0} addFunction={handleQuantity} />
+                )}
+
             </div>
-        </div>
-    )
+        )
+    }
+
+    return <p>No se encontraron datos del producto.</p>;
+
 }
 
 
+
 Product.propTypes = {
-    prod: PropTypes.object.isRequired
+    prod: PropTypes.shape({
+        title: PropTypes.string,
+        price: PropTypes.number,
+        stock: PropTypes.number,
+        thumbnail: PropTypes.array
+        // Agrega aquí otras propiedades si es necesario
+    }),
 };
+
+
 
 export default Product

@@ -1,0 +1,99 @@
+/*producto*/
+.products {
+    margin: 1rem;
+    padding: 1rem;
+    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 35vw;
+
+}
+
+
+.productImg img {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.7s ease;
+    object-fit: cover;
+    margin: 1rem;
+    border-radius: 15px;
+    max-width: 25vw;
+    max-height: 30vh;
+    width: auto;
+    height: auto;
+}
+
+.productImg img:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.674);
+}
+
+
+
+
+/*form*/
+
+.createProd{
+    margin: auto;
+    font-size: 1.5rem;
+    font-weight: 800;
+    border: 1.5px black solid;
+    padding: 10px;
+    border-radius: 5px;
+    width: 60%;
+    margin-bottom: 1rem;
+    text-align: center;
+    background-color: #b46cd8a2;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1.5px black solid;
+    background: linear-gradient(to right, #67417a, #b157aa, #a85dc9d8);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
+    transition: box-shadow 0.7s ease;
+    padding: 1rem;
+    margin: auto;
+    text-align: center;
+    gap: 0.6rem;
+    border-radius: 10px;
+    width: 90%;
+}
+
+.form:hover {
+    background-color: rgba(240, 233, 233, 0.179);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.inputTitle, .inputDescription, .inputPrice, .inputCategory, .inputCode, .inputStock{
+    width: 50%;
+    margin: auto;
+}
+
+.buttonCreate{
+    width: 20%;
+    margin: auto;
+    padding: 0.4rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.buttonCreate:hover{
+    background-color: #6d69d9;
+}
+
+.prodsContainer{
+    border: 1.5px black solid;
+    background-color: #98a3bf;
+}
+
+
+
+.error{
+    background-color: #e37e57;
+    padding: 1rem;
+}
