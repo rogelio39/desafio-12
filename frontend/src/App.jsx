@@ -8,7 +8,7 @@ import { CarritoProvider } from './context/CarritoContext';
 import NavBar from './components/Navbar/NavBar';
 import { AuthProvider } from './context/AuthContext';
 import AccessDenied from './components/AccessDenied/AccessDenied';
-import Profile from './components/Profile/Profile';
+import Profile from './components/profile/Profile';
 import ProductDetail from './components/ProductDetail/ProductDetail'
 import './App.css'
 
