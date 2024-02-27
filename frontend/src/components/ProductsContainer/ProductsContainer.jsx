@@ -34,19 +34,14 @@ const ProductsContainer = () => {
     return (
         <div>
             <div id="showProducts" className={styles.on}>
-                {userData.rol === 'user' ? (
+                {products &&
                     Object.values(products).map((prod) => (
                         <div key={prod._id}>
-                            <ProductDetailContainer prod={prod} />
+                            {
+                                userData.rol === 'user' ?  <ProductDetailContainer prod={prod} /> : <EditProducts prod= {prod}/>
+                            }
                         </div>
-                    ))
-                ) : (
-                    Object.values(products).map((prod) => (
-                        <div key={prod._id}>
-                            <EditProducts prod={prod} />
-                        </div>
-                    ))
-                )}
+                    ))}
             </div>
         </div>
     );
