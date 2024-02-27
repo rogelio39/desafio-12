@@ -1,15 +1,15 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Register from './components/register/Register';
 import Login from './components/login/Login';
-import ProductsContainer from './components/productsContainer/ProductsContainer';
+import ProductsContainer from './components/ProductsContainer/ProductsContainer';
 import NewProducts from './components/newProducts/NewProducts';
 import Checkout from './components/checkout/Checkout';
 import { CarritoProvider } from './context/CarritoContext';
-import NavBar from './components/navbar/NavBar';
+import NavBar from './components/Navbar/NavBar';
 import { AuthProvider } from './context/AuthContext';
 import AccessDenied from './components/accessDenied/AccessDenied';
-import Profile from './components/profile/Profile';
-import ProductDetail from './components/productDetail/ProductDetail'
+import Profile from './components/Profile/Profile';
+import ProductDetail from './components/ProductDetail/ProductDetail'
 import './App.css'
 
 

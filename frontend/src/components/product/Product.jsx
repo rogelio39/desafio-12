@@ -1,6 +1,6 @@
 import styles from './Product.module.css'
 import PropTypes from 'prop-types';
-import ProdCount from '../prodCount/ProdCount';
+import ProdCount from '../ProdCount/ProdCount';
 import { useContext } from 'react';
 import { CarritoContext } from '../../context/CarritoContext';
 import { useState } from 'react';
