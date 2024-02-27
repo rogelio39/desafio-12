@@ -1,17 +1,16 @@
 import styles from './ProductsContainer.module.css';
-import { useEffect, useContext, useState} from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { CarritoContext } from '../../context/CarritoContext';
 import ProductDetailContainer from '../ProductDetailContainer/ProductDetailContainer';
 import { useAuth } from '../../context/AuthContext';
-import EditProducts from '../EditProducts/EditProducts'
+import EditProducts from '../EditProducts/EditProducts';
 
 
 const ProductsContainer = () => {
     const { products, fetchProducts } = useContext(CarritoContext);
     const [loadingProducts, setLoadingProducts] = useState(true);
-    const {current, userData} = useAuth();
-
-
+    const [userRoleVerified, setUserRoleVerified] = useState(false);
+    const { current, userData } = useAuth();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,23 +21,32 @@ const ProductsContainer = () => {
         fetchData();
     }, []);
 
-    if (loadingProducts) {
+    useEffect(() => {
+        if (userData.rol) {
+            setUserRoleVerified(true);
+        }
+    }, [userData.rol]);
+
+    if (loadingProducts || !userRoleVerified) {
         return <div>Loading...</div>;
-
     }
-
 
     return (
         <div>
             <div id="showProducts" className={styles.on}>
-                {products &&
+                {userData.rol === 'user' ? (
                     Object.values(products).map((prod) => (
                         <div key={prod._id}>
-                            {
-                                userData.rol === 'user' ?  <ProductDetailContainer prod={prod} /> : <EditProducts prod= {prod}/>
-                            }
+                            <ProductDetailContainer prod={prod} />
                         </div>
-                    ))}
+                    ))
+                ) : (
+                    Object.values(products).map((prod) => (
+                        <div key={prod._id}>
+                            <EditProducts prod={prod} />
+                        </div>
+                    ))
+                )}
             </div>
         </div>
     );
