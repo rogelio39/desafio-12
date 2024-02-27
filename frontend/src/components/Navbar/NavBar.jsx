@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import Logout from "../Logout/Logout"
+import Logout from "../logout/Logout"
 import styles from './NavBar.module.css'
 
 const NavBar = () => {

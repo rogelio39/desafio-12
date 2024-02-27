@@ -1,9 +1,9 @@
 import styles from './ProductsContainer.module.css';
 import { useEffect, useContext, useState} from 'react';
 import { CarritoContext } from '../../context/CarritoContext';
-import ProductDetailContainer from '../ProductDetailContainer/ProductDetailContainer';
+import ProductDetailContainer from '../productDetailContainer/ProductDetailContainer';
 import { useAuth } from '../../context/AuthContext';
-import EditProducts from '../EditProducts/EditProducts'
+import EditProducts from '../editProducts/EditProducts'
 
 
 const ProductsContainer = () => {

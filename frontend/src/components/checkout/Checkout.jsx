@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import Ticket from "../Ticket/Ticket";
+import Ticket from "../ticket/Ticket";
 import styles from './Checkout.module.css'
 import { CarritoContext } from "../../context/CarritoContext"
 

@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from 'react';
 import { CarritoContext } from '../../context/CarritoContext';
 import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import Product from '../Product/Product';
+import Product from '../product/Product';
 
 const ProductDetail = () => {
     const { getProductById } = useContext(CarritoContext);

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './EditProducts.module.css'
 import { useRef, useState, useEffect, useContext } from 'react';
-import { CarritoContext } from '../../context/CarritoContext';
+import { CarritoContext } from '../../context/CarritoContext.jsx';
 import { getCookiesByName } from "../../utils/formsUtils.js";
 import { useNavigate } from 'react-router-dom';
 
