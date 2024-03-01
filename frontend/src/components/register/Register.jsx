@@ -28,7 +28,7 @@ const Register = () => {
 
     return (
         <div>
-            <h1 className={styles.login}>REGISTER</h1>
+            <h1 className={styles.title}>REGISTER</h1>
             <div className={styles.register}>
                 <div className={styles.registerWelcomeMessage}>
                     <h1>WELCOME TU ROGER E-COMMERCE</h1>
