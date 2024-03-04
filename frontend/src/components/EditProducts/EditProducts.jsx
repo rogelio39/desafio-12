@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const EditProducts = ({ prod }) => {
     const formRef = useRef(null);
     const navigate = useNavigate();
-    const { createProduct } = useContext(CarritoContext);
+    const { updateProduct } = useContext(CarritoContext);
     const [loading, setLoading] = useState(true);
 
 
@@ -23,13 +23,13 @@ const EditProducts = ({ prod }) => {
     }
 
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e, id) => {
         e.preventDefault();
         try {
             const formData = new FormData(formRef.current);
             const data = Object.fromEntries(formData);
             const token = getCookiesByName('jwtCookie');
-            createProduct(data, token)
+            updateProduct(id, data, token)
             navigate('/products')
         } catch (error) {
             console.log(error)
@@ -44,9 +44,9 @@ const EditProducts = ({ prod }) => {
 
     return (
 
-        <div className={styles.products}>
+        <div className={styles.products} key={prod._id}>
             
-            <form id="productForm" className={styles.form} onSubmit={handleSubmit} ref={formRef}>
+            <form id="productForm" className={styles.form} onSubmit={(e) => handleSubmit(e, prod._id)} ref={formRef}>
             <h1 className={styles.createProd} > CREAR NUEVO PRODUCTO</h1>
             
             <div className={styles.productImg}>

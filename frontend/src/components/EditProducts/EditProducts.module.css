@@ -1,15 +1,12 @@
 /*producto*/
 .products {
-    margin: 1rem;
-    padding: 1rem;
+    margin:1rem; 
     font-weight: 800;
+    font-size: 1rem;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    width: 35vw;
-
 }
 
 
@@ -19,10 +16,7 @@
     object-fit: cover;
     margin: 1rem;
     border-radius: 15px;
-    max-width: 25vw;
-    max-height: 30vh;
-    width: auto;
-    height: auto;
+    width: 70%;
 }
 
 .productImg img:hover {
@@ -36,12 +30,12 @@
 
 .createProd{
     margin: auto;
-    font-size: 1.5rem;
+    font-size: 0.8rem;
     font-weight: 800;
     border: 1.5px black solid;
     padding: 10px;
     border-radius: 5px;
-    width: 60%;
+    width: 80%;
     margin-bottom: 1rem;
     text-align: center;
     background-color: #b46cd8a2;
@@ -60,7 +54,8 @@
     text-align: center;
     gap: 0.6rem;
     border-radius: 10px;
-    width: 90%;
+    width: 20vw;
+    min-height: 90vh;
 }
 
 .form:hover {
@@ -69,12 +64,12 @@
 }
 
 .inputTitle, .inputDescription, .inputPrice, .inputCategory, .inputCode, .inputStock{
-    width: 50%;
+    width: 70%;
     margin: auto;
 }
 
 .buttonCreate{
-    width: 20%;
+    width: 30%;
     margin: auto;
     padding: 0.4rem;
     border: none;
@@ -92,8 +87,3 @@
 }
 
 
-
-.error{
-    background-color: #e37e57;
-    padding: 1rem;
-}

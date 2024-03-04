@@ -6,14 +6,16 @@
     background: linear-gradient(to right, rgba(236, 122, 211, 0.3), rgba(237, 104, 232, 0.3), rgba(243, 104, 248, 0.3));
     font-weight: 800;
     display: flex;
+    font-size: 1rem;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.674);
     transition: box-shadow 0.7s ease;
     text-align: center;
-    width: 30vw;
-
+    width: 20vw;
+    min-height: 70vh;
+    max-height: 70vh;
 }
 
 .products:hover {
@@ -27,10 +29,7 @@
     object-fit: cover;
     margin: 1rem;
     border-radius: 15px;
-    max-width: 25vw;
-    max-height: 30vh;
-    width: auto;
-    height: auto;
+    width: 70%;
 }
 
 .productImg img:hover {
@@ -40,10 +39,10 @@
 
 .button{
     border: black 1px solid;
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: 0.6rem;
     border-radius: 1rem;
-    background: linear-gradient(to right, #fa7fe1a5, #b45db498);
+    background: linear-gradient(to right, #fcfbfca5, #f19df198);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
     transition: box-shadow 0.7s ease;
 }

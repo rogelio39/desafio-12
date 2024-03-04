@@ -121,6 +121,38 @@ export const CarritoProvider = ({ children }) => {
             console.log('error al crear producto', error);
         }
     };
+
+
+    const updateProduct = async (id, data, token) => {
+        console.log("datos de producto en update", id, data, token)
+        try {
+            const response = await fetch(`${URL}/api/products/${id}`, {
+                method: 'PUT',
+                credentials: 'include',
+                headers: {
+                    'Authorization': `${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+
+            const datos = await response.json();
+
+            if (response.ok) {
+                console.log("datos en updasteProduct", datos)
+                console.log("producto creado con exito");
+            } else if (response.status === 401) {
+                console.error('Error al intentar actualizar producto', datos);
+            } else {
+                console.log(response)
+            }
+        } catch (error) {
+            console.log('error al actualizar producto', error);
+        }
+    };
+
+
+
     const finishCart = async (carrito, cid) => {
         const products = carrito.map(prod => ({
             _id: prod.item._id,
@@ -188,7 +220,7 @@ export const CarritoProvider = ({ children }) => {
 
 
     return (
-        <CarritoContext.Provider value={{ carrito, products, addProduct, createProduct, finishCart, fetchProducts, getTicket, getProductById }}>
+        <CarritoContext.Provider value={{ carrito, products, addProduct, createProduct, updateProduct, finishCart, fetchProducts, getTicket, getProductById }}>
             {children}
         </CarritoContext.Provider>
     );

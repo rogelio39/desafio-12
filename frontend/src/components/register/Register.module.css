@@ -96,13 +96,11 @@
 
 .register {
     display: flex;
-    position: relative;
-    width: 15vw;
+    width: 30vw;
     overflow: hidden;
-    transition: all 0.3s ease;
     margin: auto;
     border-radius: 10px;
-    transition: all 0.7s ease-in-out;
+    transition: all 1s ease-in-out;
     padding: 1rem;
 }
 
@@ -118,8 +116,7 @@
     border: 1.5px black solid;
     border-radius: 10px;
     padding: 1rem;
-    position: relative;
-    transition: all 0.3s ease; /* Transición suave */
+    transition: all 01s ease; /* Transición suave */
     width: calc(30vw - 0.5rem);
     margin: auto;
     margin-right: 0.5rem;
@@ -133,9 +130,9 @@
 
 
 .form{
+    display: none;
     width: calc(30vw - 0.5rem);
     height: 50vh;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
     border: 1.5px black solid;
@@ -144,13 +141,14 @@
     border-radius: 10px;
     background: linear-gradient(to right, #bb4ca5a5, #a94da998, #cb2ccb98);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
-    position: relative;
-    transition: all 0.3s ease; /* Transición suave */
     margin: auto;
     margin-left: 0.5rem;
+    z-index: -1;
 }
 
-
+.register:hover .form{
+    display: flex;
+}
 .form:hover {
     background-color: rgba(211, 118, 214, 0.778);
     box-shadow: 0 30px 40px rgba(0, 0, 0, 0.674);
@@ -188,4 +186,3 @@
 
 
 }
-
