@@ -12,7 +12,6 @@ const NavBar = () => {
         setMenuOpen(!menuOpen);
     }
 
-    console.log(menuOpen)
 
     const login = async () => {
         navigate('/login')
@@ -32,11 +31,11 @@ const NavBar = () => {
         <div className={styles.navBar}>
             <h1>E-COMMERCE</h1>
             <button className={styles.menuButton} onClick={toggleMenu}>
-                {menuOpen ? 'Cerrar Menu' : 'Menu'}
+                <span className={`${styles.menuIcon} ${menuOpen ? styles.open : styles.close}`}></span>
             </button>
             {
                 menuOpen && (
-                    <div className={`${styles.menu} ${menuOpen ? styles.visible :  styles.oculto}`}>
+                    <div className={`${styles.menu}`}>
                         <Logout />
                         <button onClick={goToProducts} className={styles.buttonProducts}>PRODUCTOS</button>
                         <button onClick={login} className={styles.buttonLogin}>LOGIN</button>

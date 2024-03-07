@@ -1,77 +1,4 @@
-/*VERSION MOBILE*/
 
-@media (min-width: 375px) and (max-width: 767px){
-
-    .title {
-        margin: auto;
-        font-size: 0.6rem;
-        font-weight: 800;
-        border: 1.5px black solid;
-        padding: 10px;
-        border-radius: 5px;
-        width: 20vw;
-        text-align: center;
-        background-color: #b46cd8a2;
-    }
-
-    .register {
-        font-size: 0.6rem;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        width: 60vw;
-        margin: auto;
-        border-radius: 10px;
-        padding: 1rem;
-        gap: 1rem;
-    }
-
-    .registerWelcomeMessage {
-        color: rgb(28, 26, 26);
-        text-align: center;
-        border: 1.5px black solid;
-        border-radius: 10px;
-        padding: 1rem;
-        margin: auto;
-        background-color: rgba(192, 105, 218, 0.485); /* Color de fondo con transparencia */
-    }
-    
-    
-    
-    .form{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 0.6rem;
-        border: 1.5px black solid;
-        padding: 1rem;
-        text-align: center;
-        border-radius: 10px;
-        background: linear-gradient(to right, #bb4ca5a5, #a94da998, #cb2ccb98);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
-        margin: auto;
-    }
-
-    .inputEmail,
-    .inputName,
-    .inputAge,
-    .inputPassword,
-    .inputLastName {
-        width: 70%;
-        margin: auto;
-    }
-    
-    .buttonLogin, .buttonRegister, .buttonGitHub {
-        width: 80%;
-        margin: auto;
-        padding: 0.4rem;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
-    }
-    
-}
 
 
 
@@ -79,110 +6,120 @@
 
 @media (min-width:768px) and (max-width: 1920px) {
 
+
+    .title {
+        margin: auto;
+        font-size: 1.5rem;
+        font-weight: 800;
+        border: 1.5px black solid;
+        padding: 10px;
+        border-radius: 5px;
+        width: 30vw;
+        margin-bottom: 1rem;
+        text-align: center;
+        background-color: #b46cd8a2;
+    }
     
-.title {
-    margin: auto;
-    font-size: 1.5rem;
-    font-weight: 800;
-    border: 1.5px black solid;
-    padding: 10px;
-    border-radius: 5px;
-    width: 30vw;
-    margin-bottom: 1rem;
-    text-align: center;
-    background-color: #b46cd8a2;
-}
+    
+    .register {
+        display: flex;
+        width: 100vw;
+        overflow: hidden;
+        border-radius: 10px;
+        transition: all 1s ease-in-out;
+    }
+    
+    .register:hover .registerWelcomeMessage {
+        transform: translateX(-50%);
+    }
 
+    .registerWelcomeMessage {
+        margin: auto;
+        color: rgb(28, 26, 26);
+        font-size: 1rem;
+        text-align: center;
+        border: 1.5px black solid;
+        border-radius: 10px;
+        padding: 1rem;
+        width: 30vw;
+        transition: transform 1s ease; /* Transición suave */
+        height: 50vh;
+        background-color: rgba(192, 105, 218, 0.485); 
+        z-index: 2;
+    }
+    
+    .registerWelcomeMessage:hover{
+        box-shadow: 0 30px 40px rgba(0, 0, 0, 0.674);
+    }
+    
 
-.register {
-    display: flex;
-    width: 30vw;
-    overflow: hidden;
-    margin: auto;
-    border-radius: 10px;
-    transition: all 1s ease-in-out;
-    padding: 1rem;
-}
+    .register:hover .form{
+        display: flex;
+        transform: translateX(35%);
+    }
 
-.register:hover{
-    width: 100vw;
-}
+    
+    
+    .form{
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 50vh;
+        width: calc(30vw - 0.5rem);
+        left: 40%;
+        border: 1.5px black solid;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 10px;
+        background: linear-gradient(to right, #bb4ca5a5, #a94da998, #cb2ccb98);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
+        transition: transform 1s ease-in-out;
+        margin: auto;
+        margin-left: 0.5rem;
+        z-index: 1;
+    }
+    
+    
 
-.registerWelcomeMessage {
-    color: rgb(28, 26, 26);
-    font-size: 1rem;
-    text-align: center;
-    height: 50vh;
-    border: 1.5px black solid;
-    border-radius: 10px;
-    padding: 1rem;
-    transition: all 01s ease; /* Transición suave */
-    width: calc(30vw - 0.5rem);
-    margin: auto;
-    margin-right: 0.5rem;
-    height: 50vh;
-    background-color: rgba(192, 105, 218, 0.485); /* Color de fondo con transparencia */
-}
+    .form:hover {
+        display: flex;
+        background-color: rgba(211, 118, 214, 0.778);
+        box-shadow: 0 30px 40px rgba(0, 0, 0, 0.674);
+    }
+    
 
-.registerWelcomeMessage:hover{
-    box-shadow: 0 30px 40px rgba(0, 0, 0, 0.674);
-}
-
-
-.form{
-    display: none;
-    width: calc(30vw - 0.5rem);
-    height: 50vh;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 1.5px black solid;
-    padding: 1rem;
-    text-align: center;
-    border-radius: 10px;
-    background: linear-gradient(to right, #bb4ca5a5, #a94da998, #cb2ccb98);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
-    margin: auto;
-    margin-left: 0.5rem;
-    z-index: -1;
-}
-
-.register:hover .form{
-    display: flex;
-}
-.form:hover {
-    background-color: rgba(211, 118, 214, 0.778);
-    box-shadow: 0 30px 40px rgba(0, 0, 0, 0.674);
-}
-
-
-
-
-
-.inputEmail,
-.inputName,
-.inputAge,
-.inputPassword,
-.inputLastName {
-    width: 50%;
-    margin: auto;
-}
-
-.buttonLogin, .buttonRegister, .buttonGitHub {
-    width: 30%;
-    margin: auto;
-    padding: 0.4rem;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
-    transition: box-shadow 0.7s ease;
-}
-
-.buttonLogin:hover, .buttonRegister:hover, .buttonGitHub:hover {
-    background-color: rgba(211, 118, 214, 0.778);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
-}
-
-
-
-}
+    .form:hover .inputField input {
+        pointer-events: auto; /* Habilitar la interacción con los input */
+    }
+    
+    
+    
+    .inputEmail,
+    .inputName,
+    .inputAge,
+    .inputPassword,
+    .inputLastName {
+        width: 50%;
+        margin: auto;
+    }
+    
+    .buttonLogin, .buttonRegister, .buttonGitHub {
+        width: 30%;
+        margin: auto;
+        padding: 0.4rem;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
+        transition: box-shadow 0.7s ease;
+    }
+    
+    .buttonLogin:hover, .buttonRegister:hover, .buttonGitHub:hover {
+        background-color: rgba(211, 118, 214, 0.778);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
+    }
+    
+    
+    
+    }

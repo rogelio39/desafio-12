@@ -1,65 +1,67 @@
-.login {
-    margin: auto;
-    font-size: 1.5rem;
-    font-weight: 800;
-    border: 1.5px black solid;
-    padding: 10px;
-    border-radius: 5px;
-    width: 30vw;
-    margin-bottom: 1rem;
-    text-align: center;
-    background-color: #b46cd8a2;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 1.5px black solid;
-    padding: 1rem;
-    margin: auto;
-    text-align: center;
-    gap: 0.6rem;
-    border-radius: 10px;
-    background: linear-gradient(to right, #bb4ca5a5, #a94da998, #cb2ccb98);
-    width: 50vw;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
-    transition: box-shadow 0.7s ease;
-}
-
-.form:hover{
-    background-color: rgba(211, 118, 214, 0.778);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
-}
-
-.inputEmail,
-.inputPassword{
-    width: 30vw;
-    margin: auto;
-}
-
-.buttonLog, .buttonRegister, .gitHubButton {
-    width: 20vw;
-    margin: auto;
-    padding: 0.4rem;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
-    transition: box-shadow 0.7s ease;
-}
-
-.buttonLog:hover, .buttonRegister:hover, .gitHubButton:hover {
-    background-color: rgba(211, 118, 214, 0.778);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
-}
-
-
-
-.loginOff {
-    display: none;
-}
-
-.loginOn {
-    display: block;
+@media (min-width: 768px) and (max-width:1900px){
+    .login {
+        margin: auto;
+        font-size: 1.5rem;
+        font-weight: 800;
+        border: 1.5px black solid;
+        padding: 10px;
+        border-radius: 5px;
+        width: 10vw;
+        margin-bottom: 1rem;
+        text-align: center;
+        background-color: #b46cd8a2;
+    }
+    
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1.5px black solid;
+        padding: 1rem;
+        margin: auto;
+        text-align: center;
+        gap: 0.6rem;
+        border-radius: 10px;
+        background: linear-gradient(to right, #bb4ca5a5, #a94da998, #cb2ccb98);
+        width: 35vw;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
+        transition: box-shadow 0.7s ease;
+    }
+    
+    .form:hover{
+        background-color: rgba(211, 118, 214, 0.778);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
+    }
+    
+    .inputEmail,
+    .inputPassword{
+        width: 50%;
+        margin: auto;
+    }
+    
+    .buttonLog, .buttonRegister, .gitHubButton {
+        width: 30%;
+        margin: auto;
+        padding: 0.4rem;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
+        transition: box-shadow 0.7s ease;
+    }
+    
+    .buttonLog:hover, .buttonRegister:hover, .gitHubButton:hover {
+        background-color: rgba(211, 118, 214, 0.778);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
+    }
+    
+    
+    
+    .loginOff {
+        display: none;
+    }
+    
+    .loginOn {
+        display: block;
+    }
 }
