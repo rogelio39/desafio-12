@@ -15,7 +15,7 @@
 .logoutButton.loading {
     background: linear-gradient(to right, #8d4a92 50%, transparent 50%); /* Cambia el gradiente al 50% para simular la carga */
     background-size: 200% 100%; /* Ajusta el tamaño del gradiente */
-    animation: loadingAnimation 1s infinite; /* Inicia la animación de carga */
+    animation: loadingAnimation 3s infinite; /* Inicia la animación de carga */
 }
 
 @keyframes loadingAnimation {

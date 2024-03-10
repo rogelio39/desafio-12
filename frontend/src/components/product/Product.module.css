@@ -1,5 +1,4 @@
 .product {
-    border: black 1px solid;
     border-radius: 10px;
     margin: auto;
     padding: 1rem;
@@ -12,7 +11,7 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.674);
     transition: box-shadow 0.7s ease;
     text-align: center;
-    width: 50%;
+    width: 30%;
 
 }
 
@@ -27,6 +26,7 @@
     object-fit: cover;
     margin: 1rem;
     border-radius: 15px;
+    width: 50%;
 }
 
 .productImg img:hover {
@@ -41,9 +41,9 @@
 
 .buttonsContainer button {
     border: black 1px solid;
-    font-size: 1.5rem;
+    font-size: 0.9rem;
     padding: 0.6rem;
-    border-radius: 1rem;
+    border-radius: 0.7rem;
     background: linear-gradient(to right, #fa7fe1a5, #b45db498);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.674);
     transition: box-shadow 0.7s ease;

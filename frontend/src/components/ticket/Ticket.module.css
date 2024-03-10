@@ -1,8 +1,10 @@
 .ticket {
-    margin: 1rem;
+    width: 40vw;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     padding: 1rem;
-    font-size: x-large;
-    border: black 3px solid;
+    font-size: 0.8rem;
     border-radius: 10px;
     background: linear-gradient(to right, #90399884, #a53ca49b, #e722d791);
     box-shadow: 0 15px 22px rgba(0, 0, 0, 0.674);

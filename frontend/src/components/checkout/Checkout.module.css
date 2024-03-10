@@ -1,16 +1,25 @@
 .checkout {
-    width: 100vw;
-    height: 100vh;
-    border: black 3px solid;
+    font-size: 1rem;
+    padding: 1rem;
+    width: max-content;
+    max-height: max-content;
+    margin: auto;
+    border: black 1px solid;
     border-radius: 10px;
     background: linear-gradient(to right, #90399884, #a53ca49b, #e722d791);
     margin-bottom: 1rem;
 }
 
-.getTicket, .getCheckout {
-    font-size: 1.8rem;
+.checkout div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.getTicket{
     padding: 0.4rem;
-    border: black 2px solid;
+    border: black 1px solid;
     border-radius: 10px;
     background: linear-gradient(to right, #fa7fe1a5, #b45db498);
     margin: 1rem;
@@ -18,7 +27,26 @@
     transition: box-shadow 0.7s ease;
 }
 
-.getTicket:hover, .getCheckout:hover{
+
+
+.getTicket:hover{
     background-color: rgba(237, 12, 245, 0.778);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.674);
+}
+
+.getTicket.loading{
+    background-image: linear-gradient(to right,  #8d4a92 50%, transparent 50%);
+    background-size: 200% 100%;
+    animation: loadingAnimation 3s infinite;
+}
+
+
+
+@keyframes loadingAnimation {
+    0% {
+        background-position: 100% 0; /* Inicia desde la derecha */
+    }
+    100% {
+        background-position: -100% 0; /* Termina a la izquierda */
+    }
 }
