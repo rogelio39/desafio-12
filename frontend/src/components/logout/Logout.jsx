@@ -5,7 +5,7 @@ import {  useState } from 'react';
 import styles from './Logout.module.css'; // Importa el archivo CSS donde definiremos la animación
 
 export default function Logout() {
-    const { isAuthenticated, logout } = useAuth();
+    const { logout } = useAuth();
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -19,7 +19,6 @@ export default function Logout() {
         setTimeout(() => {
             setLoading(false)
         }, 2000)
-        console.log("authenticated", isAuthenticated);
     }
 
 

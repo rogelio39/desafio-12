@@ -114,7 +114,6 @@ export const AuthProvider = ({ children }) => {
             const datos = await response.json();
             if (response.ok && datos.user._id) {
                 // Si el usuario está autenticado, establece el estado y redirige
-                console.log("usuario en current",datos.user)
                 setIsAuthenticated(true);
                 setUserData(datos.user);
                 return datos.user

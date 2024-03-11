@@ -20,10 +20,9 @@ const Product = ({prod}) => {
     }
 
 
-    const handleQuantity = (quantity) => {
+    const handleQuantity = async(quantity) => {
         setQuantity(quantity)
-        console.log('productos agregados ' + quantity);
-        addProduct(prod , quantity)
+        await addProduct(prod , quantity)
     }
 
     const goToCart = () => {
@@ -35,7 +34,6 @@ const Product = ({prod}) => {
     }
 
     if (prod) {
-        console.log("datos de prod", prod)
         const thumbnailUrl = prod.thumbnail && prod.thumbnail.length > 0
             ? `${import.meta.env.VITE_REACT_APP_LOCAL_URL}/uploads/products/${prod.thumbnail[0].name}`
             : '';

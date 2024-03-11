@@ -7,11 +7,9 @@ import Cart from "../cart/Cart";
 
 const Checkout = () => {
     const [ticket, setTicket] = useState([])
-    // const [viewButtonOrder, setViewButtonOrder] = useState(false);
     const [showOrderDetails, setShowOrderDetails] = useState(false);
-    const { finishCart, carrito, getTicket } = useContext(CarritoContext);
+    const { finishCart, carrito, getTicket, fetchProducts } = useContext(CarritoContext);
     const cid = localStorage.getItem('cid');
-    const { fetchProducts } = useContext(CarritoContext);
     const [charge, setCharge] = useState(false);
 
     const handleCharge = () => {
@@ -19,14 +17,13 @@ const Checkout = () => {
     }
 
     const finishBuy = async () => {
-        const cart = await finishCart(carrito, cid);
-        console.log("carrito en checkout", cart)
-        // setViewButtonOrder(true);
+        await finishCart(carrito, cid);
     }
 
     const getCheckout = async () => {
         const finalTicket = await getTicket(cid);
         setTicket(finalTicket);
+        console.log("finaltikcet", finalTicket)
         fetchProducts();
         setShowOrderDetails(true);
     }
@@ -34,7 +31,7 @@ const Checkout = () => {
 
     return (
         <div className={styles.checkout}>
-        
+
             {
                 showOrderDetails ? <Ticket ticket={ticket} /> : (
                     <div>

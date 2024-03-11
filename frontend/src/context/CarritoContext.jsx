@@ -51,7 +51,6 @@ export const CarritoProvider = ({ children }) => {
     };
 
     const getProductById = async (id) => {
-        console.log("id en carrito", id);
         try {
             const token = getCookiesByName('jwtCookie');
             const response = await fetch(`${URL1}/api/products/${id}`, {
@@ -139,7 +138,6 @@ export const CarritoProvider = ({ children }) => {
             const datos = await response.json();
 
             if (response.ok) {
-                console.log("datos en updasteProduct", datos)
                 console.log("producto creado con exito");
             } else if (response.status === 401) {
                 console.error('Error al intentar actualizar producto', datos);
@@ -176,8 +174,8 @@ export const CarritoProvider = ({ children }) => {
             })
 
             if (response.ok) {
-                const data = await response.json();
-                return data.products;
+                await response.json();
+                setCarrito([])
             }
         } catch (error) {
             console.error("error", error)
@@ -204,7 +202,7 @@ export const CarritoProvider = ({ children }) => {
             })
             if (response.ok) {
                 const data = await response.json();
-                return data.ticket;
+                return data.ticket
             }
         } catch (error) {
             console.error("error", error)

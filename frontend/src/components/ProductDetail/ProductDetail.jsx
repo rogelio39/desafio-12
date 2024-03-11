@@ -16,7 +16,6 @@ const ProductDetail = () => {
     useEffect(() => {
         const getProduct = async () => {
             const product = await getProductById(id)
-            console.log("producto en useEffect de productDetail", product);
             productRef.current = product;
             setLoading(false)
         }

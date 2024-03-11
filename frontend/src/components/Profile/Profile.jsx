@@ -11,7 +11,6 @@ const Profile = () => {
     useEffect(() => {
         setTimeout(() => {
             const storedUserData = localStorage.getItem('userData');
-            console.log("storedUser",storedUserData)
             if (storedUserData) {
                 userRef.current = JSON.parse(storedUserData);
             }
@@ -33,7 +32,6 @@ const Profile = () => {
     } catch (error) {
         console.log("error al tratar de ver imagen")
     }
-    console.log("userdata en profile", userRef.current)
 
     return (
 
