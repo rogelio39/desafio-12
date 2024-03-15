@@ -175,7 +175,6 @@ export const CarritoProvider = ({ children }) => {
 
             if (response.ok) {
                 await response.json();
-                setCarrito([])
             }
         } catch (error) {
             console.error("error", error)
@@ -218,7 +217,7 @@ export const CarritoProvider = ({ children }) => {
 
 
     return (
-        <CarritoContext.Provider value={{ carrito, products, addProduct, createProduct, updateProduct, finishCart, fetchProducts, getTicket, getProductById }}>
+        <CarritoContext.Provider value={{ carrito, setCarrito, products, addProduct, createProduct, updateProduct, finishCart, fetchProducts, getTicket, getProductById }}>
             {children}
         </CarritoContext.Provider>
     );

@@ -4,3 +4,9 @@
     justify-content:flex-start;
     align-items:flex-start;
 }
+
+.cartInfo p{
+    background-color: rgba(255, 248, 248, 0.221);
+    padding: 0.5rem;
+    border-radius: 10px;
+}

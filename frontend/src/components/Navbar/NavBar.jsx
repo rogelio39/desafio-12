@@ -8,6 +8,9 @@ const NavBar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
 
+    const goToIndex = () => {
+        navigate('/')
+    }
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     }
@@ -36,6 +39,7 @@ const NavBar = () => {
             {
                 menuOpen && (
                     <div className={`${styles.menu}`}>
+                        <button onClick={goToIndex} className={styles.buttonProducts}>INICIO</button>
                         <Logout />
                         <button onClick={goToProducts} className={styles.buttonProducts}>PRODUCTOS</button>
                         <button onClick={login} className={styles.buttonLogin}>LOGIN</button>
@@ -50,3 +54,15 @@ const NavBar = () => {
 }
 
 export default NavBar
+
+
+
+
+
+
+
+
+
+
+
+

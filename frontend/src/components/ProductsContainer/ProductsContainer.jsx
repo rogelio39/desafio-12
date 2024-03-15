@@ -5,7 +5,6 @@ import ProductDetailContainer from '../ProductDetailContainer/ProductDetailConta
 import { useAuth } from '../../context/AuthContext';
 import EditProducts from '../EditProducts/EditProducts';
 
-
 const ProductsContainer = () => {
     const { products, fetchProducts } = useContext(CarritoContext);
     const [loadingProducts, setLoadingProducts] = useState(true);
@@ -28,7 +27,7 @@ const ProductsContainer = () => {
     }, [userData.rol]);
 
     if (loadingProducts || !userRoleVerified) {
-        return <div>Loading...</div>;
+        return <div>Loading...¿Ya iniciaste sesion?</div>;
     }
 
     return (

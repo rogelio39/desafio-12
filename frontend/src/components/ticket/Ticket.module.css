@@ -15,3 +15,9 @@
     background-color: rgba(237, 12, 245, 0.778);
     box-shadow: 0 30px 40px rgba(0, 0, 0, 0.674);
 }
+
+.ticket h1, h2{
+    background-color: rgba(255, 255, 255, 0.144);
+    padding: 0.5rem;
+    border-radius: 10px;
+}

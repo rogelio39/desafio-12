@@ -8,25 +8,24 @@ import Cart from "../cart/Cart";
 const Checkout = () => {
     const [ticket, setTicket] = useState([])
     const [showOrderDetails, setShowOrderDetails] = useState(false);
-    const { finishCart, carrito, getTicket, fetchProducts } = useContext(CarritoContext);
+    const { finishCart, carrito, setCarrito , getTicket, fetchProducts } = useContext(CarritoContext);
     const cid = localStorage.getItem('cid');
     const [charge, setCharge] = useState(false);
 
-    const handleCharge = () => {
-        setCharge(true);
-    }
 
-    const finishBuy = async () => {
-        await finishCart(carrito, cid);
-    }
 
     const getCheckout = async () => {
+        setCharge(true);
+        await finishCart(carrito, cid);
         const finalTicket = await getTicket(cid);
         setTicket(finalTicket);
-        console.log("finaltikcet", finalTicket)
         fetchProducts();
-        setShowOrderDetails(true);
+        if (finalTicket) {
+            setShowOrderDetails(true);
+            setCarrito([])
+        }
     }
+
 
 
     return (
@@ -36,7 +35,7 @@ const Checkout = () => {
                 showOrderDetails ? <Ticket ticket={ticket} /> : (
                     <div>
                         <Cart />
-                        <button className={`${styles.getTicket} ${charge ? styles.loading : ''}`} onClick={() => { finishBuy(), handleCharge(), getCheckout() }}>FINALIZAR COMPRA</button>
+                        <button className={`${styles.getTicket} ${charge ? styles.loading : ''}`} onClick={() => getCheckout()}>FINALIZAR COMPRA</button>
                     </div>)
 
             }

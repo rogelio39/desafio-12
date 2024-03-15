@@ -30,6 +30,7 @@
     margin: 1rem;
     border-radius: 15px;
     width: 70%;
+    min-height: 27vh;
 }
 
 .productImg img:hover {

@@ -26,7 +26,7 @@ const Login = () => {
         const datForm = new FormData(formRef.current) //Tranformo un HTML en un objet iterator
         const data = Object.fromEntries(datForm)
         login(data);
-        navigate("/products");
+        navigate("/");
     }
 
     if (loading) {
