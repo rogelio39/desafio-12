@@ -1,41 +1,55 @@
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, useCallback } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from '../../context/AuthContext';
 import styles from './Login.module.css';
+import { getCookiesByName } from "../../utils/formsUtils";
 
 const Login = () => {
     const navigate = useNavigate();
     const formRef = useRef(null);
-    const { isAuthenticated, login } = useAuth();
+    const { login, isAuthenticated } = useAuth();
     const [loading, setLoading] = useState(true);
+
+
 
     useEffect(() => {
         const checkAuthentication = async () => {
-            setTimeout(() => {
+            const token = getCookiesByName('jwtCookie');
+            if (!token) {
                 setLoading(false);
-            }, 2000)
+            }
             // Independientemente del resultado, marca como no cargando
         };
-
         checkAuthentication();
     }, []);
 
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = useCallback(async (e) => {
         e.preventDefault()
-        const datForm = new FormData(formRef.current) //Tranformo un HTML en un objet iterator
-        const data = Object.fromEntries(datForm)
-        login(data);
-        navigate("/");
-    }
+        try {
+            const datForm = new FormData(formRef.current) //Tranformo un HTML en un objet iterator
+            const data = Object.fromEntries(datForm)
+            await login(data);
+            navigate("/");
+        } catch (error) {
+            console.log("error al tratar de loguearse", error)
+        }
+    }, [formRef, login, navigate])
+
+
 
     if (loading) {
-        return <div>Logueandose...</div>;
+        setTimeout(() => {
+            setLoading(false)
+        }, 2000)
+        return <div>Cargando...</div>
     }
+
+
 
     return (
         <div>
-            {(!isAuthenticated && !loading) && (
+            {(!isAuthenticated && !loading) ? (
                 <div className={isAuthenticated ? styles.loginOff : styles.loginOn}>
                     <h1 className={styles.login}>LOGIN</h1>
                     <form id="idForm" className={styles.form} onSubmit={handleSubmit} ref={formRef}>
@@ -48,18 +62,23 @@ const Login = () => {
                         <button type="button" className={styles.gitHubButton}>Ingresar con GitHub</button>
                     </form>
                 </div>
-            )
-
-            }
-            <div className={isAuthenticated ? styles.loginOn : styles.loginOff}>
+            ) : <div className={isAuthenticated ? styles.loginOn : styles.loginOff}>
                 <p>Ya has iniciado sesión. Puedes ir a la página de productos u otra sección.</p>
             </div>
+            }
+
         </div>
     )
 }
 
 
 export default Login
+
+
+
+
+
+
 
 
 

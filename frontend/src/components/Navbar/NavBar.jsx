@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom"
-import Logout from "../logout/Logout"
 import styles from './NavBar.module.css'
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 
+const Logout = lazy(() => import("../logout/Logout"))
 const NavBar = () => {
     const navigate = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
@@ -14,7 +14,6 @@ const NavBar = () => {
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     }
-
 
     const login = async () => {
         navigate('/login')
@@ -40,7 +39,9 @@ const NavBar = () => {
                 menuOpen && (
                     <div className={`${styles.menu}`}>
                         <button onClick={goToIndex} className={styles.buttonProducts}>INICIO</button>
-                        <Logout />
+                        <Suspense fallback={<div>cargando...</div>}>
+                            <Logout />
+                        </Suspense>
                         <button onClick={goToProducts} className={styles.buttonProducts}>PRODUCTOS</button>
                         <button onClick={login} className={styles.buttonLogin}>LOGIN</button>
                         <button onClick={goToRegister} className={styles.buttonRegister}>REGISTER</button>

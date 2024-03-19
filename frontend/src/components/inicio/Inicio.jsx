@@ -9,8 +9,12 @@ const Inicio = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            await fetchProducts();
-            setLoadingProducts(false);
+            try{
+                await fetchProducts();
+                setLoadingProducts(false);
+            }catch(error){
+                console.log("error al obtener productos", error)
+            }
         };
         fetchData();
     }, []);

@@ -10,12 +10,15 @@ const Profile = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            const storedUserData = localStorage.getItem('userData');
-            if (storedUserData) {
-                userRef.current = JSON.parse(storedUserData);
+            try {
+                const storedUserData = localStorage.getItem('userData');
+                if (storedUserData) {
+                    userRef.current = JSON.parse(storedUserData);
+                }
+                setLoading(false)
+            } catch (error) {
+                console.log("error a ltratar de obtener datos de usuario", error);
             }
-            setLoading(false)
-
         }, 2000)
     }, [])
 
@@ -44,6 +47,7 @@ const Profile = () => {
                 <h1>Datos de usuario</h1>
                 <p>Nombre: {userRef.current.first_name}</p>
                 <p>Apellido: {userRef.current.last_name}</p>
+                <p>Rol: {userRef.current.rol}</p>
                 <p>Email: {userRef.current.email}</p>
                 <p>ID: {userRef.current._id}</p>
             </div >

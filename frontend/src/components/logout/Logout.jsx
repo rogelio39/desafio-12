@@ -13,12 +13,16 @@ export default function Logout() {
 
 
     const handleLogout = async () => {
-        setLoading(true);
-        await logout();
-        navigate('/login');
-        setTimeout(() => {
-            setLoading(false)
-        }, 2000)
+        try{
+            setLoading(true);
+            await logout();
+            navigate('/login');
+            setTimeout(() => {
+                setLoading(false)
+            }, 2000)
+        }catch(error){
+            console.log("error al tratar de desloguearse", error)
+        }
     }
 
 

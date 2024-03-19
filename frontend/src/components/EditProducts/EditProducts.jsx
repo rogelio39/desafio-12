@@ -10,7 +10,7 @@ const EditProducts = ({ prod }) => {
     const navigate = useNavigate();
     const { updateProduct } = useContext(CarritoContext);
     const [loading, setLoading] = useState(true);
-
+    let thumbnailUrl;
 
     useEffect(() => {
         setTimeout(() => {
@@ -37,9 +37,13 @@ const EditProducts = ({ prod }) => {
 
     }
 
-    const thumbnailUrl = prod.thumbnail && prod.thumbnail.length > 0
+    try{
+        thumbnailUrl = prod.thumbnail && prod.thumbnail.length > 0
         ? `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/uploads/products/${prod.thumbnail[0].name}`
         : '';
+    }catch(error){
+        console.log("error al tratar de obtener img", error)
+    }
 
 
     return (
@@ -47,7 +51,7 @@ const EditProducts = ({ prod }) => {
         <div className={styles.products} key={prod._id}>
             
             <form id="productForm" className={styles.form} onSubmit={(e) => handleSubmit(e, prod._id)} ref={formRef}>
-            <h1 className={styles.createProd} > CREAR NUEVO PRODUCTO</h1>
+            <h1 className={styles.createProd} > EDITAR PRODUCTOS</h1>
             
             <div className={styles.productImg}>
                 <img src={thumbnailUrl} alt={prod.title} />
@@ -72,7 +76,7 @@ const EditProducts = ({ prod }) => {
                 <label htmlFor="stock">{prod.stock} </label>
                 <input type="number" id="stock" className={styles.inputStock} placeholder='MODIFICAR STOCK' name="stock" required />
 
-                <button type="submit" className={styles.buttonCreate}>CREAR</button>
+                <button type="submit" className={styles.buttonCreate}>EDITAR</button>
             </form>
         </div>
     );

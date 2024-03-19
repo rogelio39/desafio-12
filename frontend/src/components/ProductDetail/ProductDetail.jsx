@@ -1,9 +1,11 @@
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, lazy, Suspense } from 'react';
 import { CarritoContext } from '../../context/CarritoContext';
 import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import Product from '../product/Product';
+
+
+const Product = lazy(() => import('../product/Product'))
 
 const ProductDetail = () => {
     const { getProductById } = useContext(CarritoContext);
@@ -15,9 +17,13 @@ const ProductDetail = () => {
 
     useEffect(() => {
         const getProduct = async () => {
-            const product = await getProductById(id)
-            productRef.current = product;
-            setLoading(false)
+            try{
+                const product = await getProductById(id)
+                productRef.current = product;
+                setLoading(false)
+            } catch(error){
+                console.log("error al tratar de obtener producto porId", error)
+            }
         }
         getProduct();
     }, [getProductById, id])
@@ -29,7 +35,9 @@ const ProductDetail = () => {
                 <div>Cargando...</div>
             ) : (
                 <div>
-                    <Product prod={productRef.current} />
+                    <Suspense fallback={<div>Cargando...</div>}>
+                        <Product prod={productRef.current} />
+                    </Suspense>
                 </div>
             )}
         </div>

@@ -16,7 +16,7 @@ import swaggerUiExpress from 'swagger-ui-express';
 import { swaggerOptions } from './config/swagger.js';
 import cluster from 'cluster';
 import { cpus } from 'os';
-import { __dirname } from './path.js';
+import { __dirname } from './path.js';  
 
 
 const app = express();

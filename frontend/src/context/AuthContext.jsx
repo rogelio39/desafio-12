@@ -8,7 +8,7 @@ const AuthContext = createContext();
 
 
 export const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('isAuthenticated') === 'true');
     const [userData, setUserData] = useState([]);
     let [token, setToken] = useState(null)
 
@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
         try {
             const response = await fetch(`${URL1}/api/session/register`, {
                 method: 'POST',
-                credentials : 'include',   
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -57,9 +57,10 @@ export const AuthProvider = ({ children }) => {
                 document.cookie = `jwtCookie=${datos.token}; expires=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()}; path=/;`;
                 localStorage.setItem('cid', datos.cid);
                 localStorage.setItem('userData', JSON.stringify(datos.user))
+                setIsAuthenticated(true);
+                localStorage.setItem('isAuthenticated', true)
                 setUserData(datos.user);
                 setToken(datos.token)
-                setIsAuthenticated(true);
             } else {
                 console.error('Credenciales incorrectas. Por favor, verifica tu email y contraseña.', datos);
             }
@@ -86,10 +87,11 @@ export const AuthProvider = ({ children }) => {
                 localStorage.removeItem('jwtCookie');
                 localStorage.removeItem('userData');
                 localStorage.removeItem('cid');
+                localStorage.setItem('isAuthenticated', false)
+                setIsAuthenticated(false);
                 // Elimina la cookie del lado del cliente
                 document.cookie = 'jwtCookie=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;';
                 setToken(null)
-                setIsAuthenticated(false);
                 setUserData([])
             } else {
                 console.error(`Error al desloguearse ${await response.text()}`);
@@ -131,7 +133,7 @@ export const AuthProvider = ({ children }) => {
 
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, login, logout, setIsAuthenticated, register, current, userData}}>
+        <AuthContext.Provider value={{ isAuthenticated, login, logout, setIsAuthenticated, register, current, userData }}>
             {children}
         </AuthContext.Provider>
     )
@@ -147,3 +149,9 @@ export const useAuth = () => {
 AuthProvider.propTypes = {
     children: PropTypes.node.isRequired
 };
+
+
+
+
+
+

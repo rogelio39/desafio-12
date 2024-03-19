@@ -3,12 +3,17 @@ import styles from './ProductDetailContainer.module.css'
 import { Link } from 'react-router-dom';
 
 const ProductDetailContainer = ({ prod }) => {
+    let thumbnailUrl;
 
 
+    try {
+        thumbnailUrl = prod.thumbnail && prod.thumbnail.length > 0
+            ? `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/uploads/products/${prod.thumbnail[0].name}`
+            : '';
 
-    const thumbnailUrl = prod.thumbnail && prod.thumbnail.length > 0
-        ? `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/uploads/products/${prod.thumbnail[0].name}`
-        : '';
+    } catch (error) {
+        console.log("error al tratar de obtener img", error)
+    }
 
 
     return (

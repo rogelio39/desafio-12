@@ -1,10 +1,8 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { getCookiesByName } from "../../utils/formsUtils.js";
-
 import styles from './NewProducts.module.css';
 import { CarritoContext } from "../../context/CarritoContext.jsx";
-import { useAuth } from '../../context/AuthContext.jsx';
 
 
 // Uso de la función para importar de forma síncrona
@@ -14,17 +12,25 @@ export const NewProducts = () => {
     const formRef = useRef(null);
     const navigate = useNavigate();
     const { createProduct } = useContext(CarritoContext);
-    const { userData } = useAuth();
     const [loading, setLoading] = useState(true);
+    const userRef = useRef({})
 
 
     useEffect(() => {
         setTimeout(() => {
-            setLoading(false)
+            try {
+                const userData = localStorage.getItem('userData')
+                if (userData) {
+                    userRef.current = JSON.parse(userData);
+                }
+                setLoading(false)
+            } catch (error) {
+                console.log("error al tratar de obtener datos usuario", error)
+            }
         }, 2000)
     }, [])
 
-    if(loading){
+    if (loading) {
         return <div>Cargando...</div>
     }
 
@@ -44,9 +50,11 @@ export const NewProducts = () => {
 
     }
 
+
+
     return (
         <div>
-            {userData.rol === 'admin' ?
+            {userRef.current.rol === 'admin' ?
                 <div>
                     <h1 className={styles.createProd}>CREAR NUEVO PRODUCTO</h1>
                     <form id="productForm" className={styles.form} onSubmit={handleSubmit} ref={formRef}>

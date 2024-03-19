@@ -15,14 +15,18 @@ const Checkout = () => {
 
 
     const getCheckout = async () => {
-        setCharge(true);
-        await finishCart(carrito, cid);
-        const finalTicket = await getTicket(cid);
-        setTicket(finalTicket);
-        fetchProducts();
-        if (finalTicket) {
-            setShowOrderDetails(true);
-            setCarrito([])
+        try{
+            setCharge(true);
+            await finishCart(carrito, cid);
+            const finalTicket = await getTicket(cid);
+            setTicket(finalTicket);
+            fetchProducts();
+            if (finalTicket) {
+                setShowOrderDetails(true);
+                setCarrito([])
+            }
+        }catch(error){
+            console.log("error al tratar de finalizar carrito", error)
         }
     }
 
