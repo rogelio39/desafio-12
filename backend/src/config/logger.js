@@ -1,4 +1,11 @@
 import { createLogger, format, transports } from 'winston';
+import moment from 'moment-timezone';
+
+const myFormat = format.printf(({level, message, timestamp}) => {
+    const formattedTimeStamp = moment(timestamp).tz('America/Argentina/Buenos_Aires').format('YYYY-MM-DDTHH:mm:ss.SSSZ');
+
+    return `[${formattedTimeStamp} ${level}: ${message}]`
+})
 
 const customLevels = {
     levels: {
@@ -33,25 +40,33 @@ export const logger = createLogger({
         format.simple(),
         format.colorize({ colors: customLevels.colors }),
         format.timestamp(),
-        format.printf(info => `[${info.timestamp}] ${info.level} ${info.message}`)
+        myFormat
     ),
 
     transports: [
         new transports.File({
             filename: './errors.log',
-            level: 'fatal' 
+            level: 'fatal' ,
+            maxFiles: 10,
+            maxsize: 10240000
         }),
         new transports.File({
             filename: './errors.log',
             level: 'error',
+            maxFiles: 10,
+            maxsize: 10240000
         }),
         new transports.File({
             filename: './logger.log',
             level: 'warning',
+            maxFiles: 10,
+            maxsize: 10240000
         }),
         new transports.File({
             filename: './logger.log',
             level: 'info',
+            maxFiles: 10,
+            maxsize: 10240000
         }),
         new transports.Console({
             level: 'debug'

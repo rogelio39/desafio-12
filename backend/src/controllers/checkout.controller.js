@@ -3,6 +3,7 @@ import { cartModel } from "../models/carts.models.js";
 import { userModel } from "../models/users.models.js";
 import { productModel } from "../models/products.models.js";
 import logger from "../config/logger.js";
+import { finishBuy } from "./nodemailer.controller.js";
 
 export const createTicket = async (req, res) => {
     try {
@@ -60,6 +61,7 @@ export const createTicket = async (req, res) => {
                 })
                 const ticket = await ticketModel.create({ amount, purchaser });
                 if (ticket) {
+                    finishBuy(purchaser, ticket);
                     res.status(200).send({ ticket })
                 } else {
                     logger.warning(`error al generar ticket. Alguno de los datos no son correcto: Usuario: ${user}, cart ${cart} `)

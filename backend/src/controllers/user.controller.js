@@ -1,4 +1,5 @@
 import { userModel } from "../models/users.models.js";
+import logger from "../config/logger.js";
 
 function esMayorDe144Horas(lastConnection) {
     if (!lastConnection) {
@@ -24,6 +25,7 @@ export const getUsers = async (req, res) => {
         res.status(200).send({ respuesta: 'ok', mensaje: users });
 
     } catch (error) {
+        logger.error(`error del servidor ${error}`)
         res.status(400).send({ respuesta: "error", mensaje: error });
     }
 }
@@ -35,9 +37,11 @@ export const getUser = async (req, res) => {
         if (user) {
             res.status(200).send({ respuesta: 'ok', mensaje: user });
         } else {
+            logger.warning(`error 404: usuario no encontrado`)
             res.status(404).send({ respuesta: "error", mensaje: "user not found" });
         }
     } catch (error) {
+        logger.error(`error del servidor ${error}`)
         res.status(400).send({ respuesta: "error", mensaje: error });
     }
 }
@@ -51,12 +55,14 @@ export const postProfileImage = async (req, res) => {
     console.log("req", file)
 
     if (!file) {
+        logger.warning(`No se subieron archivos`)
         return res.status(400).send('No se subieron archivos.');
     }
 
     try {
         const user = await userModel.findById(id);
         if (!user) {
+            logger.warning(`Usuario no encontrado`)
             return res.status(404).send("Usuario no encontrado");
         }
         else {
@@ -75,7 +81,7 @@ export const postProfileImage = async (req, res) => {
         }
 
     } catch (error) {
-        console.error("error al subir imagenes: ", error);
+        logger.error(`error al subir imagenes ${error}`);
         res.status(500).send("error al subir imagenes")
     }
 }
@@ -88,10 +94,12 @@ export const putUser = async (req, res) => {
         if (respuesta) {
             res.status(200).send({ respuesta: 'ok', mensaje: respuesta });
         } else {
+            logger.warning(`error, usuario no encontrado`)
             res.status(404).send({ respuesta: 'error', mensaje: 'usuario no encontrado' });
         }
 
     } catch (error) {
+        logger.error(`error del servidor ${error}`)
         res.status(400).send({ respuesta: "error", mensaje: error });
     }
 }
@@ -103,11 +111,13 @@ export const deleteUser = async (req, res) => {
         if (user) {
             res.status(200).send({ respuesta: 'ok', mensaje: 'usuario borrado' });
         } else {
-            res.status(404).send({ respuesta: 'error', mensaje: 'usuario no encontado, error al eliminar' });
+            logger.warning(`error, usuario no encontrado, error al eliminar`)
+            res.status(404).send({ respuesta: 'error', mensaje: 'usuario no encontrado, error al eliminar' });
         }
 
 
     } catch (error) {
+        logger.error(`error del servidor ${error}`)
         res.status(400).send({ respuesta: "error", mensaje: error });
     }
 }
@@ -125,6 +135,7 @@ export const deleteAllInactiveUser = async (req, res) => {
             }
         }
         if (checkDeleteUsers.length < 0) {
+            logger.warning(`error al eliminar usuario`)
             res.status(400).send({ message: "error al eliminar usuario" })
         } else {
             res.status(200).send({ resultado: 'sesión y cuenta eliminadas debido a inactividad' });
@@ -132,6 +143,7 @@ export const deleteAllInactiveUser = async (req, res) => {
         }
 
     } catch (error) {
+        logger.error(`error del servidor ${error}`)
         res.status(400).send({ respuesta: "error", mensaje: error });
     }
 }

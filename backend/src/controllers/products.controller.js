@@ -12,9 +12,11 @@ export const getProducts = async (req, res) => {
         if (products) {
             res.status(200).send(products);
         } else {
+            logger.warning(`error, productos no encontrados`)
             res.status(404).send({ error: 'productos no encontrados' });
         }
     } catch (error) {
+        logger.error(`error del servidor en consultar productos${error}`)
         res.status(500).send({ error: `error en consultar productos ${error}` });
     }
 }
@@ -26,9 +28,11 @@ export const getProductById = async (req, res) => {
         if (product) {
             res.status(200).send(product);
         } else {
+            logger.warning(`error, producto no encontrado`)
             res.status(404).send({ error: 'producto no encontrado' });
         }
     } catch (error) {
+        logger.error(`error del servidor al consultar producto${error}`)
         res.status(500).send({ error: `error en consultar producto ${error}` });
     }
 
@@ -42,14 +46,17 @@ export const postProduct = async (req, res) => {
         if (product) {
             res.status(201).send(product);
         } else {
+            logger.error(`error en crear producto`)
             res.status(400).send({ error: 'error en crear producto' });
         }
 
     } catch (error) {
         //este error code es de llave duplicada
         if (error.code == 11000) {
+            logger.error(`error de llave duplicada ${error}`)
             res.status(400).send({ error: 'producto ya creado con llave duplicada' });
         } else {
+            logger.error(`error del servidor en crear producto ${error}`)
             res.status(500).send({ error: `error en crear producto ${error}` });
         }
     }
@@ -68,10 +75,12 @@ export const putProduct = async (req, res) => {
         if (product) {
             res.status(201).send(product);
         } else {
+            logger.warning(`error al actualizar producto`)
             res.status(400).send({ error: 'error en actualizar producto' });
         }
 
     } catch (error) {
+        logger.error(`error del servidor al actualizar producto ${error}`)
         res.status(500).send({ error: `error en actualizar producto ${error}` });
     }
 }
@@ -91,6 +100,7 @@ export const uploadProductImages = async (req, res) => {
         const product = await productModel.findById(id);
 
         if (!product) {
+            logger.warning(`error, producto no encontrado`)
             return res.status(404).send('Producto no encontrado.');
         }
 
@@ -110,7 +120,7 @@ export const uploadProductImages = async (req, res) => {
         await product.save();
         res.status(200).send('Imágenes cargadas correctamente en los thumbnails');
     } catch (error) {
-        console.error('Error al subir imágenes:', error);
+        logger.error(`error del servidor al subir imagenes ${error}`)
         res.status(500).send('Error al subir imágenes');
     }
 };
@@ -123,9 +133,11 @@ export const deleteProduct = async (req, res) => {
         if (product) {
             res.status(201).send(product);
         } else {
+            logger.warning(`error al eliminar producto`)
             res.status(400).send({ error: 'error en eliminar producto' });
         }
     } catch (error) {
+        logger.error(`error del servidor al eliminar producto${error}`)
         res.status(500).send({ error: `error en eliminar producto ${error}` });
     }
 

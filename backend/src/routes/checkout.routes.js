@@ -7,3 +7,4 @@ const checkoutRouter = Router();
 checkoutRouter.post('/:cid', passportError('jwt'), authorization('user'), createTicket);
 
 export default checkoutRouter;
+

@@ -104,3 +104,28 @@
   ],
   __v: 0
 }
+[2024-03-21T16:11:07.037-03:00 [33mwarning[39m: Hubo un error en passport, no existe usuario function toString() { [native code] }]
+[2024-03-21T16:11:07.037-03:00 [33mwarning[39m: Hubo un error en passport, no existe usuario function toString() { [native code] }]
+[2024-03-21T16:13:11.843-03:00 [33mwarning[39m: Hubo un error en passport, no existe usuario function toString() { [native code] }]
+[2024-03-21T16:13:11.843-03:00 [33mwarning[39m: Hubo un error en passport, no existe usuario function toString() { [native code] }]
+[2024-03-21T16:20:47.144-03:00 [33mwarning[39m: No hay productos suficientes: Cantidad de producto 10, cantidad ingresada 15]
+[2024-03-21T16:20:47.144-03:00 [33mwarning[39m: No hay productos suficientes: Cantidad de producto 10, cantidad ingresada 15]
+[2024-03-21T16:20:47.292-03:00 [32minfo[39m: usuario normal, 320000, usuario: {
+  _id: new ObjectId("65cfa1c880e646a10d8df0e7"),
+  first_name: 'rogelio',
+  last_name: 'suleta',
+  age: 27,
+  email: 'andresrogesu@gmail.com',
+  password: '$2b$15$R3ICzbP.BVJ4puKZD8tQPuDF.IDNSSDS5AgM5iqsIPAMDwlTy6Y66',
+  rol: 'user',
+  thumbnail: [
+    {
+      name: '1708106343804-IMG_20161106_073130.jpg',
+      reference: 'C:\\Users\\rasro\\OneDrive\\Escritorio\\DESAFIOS-BACKEND\\proyecto final\\desafio-12\\backend\\src\\uploads\\profiles\\1708106343804-IMG_20161106_073130.jpg'
+    }
+  ],
+  last_connection: 2024-03-21T19:19:37.088Z,
+  documents: [],
+  cart: new ObjectId("65cfa1c880e646a10d8df0e8"),
+  __v: 1
+}]

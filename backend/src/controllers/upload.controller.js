@@ -1,4 +1,6 @@
 import multer from "multer";
+import logger from '../config/logger.js'
+
 // config multer 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
@@ -18,9 +20,11 @@ export const uploadSingle = async (req, res) => {
         if (imageUpload) {
             res.status(200).send('imagen cargada');
         } else {
+            logger.warning('hubo un error al intentar cargar la imagen')
             res.status(400).send({ message: "hubo un error al intentar cargar la imagen" })
         }
     } catch (error) {
+        logger.error(`Error del servidor ${error}`)
         res.status(500).send({ error: error })
     }
 }
