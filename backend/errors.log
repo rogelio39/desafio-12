@@ -1,13 +1,15 @@
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-error: <span style="color: orange">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
+[2024-03-20T23:16:47.377Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:48:52.619Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:49:44.380Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:50:35.144Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:58:33.625Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:59:48.534Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-21T00:00:53.612Z] [31merror[39m Error en estrategia jwt en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-21T00:00:53.615Z] [31mfatal[39m fatal en estrategia jwt en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-21T00:00:53.615Z] [31mfatal[39m fatal en estrategia jwt en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-21T16:08:30.184Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-03-21T16:08:30.436Z] [31merror[39m Error en el servidor:
+[2024-03-21T16:17:34.140Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-03-21T16:18:22.609Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-03-21T16:24:24.800Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-03-21T16:26:10.083Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario

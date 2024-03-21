@@ -1,4 +1,5 @@
 import { generateToken } from "../utils/jwt.js";
+import logger from "../config/logger.js";
 
 // Función para calcular el tiempo transcurrido desde la última conexión
 function calcularTiempoDesconectado(ultimaConexion) {
@@ -56,6 +57,7 @@ export const login = async (req, res) => {
         // res.status(200).send({ payload: req.user });
         res.status(200).send({ token: token, cid: req.user.cart, user : req.user });
     } catch (error) {
+        logger.error(`Error del servidor ${error}`);
         res.status(500).send({ message: `error al iniciar  sesion ${error}` });
     }
 }

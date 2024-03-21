@@ -3,7 +3,7 @@ import passport from 'passport';
 import jwt from 'passport-jwt';
 import { createHash, validatePassword } from '../utils/bcrypt.js';
 import GithubStrategy from 'passport-github2';
-
+import logger from './logger.js';
 import { userModel } from '../models/users.models.js';
 
 
@@ -28,7 +28,6 @@ const initializePassport = () => {
     }
 
 
-
 passport.use('jwt', new JWTStrategy({
     jwtFromRequest: ExtractJWT.fromExtractors([cookieExtractor]), //el token vendra desde cookieExtractor.
     secretOrKey: process.env.JWT_SECRET
@@ -41,11 +40,13 @@ passport.use('jwt', new JWTStrategy({
             last_name : jwt_payload.user.last_name,
             rol : jwt_payload.user.rol,
             email : jwt_payload.user.email,
-            thumbnail : jwt_payload.user.thumbnail
+            thumbnail : jwt_payload.user.thumbnail,
+            cart : jwt_payload.user.cart
         }
 
         return done(null, user);
     } catch (error) {
+        logger.error(`Error en estrategia jwt en passport ${error}`)
         return done(error);
     }
 }))
@@ -60,6 +61,7 @@ passport.use('register', new LocalStrategy(
 
             //caso de error
             if (user) {
+                logger.info('Usuario ya existente')
                 return done(null, false, { message: 'Usuario ya registrado' });
             }
             //crear usuario
@@ -74,6 +76,7 @@ passport.use('register', new LocalStrategy(
             return done(null, userCreated)
 
         } catch (error) {
+            logger.error(`Error en estrategia jwt en passport ${error}`)
             return done(error);
         }
 
@@ -85,14 +88,17 @@ passport.use('login', new LocalStrategy(
         try {
             const user = await userModel.findOne({ email: username })
             if (!user) {
+                logger.info('Usuario no existe')
                 return done(null, false);
             }
             if (validatePassword(password, user.password)) {
                 return done(null, user);
             } else {
+                logger.info('Contraseña no valida')
                 return done(null, false);
             }
         } catch (error) {
+            logger.error(`Error en estrategia login en passport ${error}`)
             return done(error)
         }
     }))
@@ -109,6 +115,7 @@ passport.use('github', new GithubStrategy({
 
         const user = await userModel.findOne({ email: profile._json.email })
         if (user) {
+            logger.info('Usuario existe en github')
             done(null, false);
         } else {
             const userCreated = await userModel.create({
@@ -122,6 +129,7 @@ passport.use('github', new GithubStrategy({
         }
 
     } catch (error) {
+        logger.error(`Error en estrategia github en passport ${error}`)
         done(error)
     }
 }))

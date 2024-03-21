@@ -1,17 +1,106 @@
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-error: <span style="color: orange">Esto es un fatal</span><br/>
-error: <span style="color: orange">Esto es un fatal</span><br/>
-warning: <span style="color: cyan">Esto es un warning</span><br/>
-warning: <span style="color: cyan">Esto es un warning</span><br/>
-info: <span style="color: blue">Esto es un info</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
-fatal: <span style="color: darkRed">Esto es un fatal</span><br/>
+[2024-03-20T22:57:52.602Z] [32minfo[39m usuario conectado
+[2024-03-20T23:13:26.430Z] [32minfo[39m Usuario no existe
+[2024-03-20T23:13:43.333Z] [32minfo[39m Contraseña no valida
+[2024-03-20T23:16:05.201Z] [32minfo[39m Usuario ya existente
+[2024-03-20T23:16:15.621Z] [32minfo[39m Usuario ya existente
+[2024-03-20T23:16:36.799Z] [32minfo[39m Usuario ya existente
+[2024-03-20T23:16:47.377Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:16:47.377Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:32:04.261Z] [32minfo[39m Usuario ya existente
+[2024-03-20T23:48:52.619Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:48:52.619Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:49:44.380Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:49:44.380Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:50:35.144Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:50:35.144Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:58:33.625Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:58:33.625Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:59:48.534Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-20T23:59:48.534Z] [31merror[39m Error en estrategia register en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-21T00:00:53.603Z] [33mwarning[39m warning en estrategia jwt en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-21T00:00:53.603Z] [33mwarning[39m warning en estrategia jwt en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-21T00:00:53.612Z] [31merror[39m Error en estrategia jwt en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-21T00:00:53.615Z] [31mfatal[39m fatal en estrategia jwt en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-21T00:00:53.612Z] [31merror[39m Error en estrategia jwt en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-21T00:00:53.615Z] [31mfatal[39m fatal en estrategia jwt en passport ValidationError: first_name: Path `first_name` is required.
+[2024-03-21T15:32:47.460Z] [33mwarning[39m Hubo un error en passport, no existe usuario function toString() { [native code] }
+[2024-03-21T15:32:47.460Z] [33mwarning[39m Hubo un error en passport, no existe usuario function toString() { [native code] }
+[2024-03-21T16:08:30.184Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-03-21T16:08:30.184Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-03-21T16:08:30.278Z] [33mwarning[39m No hay productos suficientes: Cantidad de producto -4, cantidad ingresada 10
+[2024-03-21T16:08:30.278Z] [33mwarning[39m No hay productos suficientes: Cantidad de producto -4, cantidad ingresada 10
+[2024-03-21T16:08:30.429Z] [33mwarning[39m error al generar ticket. No hay productos válidos en el carrito {
+  _id: new ObjectId("65cfa19fcca940d5a78b3323"),
+  products: [
+    {
+      id_prod: [Object],
+      quantity: 10,
+      _id: new ObjectId("65fc5b4bcf753ac3c70e017b")
+    }
+  ],
+  __v: 0
+}
+[2024-03-21T16:08:30.429Z] [33mwarning[39m error al generar ticket. No hay productos válidos en el carrito {
+  _id: new ObjectId("65cfa19fcca940d5a78b3323"),
+  products: [
+    {
+      id_prod: [Object],
+      quantity: 10,
+      _id: new ObjectId("65fc5b4bcf753ac3c70e017b")
+    }
+  ],
+  __v: 0
+}
+[2024-03-21T16:17:34.140Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-03-21T16:17:34.140Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-03-21T16:18:22.609Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-03-21T16:18:22.609Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-03-21T16:22:47.298Z] [32minfo[39m usuario premium total, 1600000, usuario: {
+  _id: new ObjectId("65cfa1c880e646a10d8df0e7"),
+  first_name: 'rogelio',
+  last_name: 'suleta',
+  age: 27,
+  email: 'andresrogesu@gmail.com',
+  password: '$2b$15$R3ICzbP.BVJ4puKZD8tQPuDF.IDNSSDS5AgM5iqsIPAMDwlTy6Y66',
+  rol: 'user',
+  thumbnail: [
+    {
+      name: '1708106343804-IMG_20161106_073130.jpg',
+      reference: 'C:\\Users\\rasro\\OneDrive\\Escritorio\\DESAFIOS-BACKEND\\proyecto final\\desafio-12\\backend\\src\\uploads\\profiles\\1708106343804-IMG_20161106_073130.jpg'
+    }
+  ],
+  last_connection: 2024-03-21T15:33:51.855Z,
+  documents: [],
+  cart: new ObjectId("65cfa1c880e646a10d8df0e8"),
+  __v: 1
+}
+[2024-03-21T16:24:24.800Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-03-21T16:24:24.800Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-03-21T16:26:10.083Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-03-21T16:26:10.083Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-03-21T16:27:48.305Z] [33mwarning[39m Error al agregar producto al carrito, carrito no existe
+[2024-03-21T16:27:48.305Z] [33mwarning[39m Error al agregar producto al carrito, carrito no existe
+[2024-03-21T16:28:28.970Z] [33mwarning[39m No hay productos suficientes: Cantidad de producto 10, cantidad ingresada 15
+[2024-03-21T16:28:28.970Z] [33mwarning[39m No hay productos suficientes: Cantidad de producto 10, cantidad ingresada 15
+[2024-03-21T16:28:29.039Z] [33mwarning[39m error al generar ticket. No hay productos válidos en el carrito {
+  _id: new ObjectId("65cfa1c880e646a10d8df0e8"),
+  products: [
+    {
+      id_prod: [Object],
+      quantity: 15,
+      _id: new ObjectId("65fc601f5152fe03a87cd754")
+    }
+  ],
+  __v: 0
+}
+[2024-03-21T16:28:29.039Z] [33mwarning[39m error al generar ticket. No hay productos válidos en el carrito {
+  _id: new ObjectId("65cfa1c880e646a10d8df0e8"),
+  products: [
+    {
+      id_prod: [Object],
+      quantity: 15,
+      _id: new ObjectId("65fc601f5152fe03a87cd754")
+    }
+  ],
+  __v: 0
+}

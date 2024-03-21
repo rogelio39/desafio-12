@@ -10,13 +10,13 @@ import cors from 'cors';
 //rutas de db
 import router from './routes/index.routes.js';
 import compression from 'express-compression'
-import { addLogger } from './config/logger.js';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express';
 import { swaggerOptions } from './config/swagger.js';
 import cluster from 'cluster';
 import { cpus } from 'os';
-import { __dirname } from './path.js';  
+import { __dirname } from './path.js';
+
 
 
 const app = express();
@@ -25,7 +25,7 @@ let PORT = process.env.PORT;
 
 const specs = swaggerJSDoc(swaggerOptions);
 
-const whiteList = [process.env.FRONTEND_PORT];
+const whiteList = [process.env.LOCAL_PORT];
 
 const numeroDeProcesadores = cpus().length;
 
@@ -102,8 +102,6 @@ app.use((err, req, res, next) => {
     }
 });
 
-//generacion de loggers
-app.use(addLogger);
 
 
 
