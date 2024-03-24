@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import styles from './Profile.module.css'
 import { useEffect, useRef, useState } from 'react';
@@ -7,6 +8,7 @@ const Profile = () => {
     const [loading, setLoading] = useState(true);
     let thumbnailProfile = '';
     const userRef = useRef({});
+    const navigate = useNavigate()
 
     useEffect(() => {
         setTimeout(() => {
@@ -21,6 +23,14 @@ const Profile = () => {
             }
         }, 2000)
     }, [])
+
+    const goToAddProducts = () => {
+        navigate(('/products'))
+    }
+
+    const goToEditProducts = () => {
+        navigate(('/new-products'))
+    }
 
 
     if (loading) {
@@ -39,18 +49,32 @@ const Profile = () => {
     return (
 
         isAuthenticated ? (
-
-            <div className={styles.profileData} key={userRef.current._id} >
-                <div>
-                    <img src={thumbnailProfile} alt={userRef.current.first_name} />
-                </div>
-                <h1>Datos de usuario</h1>
-                <p>Nombre: {userRef.current.first_name}</p>
-                <p>Apellido: {userRef.current.last_name}</p>
-                <p>Rol: {userRef.current.rol}</p>
-                <p>Email: {userRef.current.email}</p>
-                <p>ID: {userRef.current._id}</p>
-            </div >
+            userRef.current.rol === 'admin' ?
+                <div className={styles.profileData} key={userRef.current._id} >
+                    <div>
+                        <img src={thumbnailProfile} alt={userRef.current.first_name} />
+                    </div>
+                    <h1>Datos de usuario</h1>
+                    <p>Nombre: {userRef.current.first_name}</p>
+                    <p>Apellido: {userRef.current.last_name}</p>
+                    <p>Rol: {userRef.current.rol}</p>
+                    <p>Email: {userRef.current.email}</p>
+                    <p>ID: {userRef.current._id}</p>
+                    <div className={styles.div_buttons}>
+                        <button onClick={goToAddProducts}>AGREGAR PRODUCTOS</button>
+                        <button onClick={goToEditProducts}>EDITAR PRODUCTOS</button>
+                    </div>
+                </div > : <div className={styles.profileData} key={userRef.current._id} >
+                    <div>
+                        <img src={thumbnailProfile} alt={userRef.current.first_name} />
+                    </div>
+                    <h1>Datos de usuario</h1>
+                    <p>Nombre: {userRef.current.first_name}</p>
+                    <p>Apellido: {userRef.current.last_name}</p>
+                    <p>Rol: {userRef.current.rol}</p>
+                    <p>Email: {userRef.current.email}</p>
+                    <p>ID: {userRef.current._id}</p>
+                </div >
         ) : (<div>
             <p>NO EXISTE UNA SESSION ACTIVA, VUELVE AL LOGIN E INICIA SESSION</p>
         </div>)

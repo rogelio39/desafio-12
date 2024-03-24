@@ -17,7 +17,6 @@ export const NewProducts = () => {
 
 
     useEffect(() => {
-        setTimeout(() => {
             try {
                 const userData = localStorage.getItem('userData')
                 if (userData) {
@@ -27,7 +26,6 @@ export const NewProducts = () => {
             } catch (error) {
                 console.log("error al tratar de obtener datos usuario", error)
             }
-        }, 2000)
     }, [])
 
     if (loading) {

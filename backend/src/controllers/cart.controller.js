@@ -29,11 +29,13 @@ export const postCart = async (req, res) => {
 
                 const index = cart.products.findIndex(prod => prod._id.toString() === pid);
                 if (index != -1) {
+                    console.log('cart en car.controller', cart.products)
                     cart.products[index].quantity += quantity;
                 } else {
                     cart.products.push({ id_prod: pid, quantity: quantity });
                 }
-                const respuesta = await cartModel.findByIdAndUpdate(cid, { products: cart.products });
+                const respuesta = await cartModel.findByIdAndUpdate(cid, { products: cart.products }, { new: true });
+                console.log("CARRITO ACTUALIZADO LUEGO DE ENVIARLO", respuesta)
                 res.status(200).send({ respuesta: 'ok', mensaje: respuesta });
             } else {
                 logger.warning('Error al agregar producto al carrito, producto no existe')

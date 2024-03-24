@@ -61,13 +61,16 @@ export const sendRecoveryMail = (email, recoveryLink) => {
 
 export const finishBuy = (email, datas) => {
 
-    if (email) {
+    if (email && datas) {
         const mailOptions = {
             from: 'rogeliosuleta@gmail.com',
             to: email,
-            subject: `Te enviamos los datos de tu compra  ${datas}`,
+            subject: 'Los datos de tu compra',
+            text: `  CODIGO: ${datas.code}
+            FECHA: ${datas.purchase_datetime}
+            TOTAL: ${datas.amount}
+            USUARIO: ${datas.purchaser}`
         }
-
 
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
@@ -85,3 +88,7 @@ export const finishBuy = (email, datas) => {
 
 
 }
+
+
+
+

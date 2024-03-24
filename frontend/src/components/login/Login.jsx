@@ -13,7 +13,7 @@ const Login = () => {
 
 
     useEffect(() => {
-        const checkAuthentication = async () => {
+        const checkAuthentication = () => {
             const token = getCookiesByName('jwtCookie');
             if (!token) {
                 setLoading(false);

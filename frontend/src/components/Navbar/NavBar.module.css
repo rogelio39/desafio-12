@@ -102,3 +102,8 @@
     box-shadow: 0 5px 10px rgba(228, 100, 235, 0.83);
     border-radius: 5px;
 }
+
+
+.invisible{
+    display: none;
+}
