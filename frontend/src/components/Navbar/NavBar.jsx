@@ -26,11 +26,7 @@ const NavBar = () => {
     };
 
     const toggleMenu = () => {
-        if (!userData) {
-            return <div>cargando...</div>
-        } else {
-            setMenuOpen(!menuOpen);
-        }
+        setMenuOpen(!menuOpen);
     };
 
     const login = async () => {
