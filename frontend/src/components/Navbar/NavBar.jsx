@@ -64,9 +64,9 @@ const NavBar = () => {
                     <Suspense fallback={<div>cargando...</div>}>
                         <Logout />
                     </Suspense>
-                    {userData && userData.rol === 'admin' && (
+                    {userData.rol === 'admin' && 
                         <button onClick={goToNewProducts}>AGREGAR NUEVOS PRODUCTOS</button>
-                    )}
+                    }
                     <button onClick={goToProducts} className={styles.buttonProducts}>PRODUCTOS</button>
                     <button onClick={login} className={styles.buttonLogin}>LOGIN</button>
                     <button onClick={goToRegister} className={styles.buttonRegister}>REGISTER</button>
