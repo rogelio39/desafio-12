@@ -11,7 +11,7 @@
 #AGREGAR HEADER
 #AGREGAR COMPONENTE CREAR NUEVO PRODUCTO AL NAVBAR YA QUE SOLO ESTA COMO RUTA
 #AGREGAR NUEVOS ESTILOS AL COMPONENTE DE NEW-PRODUCTOS
-
+#ESTANDARIZAR ESTILOS DE CONTENEDORES Y BOTONES PARA QUE TODOS SEAN LOS MISMOS COLORES Y GAMAS.
 
 #ACTUALIZAR LOS .ENV A LA VERSION NATIVA CON process.loadEnvFile() que si no le pasamos parametros usa el .env por defecto,
 sino podemos pasarle un parametro como ('/.env.dev') y luego solo hacemos process.env.dev y chau.
