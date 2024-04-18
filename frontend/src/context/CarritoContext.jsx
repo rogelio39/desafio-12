@@ -98,7 +98,7 @@ export const CarritoProvider = ({ children }) => {
 
     const createProduct = async (data, token) => {
         try {
-            const response = await fetch(`${URL}/api/products`, {
+            const response = await fetch(`${URL1}/api/products`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -114,7 +114,8 @@ export const CarritoProvider = ({ children }) => {
                 const datos = await response.json()
                 console.error('Error al intentar crear producto', datos);
             } else {
-                console.log(response)
+                const datos = await response.json();
+                console.log(datos)
             }
         } catch (error) {
             console.log('error al crear producto', error);
@@ -125,7 +126,7 @@ export const CarritoProvider = ({ children }) => {
     const updateProduct = async (id, data, token) => {
         console.log("datos de producto en update", id, data, token)
         try {
-            const response = await fetch(`${URL}/api/products/${id}`, {
+            const response = await fetch(`${URL1}/api/products/${id}`, {
                 method: 'PUT',
                 credentials: 'include',
                 headers: {

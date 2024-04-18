@@ -25,11 +25,11 @@ const Profile = () => {
     }, [])
 
     const goToAddProducts = () => {
-        navigate(('/products'))
+        navigate(('/new-products'))
     }
 
     const goToEditProducts = () => {
-        navigate(('/new-products'))
+        navigate(('/products'))
     }
 
 
