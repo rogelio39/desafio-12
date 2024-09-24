@@ -13,3 +13,6 @@
 [2024-03-21T16:18:22.609Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
 [2024-03-21T16:24:24.800Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
 [2024-03-21T16:26:10.083Z] [31merror[39m El id del carrito de la url no coincide con el id del carrito del usuario
+[2024-09-23T16:57:06.366-03:00 [31merror[39m: error al enviar mail Error: self-signed certificate in certificate chain]
+[2024-09-23T17:00:03.925-03:00 [31merror[39m: error al enviar mail Error: self-signed certificate in certificate chain]
+[2024-09-23T17:01:28.733-03:00 [31merror[39m: error al enviar mail Error: self-signed certificate in certificate chain]

@@ -8,7 +8,7 @@ const ProductDetailContainer = ({ prod }) => {
 
     try {
         thumbnailUrl = prod.thumbnail && prod.thumbnail.length > 0
-            ? `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/uploads/products/${prod.thumbnail[0].name}`
+            ? `${import.meta.env.VITE_REACT_APP_LOCAL_URL}/uploads/products/${prod.thumbnail[0].name}`
             : '';
 
     } catch (error) {

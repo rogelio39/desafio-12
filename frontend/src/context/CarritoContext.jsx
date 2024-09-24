@@ -5,12 +5,11 @@ import PropTypes from 'prop-types';
 import { getCookiesByName } from "../utils/formsUtils";
 
 
-const URL1 = import.meta.env.VITE_REACT_APP_BACKEND_URL;
+const URL1 = import.meta.env.VITE_REACT_APP_LOCAL_URL;
 
 //Creamos contexto con un valor inicial por default sera un objeto con la propiedad "carrito" con un array vacio.
 export const CarritoContext = createContext({
     carrito: [],
-    products: [],
     getProducts: () => { }, // Definimos una función vacía por defecto
 });
 
@@ -20,24 +19,21 @@ export const CarritoProvider = ({ children }) => {
 
     //creamos estado carrito con useState
     const [carrito, setCarrito] = useState([]);
-    const [products, setProducts] = useState([]);
 
 
     const fetchProducts = async () => {
         try {
-            const token = getCookiesByName('jwtCookie');
             const response = await fetch(`${URL1}/api/products`, {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
-                    'Authorization': `${token}`,
                     'Content-Type': 'application/json'
                 },
             });
 
-            if (response.status === 200) {
+            if (response.ok) {
                 const data = await response.json();
-                setProducts(data.docs);
+                return data.docs
             } else if (response.status === 401) {
                 const datos = await response.json();
                 console.error('Error al acceder a productos, debes tener sesión iniciada', datos);
@@ -52,12 +48,10 @@ export const CarritoProvider = ({ children }) => {
 
     const getProductById = async (id) => {
         try {
-            const token = getCookiesByName('jwtCookie');
             const response = await fetch(`${URL1}/api/products/${id}`, {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
-                    'Authorization': `${token}`,
                     'Content-Type': 'application/json'
                 },
             });
@@ -218,7 +212,7 @@ export const CarritoProvider = ({ children }) => {
 
 
     return (
-        <CarritoContext.Provider value={{ carrito, setCarrito, products, addProduct, createProduct, updateProduct, finishCart, fetchProducts, getTicket, getProductById }}>
+        <CarritoContext.Provider value={{ carrito, setCarrito, addProduct, createProduct, updateProduct, finishCart, fetchProducts, getTicket, getProductById }}>
             {children}
         </CarritoContext.Provider>
     );

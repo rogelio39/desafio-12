@@ -225,3 +225,133 @@
 [2024-04-16T16:23:20.476-03:00 [32minfo[39m: Contraseña no valida]
 [2024-04-16T16:23:41.520-03:00 [32minfo[39m: Contraseña no valida]
 [2024-04-16T16:23:43.871-03:00 [32minfo[39m: Contraseña no valida]
+[2024-09-23T16:53:44.045-03:00 [32minfo[39m: Contraseña no valida]
+[2024-09-23T16:53:52.621-03:00 [32minfo[39m: Contraseña no valida]
+[2024-09-23T16:53:56.998-03:00 [32minfo[39m: Contraseña no valida]
+[2024-09-23T16:54:01.408-03:00 [32minfo[39m: Contraseña no valida]
+[2024-09-23T16:54:07.932-03:00 [32minfo[39m: Contraseña no valida]
+[2024-09-23T16:54:21.987-03:00 [32minfo[39m: Usuario ya existente]
+[2024-09-23T16:54:37.396-03:00 [32minfo[39m: Usuario no existe]
+[2024-09-23T16:57:05.876-03:00 [32minfo[39m: usuario normal, 320000, usuario: {
+  _id: new ObjectId("65cfa19fcca940d5a78b3322"),
+  first_name: 'jorge',
+  last_name: 'rocha',
+  age: 28,
+  email: 'jorge@gmail.com',
+  password: '$2b$15$C5Eb9u87xatWe5588sqYauK96lN9LL7cogXUsjGMvKIzntImPGa/S',
+  rol: 'user',
+  thumbnail: [],
+  last_connection: 2024-09-23T19:56:04.505Z,
+  documents: [],
+  cart: new ObjectId("65cfa19fcca940d5a78b3323"),
+  __v: 0
+}]
+[2024-09-23T16:57:05.881-03:00 [32minfo[39m: usuario normal, 480000, usuario: {
+  _id: new ObjectId("65cfa19fcca940d5a78b3322"),
+  first_name: 'jorge',
+  last_name: 'rocha',
+  age: 28,
+  email: 'jorge@gmail.com',
+  password: '$2b$15$C5Eb9u87xatWe5588sqYauK96lN9LL7cogXUsjGMvKIzntImPGa/S',
+  rol: 'user',
+  thumbnail: [],
+  last_connection: 2024-09-23T19:56:04.505Z,
+  documents: [],
+  cart: new ObjectId("65cfa19fcca940d5a78b3323"),
+  __v: 0
+}]
+[2024-09-23T16:57:06.366-03:00 [31merror[39m: error al enviar mail Error: self-signed certificate in certificate chain]
+[2024-09-23T16:57:06.366-03:00 [31merror[39m: error al enviar mail Error: self-signed certificate in certificate chain]
+[2024-09-23T16:57:50.009-03:00 [32minfo[39m: Contraseña no valida]
+[2024-09-23T16:58:19.182-03:00 [33mwarning[39m: No hay productos suficientes: Cantidad de producto 0, cantidad ingresada 1]
+[2024-09-23T16:58:19.182-03:00 [33mwarning[39m: No hay productos suficientes: Cantidad de producto 0, cantidad ingresada 1]
+[2024-09-23T16:58:19.252-03:00 [33mwarning[39m: error al generar ticket. No hay productos válidos en el carrito {
+  _id: new ObjectId("65cfa1c880e646a10d8df0e8"),
+  products: [
+    {
+      id_prod: [Object],
+      quantity: 1,
+      _id: new ObjectId("66f1c85a9173305e3d592f7e")
+    }
+  ],
+  __v: 0
+}]
+[2024-09-23T16:58:19.252-03:00 [33mwarning[39m: error al generar ticket. No hay productos válidos en el carrito {
+  _id: new ObjectId("65cfa1c880e646a10d8df0e8"),
+  products: [
+    {
+      id_prod: [Object],
+      quantity: 1,
+      _id: new ObjectId("66f1c85a9173305e3d592f7e")
+    }
+  ],
+  __v: 0
+}]
+[2024-09-23T17:00:03.532-03:00 [33mwarning[39m: No hay productos suficientes: Cantidad de producto 0, cantidad ingresada 1]
+[2024-09-23T17:00:03.532-03:00 [33mwarning[39m: No hay productos suficientes: Cantidad de producto 0, cantidad ingresada 1]
+[2024-09-23T17:00:03.687-03:00 [32minfo[39m: usuario normal, 160000, usuario: {
+  _id: new ObjectId("65cfa1c880e646a10d8df0e7"),
+  first_name: 'rogelio',
+  last_name: 'suleta',
+  age: 27,
+  email: 'andresrogesu@gmail.com',
+  password: '$2b$15$R3ICzbP.BVJ4puKZD8tQPuDF.IDNSSDS5AgM5iqsIPAMDwlTy6Y66',
+  rol: 'user',
+  thumbnail: [
+    {
+      name: '1708106343804-IMG_20161106_073130.jpg',
+      reference: 'C:\\Users\\rasro\\OneDrive\\Escritorio\\DESAFIOS-BACKEND\\proyecto final\\desafio-12\\backend\\src\\uploads\\profiles\\1708106343804-IMG_20161106_073130.jpg'
+    }
+  ],
+  last_connection: 2024-09-23T19:59:49.551Z,
+  documents: [],
+  cart: new ObjectId("65cfa1c880e646a10d8df0e8"),
+  __v: 1
+}]
+[2024-09-23T17:00:03.693-03:00 [32minfo[39m: usuario normal, 172000, usuario: {
+  _id: new ObjectId("65cfa1c880e646a10d8df0e7"),
+  first_name: 'rogelio',
+  last_name: 'suleta',
+  age: 27,
+  email: 'andresrogesu@gmail.com',
+  password: '$2b$15$R3ICzbP.BVJ4puKZD8tQPuDF.IDNSSDS5AgM5iqsIPAMDwlTy6Y66',
+  rol: 'user',
+  thumbnail: [
+    {
+      name: '1708106343804-IMG_20161106_073130.jpg',
+      reference: 'C:\\Users\\rasro\\OneDrive\\Escritorio\\DESAFIOS-BACKEND\\proyecto final\\desafio-12\\backend\\src\\uploads\\profiles\\1708106343804-IMG_20161106_073130.jpg'
+    }
+  ],
+  last_connection: 2024-09-23T19:59:49.551Z,
+  documents: [],
+  cart: new ObjectId("65cfa1c880e646a10d8df0e8"),
+  __v: 1
+}]
+[2024-09-23T17:00:03.925-03:00 [31merror[39m: error al enviar mail Error: self-signed certificate in certificate chain]
+[2024-09-23T17:00:03.925-03:00 [31merror[39m: error al enviar mail Error: self-signed certificate in certificate chain]
+[2024-09-23T17:01:28.443-03:00 [32minfo[39m: usuario normal, 12000, usuario: {
+  _id: new ObjectId("65cfa1c880e646a10d8df0e7"),
+  first_name: 'rogelio',
+  last_name: 'suleta',
+  age: 27,
+  email: 'andresrogesu@gmail.com',
+  password: '$2b$15$R3ICzbP.BVJ4puKZD8tQPuDF.IDNSSDS5AgM5iqsIPAMDwlTy6Y66',
+  rol: 'user',
+  thumbnail: [
+    {
+      name: '1708106343804-IMG_20161106_073130.jpg',
+      reference: 'C:\\Users\\rasro\\OneDrive\\Escritorio\\DESAFIOS-BACKEND\\proyecto final\\desafio-12\\backend\\src\\uploads\\profiles\\1708106343804-IMG_20161106_073130.jpg'
+    }
+  ],
+  last_connection: 2024-09-23T19:59:49.551Z,
+  documents: [],
+  cart: new ObjectId("65cfa1c880e646a10d8df0e8"),
+  __v: 1
+}]
+[2024-09-23T17:01:28.733-03:00 [31merror[39m: error al enviar mail Error: self-signed certificate in certificate chain]
+[2024-09-23T17:01:28.733-03:00 [31merror[39m: error al enviar mail Error: self-signed certificate in certificate chain]
+[2024-09-23T17:01:59.094-03:00 [32minfo[39m: Usuario no existe]
+[2024-09-23T17:02:06.974-03:00 [32minfo[39m: Usuario no existe]
+[2024-09-23T17:02:29.578-03:00 [32minfo[39m: Contraseña no valida]
+[2024-09-23T17:02:36.566-03:00 [32minfo[39m: Contraseña no valida]
+[2024-09-23T17:02:52.556-03:00 [32minfo[39m: Contraseña no valida]

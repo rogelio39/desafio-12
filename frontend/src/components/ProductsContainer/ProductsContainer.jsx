@@ -1,5 +1,5 @@
 import styles from './ProductsContainer.module.css';
-import { useEffect, useContext, lazy, Suspense } from 'react';
+import { useEffect, useContext, lazy, Suspense, useState } from 'react';
 import { CarritoContext } from '../../context/CarritoContext';
 import { useAuth } from '../../context/AuthContext';
 
@@ -9,14 +9,14 @@ const EditProducts = lazy(() => import('../EditProducts/EditProducts'));
 
 
 const ProductsContainer = () => {
-    const { products, fetchProducts } = useContext(CarritoContext);
-    const { current, userData } = useAuth();
-
+    const {  fetchProducts } = useContext(CarritoContext);
+    const { userData } = useAuth();
+    const [products, setProducts] = useState([])
     useEffect(() => {
         try {
             const fetchData = async () => {
-                await fetchProducts();
-                await current();
+                const productsFetch = await fetchProducts();
+                setProducts(productsFetch)
             };
             fetchData();
         } catch (error) {
@@ -37,7 +37,7 @@ const ProductsContainer = () => {
                         <div key={prod._id}>
                             <Suspense fallback={<div>Cargando...</div>}>
                                 {
-                                    userData.rol === 'user' ? <ProductDetailContainer prod={prod} /> : <EditProducts prod={prod} />
+                                    userData.rol === 'admin' ?  <EditProducts prod={prod} /> :  <ProductDetailContainer prod={prod} /> 
                                 }
                             </Suspense>
 

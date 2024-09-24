@@ -25,7 +25,7 @@ let PORT = process.env.PORT;
 
 const specs = swaggerJSDoc(swaggerOptions);
 
-const whiteList = [process.env.FRONTEND_PORT];
+const whiteList = [process.env.LOCAL_PORT];
 
 const numeroDeProcesadores = cpus().length;
 
@@ -42,6 +42,7 @@ const corsOptions = {
 
 
 app.use(express.json());
+app.use(cors(corsOptions));
 app.use(cookieParser(process.env.SIGNED_COOKIE)) // La cookie esta firmada
 app.use(session({
     store: MongoStore.create({
@@ -58,7 +59,7 @@ app.use(session({
     saveUninitialized: false //Fuerzo a guardar la session a pesar de no tener ningun dato
 }))
 app.use(express.urlencoded({ extended: true }));
-app.use(cors(corsOptions));
+
 
 //inicializamos la estrategia
 initializePassport();

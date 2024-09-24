@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { CarritoProvider } from './context/CarritoContext';
 import { AuthProvider } from './context/AuthContext';
 import { lazy, Suspense } from 'react';
+import Offers from './components/Offers/Offers';
 const Register = lazy(() => import('./components/register/Register'));
 const Login = lazy(() => import('./components/login/Login'));
 const ProductsContainer = lazy(() => import('./components/ProductsContainer/ProductsContainer'));
@@ -31,6 +32,7 @@ const App = () => {
                 <Route path='/register' element={<Register />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/products' element={<ProductsContainer />} />
+                <Route path='/offers' element={<Offers/>} />
                 <Route path='/item/:id' element={<ProductDetail />} />
                 <Route path='/new-products' element={<NewProducts />} />
                 <Route path='/edit-products' element={<ProductsContainer />} />
